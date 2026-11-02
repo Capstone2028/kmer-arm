@@ -1,0 +1,28 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Cloned third-party repo (re-clone: git clone https://github.com/dhnihaoya/EvSpark)
+EvSpark/
+
+# Secrets and local Modal config
+.env
+*.token
+.modal.toml
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs produced by runs
+*.log
+*.log.jsonl
+
+# Generated benchmark outputs -- regenerable from the scripts, but keep the
+# baseline native/speculative result this repo's kmer arm is compared against.
+*_bench_*.json
+!fulllength_bench_L40S.json
