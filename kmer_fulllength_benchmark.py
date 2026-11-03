@@ -69,6 +69,11 @@ import modal
 
 from speculative_benchmark import GPU, PRICE, app, read_fasta_records, image, EVSPARK_DIR
 
+# speculative_benchmark.py is imported at module level by run_kmer_prompt's own
+# module (this file) -- the shared `image` above never bakes that sibling file
+# in, so without this the remote container crash-loops on ModuleNotFoundError.
+image = image.add_local_python_source("speculative_benchmark")
+
 PHIX174_FASTA = Path(__file__).parent / "phix174.fasta"
 if not PHIX174_FASTA.exists():
     PHIX174_FASTA = Path(__file__).parent / "dependencies" / "phix174.fasta"

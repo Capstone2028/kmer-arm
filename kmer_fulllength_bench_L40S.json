@@ -1,0 +1,3534 @@
+{
+  "model": "evo2_7b",
+  "ckpt": "L27_g12_150M_s1",
+  "prompt_len": 64,
+  "n_tokens": 5322,
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "genome_len": 5386,
+  "gpu": "L40S",
+  "price_per_hr": 1.95,
+  "c": 3,
+  "chunk_len": 512,
+  "score_mode": "paper",
+  "table": "C:\\Users\\avspr\\Downloads\\evo_benchmarking_tests\\kmer-arm\\dependencies\\microviridae_k346.npz",
+  "results": [
+    {
+      "name": "phix174_fulllength_kmer_s0",
+      "region": "viral_coding_fulllength",
+      "gpu_name": "NVIDIA L40S",
+      "gpu_requested": "L40S",
+      "price_per_hr": 1.95,
+      "model": "evo2_7b",
+      "ckpt": "L27_g12_150M_s1",
+      "load_s": 197.3,
+      "n_tokens": 5322,
+      "seed": 0,
+      "c": 3,
+      "chunk_len": 512,
+      "score_mode": "paper",
+      "kmer_s": 439.53,
+      "kmer_toks_per_s": 12.1,
+      "n_rounds": 11,
+      "est_usd_kmer": 0.23808,
+      "kmer_seq": "ACTATTAAAGCAGGCGTTCAACTTCTGGAAATGTTCGGTGTTGATACAAAGCTTCTTGAAAAGAATACCGCTGCGGTAGCACTTAAAGAATGGACCGAAAAAGATTACGGAAAGTTTATTAAGCCTTTTCTTTATGCAGCAATGAACGATTATCTCGGCGTAAAGTTTTCACCTTATGATGTAAATTATTTCGAAGAGAGTATGAAAGCATCTTCATTCACGTTTACCCAAAAAAGCAGCGTCGATGAAAAATCACCTAAAAGAAAGAGAAAGTAGAGACATATAGCTCGAAGACAAATTCCTGTTGGCACTGGCTTATTTCCCACTTTTTATCTCATATCTAGTATAAGGAATTGATCATCTGGGTTTCATAATTTGCTTTAAATAAGAGTTCTCGATATGGAGTGAAAGAAGTGGAACCCATGAATCAAGAGATTTTGAGAACACTATTACTTCTCACGTTAGCTATTAATTATGCCCTTTTTGCGATCTATTTATCCGTAAGATTAAAAAATTTTCGAGATATTTTAAATTAAAAAAAGGGCCTAAAAGCTGTTTTTCCTATTTTCATTTTGCTTAGATCACGTTTATCGAGAACTTTAATCTATTTTAAGAAATCTGAGTTCTCGATAAACGAGTATTGAGCGAGCATTTCGATTCTTGTTTTGTATCAATCAACTGAGATTTGGTGGCTTTGTGCTAGCGAAATATCGAGCATCGAGAACAAGTTTGCGGTTGATTATAATTAACACAGCACTTACGCTATAATTTTTTATAAATTTCTTTTTATATGAACTTGGGGGGTCACCATGGATAAAAAGTTGATCAAAATGGATACAAATTCATTTTTGCGAGAAAATGAAGGATTAGAAAAAGCAAGGGATTTTTTATACGGAATCCCAGTAAATAACTTTGAAGTTGCAGAAAAAGTCCTTGATAGCCTTGCTGACTATTGCTACGGTTCTCTTGAGTGGAAGTTCGGTGAAAATGAAGGAATAAGACAGAAATACAAATTCATGGAAGACATTAATGATGTCGAAATTACTTGGATTACAGAGATTATTCCACTTCTAAAGTACGAATTTAAAATGCATAATGTCAGTTCATTTGATCCTGCCTTTAAAGAAGACACCAAAATATCAAATTTTATCTTAAGAGTATTTGATAATAGTAATCTTTTTTTCGTACTGTCATTGGTTCAAATCAATGAGTATAATGAATTCTTGGATGTTTTTGGAGACAAACGGGATTATTATTTTGTTAGAACAGATAAAAACACCTCCTTGAGCATCGAAAGCAGGCTGATACAGTTCATTATGTTTAATCGAAAGCAGATGAATGAATAAAAATTTAAGAATCATTGCTTCCCCCTAGTTATAAAGAAATTAAAATGATTGGACTTTAGAAAATAGGTGGCGTAATTATTAATTGTGCCTCAATATGAAAAAAATTCTAAGCGAGCGACTACATGTTAATTTACGCTGATAAATATTTTCATCCGGAATTCGAAAAACCACTACATCAAAAAAATAGTAAAATAAAGTATTTTATTCTTTCAGCTATTTTTGCATTAATCCTTACAACAAGCAATCATGCATGGGCTTTTCTACCTGTTGGTTATAGTGACGAACCTATTGATTTACTAGGTCAAACCGAATCTTTTTTTGGTACGTCTCAATTTGATGTACTTAGTTCTTCTTATATACAAACCGCTAATGATTCTTTTTTATGGGAATTTCTAGATGCTGGTTTATATGACCCTAATTGGGATGAAGCCGTGCAAACTCAGGCATTTGGTTTTTATGCTTTAGCCGCTGAAGATGGTTTTACAGGAGCTTACAATCATATTGAAAATAATAAAAATATCGCTATTAAACATGTAGCAACGAGTACTTCTGATAGTCTGGTTGGTTACCAAATTAATTCAGGTAACGGAATTGCGAAAAATACAGAGACCAATCTAAAAAACTCTTCCTGGAGTGTCGACTTACGATTAGAAAAATTTGGTAATCCAGATATATCAGGACTAACAACTTTTTATGGTATTAAAAATTACCTTGGTGTTGGATATACAGATGCAAGCGACTCTTATGCGTTTACTACTTTAGCAAATGAAAATGCCAACACATTTAAATACACATACGCCAGTACGAATAATCAAGTTTATAACAATATAAAAATTAATGGACAGAACATTGATTATATTAAATACGGAAATCCTTCAGTAGGAACTTCAATAAATGCCCAAGCGATAAAAATCTATAATTACACTGAAGAGTCAGGAGCTGATTTGGGTAGTCAAATGCTAAAAGTGTTTGATGGCTCTGATAAATTATTTTTTCCTCTTTATCAAGGAAATGTAGGGGTAGGTAAACTTCAAGGTTATGACTCGTATTTGCTGGCTTTTGACTCGAGTGATAAATGGAATGGAATGGAATTGGTTCAATATGGAACAAATAAATATTCTGTGAAGGAACCTCAGGTTCGTCCTGAATTTATGTTATCTTCCGATACCCCTTTTGGTAGAAATGAATTCGGTACGTATTACATAGATAATATCAATGGTGCTCCTGATATAAGCTTTACAACAACAGTCGTATCAAATTTCAATTCAATCGATTTTACAGTTGATAATGATATAAAAATGTTTAGAAATGGTCAGTACTCTTTAACTATAAACTATGATTCAGGTGTTATTAATGGGTCAGGAACGCTGACAGTAGGGGCACACACTGCATCGTTAAATCCTTTCGGTATAGAAGGTATTGGGTATTATGTCTCTTATGTAATGTTGGACAATTTTGATACGCCATCTTATGACTCTGTAAAAGTCAAAGTTCATAGCAGATACCATCAAGATTCATATGGTGATATTGTCAGCTTACTTAATAAAAATAATTTAACTTATGTAAAACTTCCTAATTATACTGATCAAGTCTTTGTTTATTATTCAACTAAAAATGAAGCATCAGAATATTGCAGCTTTTTAACAGGGAAAAACAATGCATATTATAACCCTGCCGCTCAAGCTTGTAACAATTCTAGTCCGGATTTATCTGTAACCCTCGATAATTTGATGGTTACAGATGATTCAGGAGATGAAATAAAAATTACAGATGCGATTTTTGATGCTAAATTTGATGTAATGGACAAAAGTAATTTCGTTCAAGTTAATGAATCAATATATGTAGGTAGCGGTAAGACATTTAAATCTCAATCTCAATTTTATTTGTTACATGCAGATAAAAAGATAAAAGTTTCAGCTGACTTTGAAACTAAAATTCAACAATTATTAACTGATTCTGAAAAAGCCGCTTTAACCAAAATTCCTGATACCTTTGAAAACGTGAGAGATAAATTTAAAGTTTTATCTGAACTTGACTTAAGGAAACTCGACTTTGCTGATGTAACCAAATTTGGTAAGAAGCTAAAAGGCAAAAAAGTAAACCTTAGGGGCTATGATGTTGCCTCAAATGGTAATAATACTGATTCTGATTATTATTTTAATGGCAAAGGTATGCAAGTCTTACTAAGCAAGCATGCTTATGATGATGGCTCAAAACTGCCTTGTCAAGTAGGTCGAGCCTTACATCCAAACTTATTATGTGGTTCTGAGTTATTACGAAAAGTTGTTTTAGATAAACAATCTTTTTACAACGATAACGGTGATCAACGAGACATTATGGTTATGGGTTCTGAAAGCGTACTTTCAGAGCTTATAACAATCGATCCCATGAAAAATGCTTCAGAATCAGATAAAAATCTGCTTTATGCTGTTGGGTATAATCCATTTGTAGATTACGTATTAGATATTTATGACTCTGGAGTAATTACATCAAAAGGTAAAATTACAAAAGGTGGTAAAGGTTATTATGTTCCATTCTTCGTTCCAGGTGGAAAAGGAAGTAATCAAGAAAAAGGGCATCCTCATTTGGACAATGGTAATGTAATCTCTAATCTTGAAAAAGATTTTGATATGTCGCATGGTAAATATCATTTTTACTTCAGAGCTGCAACGCTAGATAAAACAAAAAAAGTGGATGATTTTACACGCTCATTTTACACTGAATTCCCTGATTCTAGTGCAGATAGAAATCGTCATCATTCCATTGCTGATAATTTTTCTATTATGGTTTTACAAAACGATATTATACGAGTGATTATTGAGAAAAATGGCACAGAAATTAAACAAGAAACTGATGGAAAAACAATAACGTTAAACAAAGTAAGTATAGATACTGGGTATTTTAAAGAAAGTGAACTTAAAGAACTATTTGATTCTATAAAACCTGTCCTTGCCGAAAGTGAAAAAGAAAAAGGTGACTTTAAAGATGCATTAAATGATGCTTTCAATATTCCGGATCAAGTAAATGGAGTTACATTTAATATCCCTAAAGAAAATGACAAGCTCTCTACTCTAGAACCCACATTAAGCTTAATGAAAACAAAGTTAGGTCTTGATTCTGAGAAAATAGATCTTGAATTGATCGATGGTTATGGAAATGTAAGTAGTTTAACGAATGCAAGTGTACTCAATGGTAATACTGATTGGGTAATTACAAATATTGAAAAAGATAGTTTGATTTTTAGTTCGGATTTAGTAGCAGATGCAGTTGGTAAATATATTGATGCGTTAGCAAATGAAAAAAATTCTCATACTGTCGAATTAAAAGAAGCAACTTCGAATCAAGATCTTCAAAGCGCAATAGATAAGACTTCAAATAATAATGCAATTTATACCGTTCATAATGATGTGAGCTTACCTAGTTTAGATTTTGCTCAATTAGAAATAAAGACTGGAGCAATATTAACTATTATAGGGAATGGTCAAAAGCTTTATCAAAACAATGAAATCTTAAAACCTATTTCAGATAGTCATTTCACTATCAGTGATTCTACAAATAATAACAGTGCAAAAATATTAGGTGATACGGCGGTATCTTTAATTCAAAGACCGAATGACAAGCCATCTCAAGAGTATATCAATACCCTTAAAGAAAGCGCAAATGTATTAATTGATGCGAGTTATATAAAACAAAACCTCACAAAAATCAAAGGTATAACAGACAATAAACCAAAAATAATAATGCAAAAATCATTATCTGGTTCTGCAATTATTGATATTACAGATGTTGATAATTCAGCAAATAAAGTTAATCCAACAGGTGTAATTTTTAATGATGTTATAATTCAAAATAATCAAGATAAAGCGACTTCTATTTCTGTTATAAATGACTTAAATAAAGCAAAAGATACAATACCTAAGTTGGTTAAAATAGAAGCATTTGCTTTGTTAGACAGTTTGTTTTCTGTAAATATGAG",
+      "rounds": [
+        {
+          "round": 0,
+          "picked": 2,
+          "scores": [
+            0.023277,
+            0.022672,
+            0.023584
+          ]
+        },
+        {
+          "round": 1,
+          "picked": 1,
+          "scores": [
+            0.02346,
+            0.024513,
+            0.022849
+          ]
+        },
+        {
+          "round": 2,
+          "picked": 0,
+          "scores": [
+            0.024714,
+            0.022928,
+            0.023178
+          ]
+        },
+        {
+          "round": 3,
+          "picked": 0,
+          "scores": [
+            0.023804,
+            0.023375,
+            0.023255
+          ]
+        },
+        {
+          "round": 4,
+          "picked": 2,
+          "scores": [
+            0.023133,
+            0.022827,
+            0.023552
+          ]
+        },
+        {
+          "round": 5,
+          "picked": 0,
+          "scores": [
+            0.023503,
+            0.022238,
+            0.023332
+          ]
+        },
+        {
+          "round": 6,
+          "picked": 2,
+          "scores": [
+            0.022435,
+            0.023355,
+            0.024704
+          ]
+        },
+        {
+          "round": 7,
+          "picked": 2,
+          "scores": [
+            0.023428,
+            0.022902,
+            0.023915
+          ]
+        },
+        {
+          "round": 8,
+          "picked": 0,
+          "scores": [
+            0.024417,
+            0.022814,
+            0.023106
+          ]
+        },
+        {
+          "round": 9,
+          "picked": 2,
+          "scores": [
+            0.021985,
+            0.024344,
+            0.024688
+          ]
+        },
+        {
+          "round": 10,
+          "picked": 2,
+          "scores": [
+            0.023604,
+            0.022179,
+            0.025572
+          ]
+        }
+      ],
+      "quality": {
+        "kmer": {
+          "length": 5322,
+          "gc": 0.3198,
+          "complexity": 0.9391,
+          "frame0": 11.894,
+          "frame1": 2.707,
+          "frame2": 6.768,
+          "min_frame": 2.707,
+          "cpg_o_e": 0.8671,
+          "nullomer_fraction_5mer": 0.126,
+          "homopolymer_fraction": 0.1251,
+          "longest_homopolymer": 7,
+          "coding_density": 0.8766,
+          "n_genes": 3,
+          "n_complete_genes": 1,
+          "longest_gene_bp": 3852
+        },
+        "genome_kmer": {
+          "length": 5386,
+          "orf_closure": {
+            "genes": [
+              {
+                "name": "A",
+                "skipped": "wraps_origin_not_covered"
+              },
+              {
+                "name": "A*",
+                "skipped": "wraps_origin_not_covered"
+              },
+              {
+                "name": "B",
+                "skipped": "wraps_origin_not_covered"
+              },
+              {
+                "name": "C",
+                "skipped": "partially_in_prompt"
+              },
+              {
+                "name": "D",
+                "closed": false,
+                "length": 261,
+                "start_codon": "CGC",
+                "stop_codon": "TTT",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": false,
+                "internal_premature_stops": 5
+              },
+              {
+                "name": "F",
+                "closed": false,
+                "length": 459,
+                "start_codon": "CTT",
+                "stop_codon": "TCT",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": false,
+                "internal_premature_stops": 11
+              },
+              {
+                "name": "G",
+                "closed": false,
+                "length": 276,
+                "start_codon": "AGA",
+                "stop_codon": "AAA",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": false,
+                "internal_premature_stops": 3
+              },
+              {
+                "name": "H",
+                "closed": false,
+                "length": 117,
+                "start_codon": "TTT",
+                "stop_codon": "TCC",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": false,
+                "internal_premature_stops": 2
+              },
+              {
+                "name": "E",
+                "closed": false,
+                "length": 1284,
+                "start_codon": "ATA",
+                "stop_codon": "TCC",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": false,
+                "internal_premature_stops": 42
+              },
+              {
+                "name": "J",
+                "closed": false,
+                "length": 528,
+                "start_codon": "AAT",
+                "stop_codon": "AAG",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": false,
+                "internal_premature_stops": 14
+              },
+              {
+                "name": "K",
+                "closed": false,
+                "length": 987,
+                "start_codon": "GGT",
+                "stop_codon": "ACA",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": false,
+                "internal_premature_stops": 0
+              }
+            ],
+            "n_scored": 7,
+            "n_closed": 0,
+            "closure_fraction": 0.0
+          },
+          "gc_skew": {
+            "n_sign_changes": 0,
+            "sign_change_positions": [],
+            "final_cumulative_skew": 156
+          },
+          "terminators": {
+            "n_hits": 23,
+            "hits": [
+              {
+                "pos": 373,
+                "stem_len": 5,
+                "loop_len": 8
+              },
+              {
+                "pos": 374,
+                "stem_len": 4,
+                "loop_len": 8
+              },
+              {
+                "pos": 375,
+                "stem_len": 4,
+                "loop_len": 6
+              },
+              {
+                "pos": 485,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 656,
+                "stem_len": 4,
+                "loop_len": 7
+              },
+              {
+                "pos": 711,
+                "stem_len": 4,
+                "loop_len": 6
+              },
+              {
+                "pos": 712,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 814,
+                "stem_len": 5,
+                "loop_len": 6
+              },
+              {
+                "pos": 815,
+                "stem_len": 4,
+                "loop_len": 6
+              },
+              {
+                "pos": 894,
+                "stem_len": 4,
+                "loop_len": 8
+              },
+              {
+                "pos": 895,
+                "stem_len": 4,
+                "loop_len": 6
+              },
+              {
+                "pos": 896,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 937,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 1191,
+                "stem_len": 4,
+                "loop_len": 6
+              },
+              {
+                "pos": 1647,
+                "stem_len": 6,
+                "loop_len": 4
+              },
+              {
+                "pos": 1707,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 1708,
+                "stem_len": 4,
+                "loop_len": 8
+              },
+              {
+                "pos": 1771,
+                "stem_len": 4,
+                "loop_len": 6
+              },
+              {
+                "pos": 3029,
+                "stem_len": 4,
+                "loop_len": 7
+              },
+              {
+                "pos": 4047,
+                "stem_len": 4,
+                "loop_len": 6
+              },
+              {
+                "pos": 4048,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 4826,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 5221,
+                "stem_len": 4,
+                "loop_len": 5
+              }
+            ]
+          }
+        },
+        "real": {
+          "length": 5322,
+          "gc": 0.4485,
+          "complexity": 0.9729,
+          "frame0": 6.933,
+          "frame1": 2.594,
+          "frame2": 5.076,
+          "min_frame": 2.594,
+          "cpg_o_e": 0.9844,
+          "nullomer_fraction_5mer": 0.0586,
+          "homopolymer_fraction": 0.0644,
+          "longest_homopolymer": 7,
+          "coding_density": 0.9271,
+          "n_genes": 7,
+          "n_complete_genes": 5,
+          "longest_gene_bp": 1404
+        },
+        "kmer_vs_real": {
+          "a": {
+            "length": 5322,
+            "gc": 0.3198,
+            "complexity": 0.9391,
+            "frame0": 11.894,
+            "frame1": 2.707,
+            "frame2": 6.768,
+            "min_frame": 2.707,
+            "cpg_o_e": 0.8671,
+            "nullomer_fraction_5mer": 0.126,
+            "homopolymer_fraction": 0.1251,
+            "longest_homopolymer": 7,
+            "coding_density": 0.8766,
+            "n_genes": 3,
+            "n_complete_genes": 1,
+            "longest_gene_bp": 3852
+          },
+          "b": {
+            "length": 5322,
+            "gc": 0.4485,
+            "complexity": 0.9729,
+            "frame0": 6.933,
+            "frame1": 2.594,
+            "frame2": 5.076,
+            "min_frame": 2.594,
+            "cpg_o_e": 0.9844,
+            "nullomer_fraction_5mer": 0.0586,
+            "homopolymer_fraction": 0.0644,
+            "longest_homopolymer": 7,
+            "coding_density": 0.9271,
+            "n_genes": 7,
+            "n_complete_genes": 5,
+            "longest_gene_bp": 1404
+          },
+          "kmer_js_divergence": 0.09142,
+          "codon_js_divergence": 0.08453,
+          "gc_diff": -0.1287,
+          "coding_density_diff": -0.0505,
+          "n_genes_diff": -4,
+          "longest_gene_bp_diff": 2448
+        },
+        "genome_real": {
+          "length": 5386,
+          "orf_closure": {
+            "genes": [
+              {
+                "name": "A",
+                "closed": true,
+                "length": 1542,
+                "start_codon": "ATG",
+                "stop_codon": "TGA",
+                "ok_len": true,
+                "ok_start": true,
+                "ok_stop": true,
+                "internal_premature_stops": 0
+              },
+              {
+                "name": "A*",
+                "closed": true,
+                "length": 1026,
+                "start_codon": "ATG",
+                "stop_codon": "TGA",
+                "ok_len": true,
+                "ok_start": true,
+                "ok_stop": true,
+                "internal_premature_stops": 0
+              },
+              {
+                "name": "B",
+                "closed": true,
+                "length": 363,
+                "start_codon": "ATG",
+                "stop_codon": "TGA",
+                "ok_len": true,
+                "ok_start": true,
+                "ok_stop": true,
+                "internal_premature_stops": 0
+              },
+              {
+                "name": "C",
+                "closed": true,
+                "length": 171,
+                "start_codon": "ATG",
+                "stop_codon": "TGA",
+                "ok_len": true,
+                "ok_start": true,
+                "ok_stop": true,
+                "internal_premature_stops": 0
+              },
+              {
+                "name": "D",
+                "closed": true,
+                "length": 261,
+                "start_codon": "ATG",
+                "stop_codon": "TGA",
+                "ok_len": true,
+                "ok_start": true,
+                "ok_stop": true,
+                "internal_premature_stops": 0
+              },
+              {
+                "name": "F",
+                "closed": true,
+                "length": 459,
+                "start_codon": "ATG",
+                "stop_codon": "TAA",
+                "ok_len": true,
+                "ok_start": true,
+                "ok_stop": true,
+                "internal_premature_stops": 0
+              },
+              {
+                "name": "G",
+                "closed": true,
+                "length": 276,
+                "start_codon": "ATG",
+                "stop_codon": "TGA",
+                "ok_len": true,
+                "ok_start": true,
+                "ok_stop": true,
+                "internal_premature_stops": 0
+              },
+              {
+                "name": "H",
+                "closed": true,
+                "length": 117,
+                "start_codon": "ATG",
+                "stop_codon": "TAA",
+                "ok_len": true,
+                "ok_start": true,
+                "ok_stop": true,
+                "internal_premature_stops": 0
+              },
+              {
+                "name": "E",
+                "closed": true,
+                "length": 1284,
+                "start_codon": "ATG",
+                "stop_codon": "TGA",
+                "ok_len": true,
+                "ok_start": true,
+                "ok_stop": true,
+                "internal_premature_stops": 0
+              },
+              {
+                "name": "J",
+                "closed": true,
+                "length": 528,
+                "start_codon": "ATG",
+                "stop_codon": "TGA",
+                "ok_len": true,
+                "ok_start": true,
+                "ok_stop": true,
+                "internal_premature_stops": 0
+              },
+              {
+                "name": "K",
+                "closed": true,
+                "length": 987,
+                "start_codon": "ATG",
+                "stop_codon": "TAA",
+                "ok_len": true,
+                "ok_start": true,
+                "ok_stop": true,
+                "internal_premature_stops": 0
+              }
+            ],
+            "n_scored": 11,
+            "n_closed": 11,
+            "closure_fraction": 1.0
+          },
+          "gc_skew": {
+            "n_sign_changes": 4,
+            "sign_change_positions": [
+              1523,
+              2332,
+              2418,
+              2883
+            ],
+            "final_cumulative_skew": 97
+          },
+          "terminators": {
+            "n_hits": 40,
+            "hits": [
+              {
+                "pos": 312,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 451,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 453,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 477,
+                "stem_len": 5,
+                "loop_len": 6
+              },
+              {
+                "pos": 478,
+                "stem_len": 5,
+                "loop_len": 4
+              },
+              {
+                "pos": 479,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 943,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 1183,
+                "stem_len": 4,
+                "loop_len": 7
+              },
+              {
+                "pos": 1185,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 1192,
+                "stem_len": 4,
+                "loop_len": 6
+              },
+              {
+                "pos": 1943,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 2356,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 2467,
+                "stem_len": 5,
+                "loop_len": 8
+              },
+              {
+                "pos": 2468,
+                "stem_len": 4,
+                "loop_len": 8
+              },
+              {
+                "pos": 2507,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 3125,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 3126,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 3641,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 3929,
+                "stem_len": 4,
+                "loop_len": 8
+              },
+              {
+                "pos": 3953,
+                "stem_len": 9,
+                "loop_len": 5
+              },
+              {
+                "pos": 3954,
+                "stem_len": 9,
+                "loop_len": 3
+              },
+              {
+                "pos": 3955,
+                "stem_len": 8,
+                "loop_len": 3
+              },
+              {
+                "pos": 3956,
+                "stem_len": 7,
+                "loop_len": 3
+              },
+              {
+                "pos": 3957,
+                "stem_len": 6,
+                "loop_len": 3
+              },
+              {
+                "pos": 3958,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 4008,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 4141,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 4144,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 4145,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 4341,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 4559,
+                "stem_len": 4,
+                "loop_len": 7
+              },
+              {
+                "pos": 4600,
+                "stem_len": 4,
+                "loop_len": 8
+              },
+              {
+                "pos": 4710,
+                "stem_len": 4,
+                "loop_len": 6
+              },
+              {
+                "pos": 4712,
+                "stem_len": 5,
+                "loop_len": 4
+              },
+              {
+                "pos": 4713,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 4715,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 4804,
+                "stem_len": 4,
+                "loop_len": 7
+              },
+              {
+                "pos": 4806,
+                "stem_len": 4,
+                "loop_len": 8
+              },
+              {
+                "pos": 4807,
+                "stem_len": 5,
+                "loop_len": 4
+              },
+              {
+                "pos": 4808,
+                "stem_len": 4,
+                "loop_len": 4
+              }
+            ]
+          }
+        },
+        "native_baseline": {
+          "length": 5322,
+          "gc": 0.4602,
+          "complexity": 0.9716,
+          "frame0": 4.622,
+          "frame1": 3.215,
+          "frame2": 3.666,
+          "min_frame": 3.215,
+          "coding_density": 0.9064,
+          "n_genes": 4,
+          "n_complete_genes": 3,
+          "longest_gene_bp": 2022
+        },
+        "kmer_vs_native": {
+          "a": {
+            "length": 5322,
+            "gc": 0.3198,
+            "complexity": 0.9391,
+            "frame0": 11.894,
+            "frame1": 2.707,
+            "frame2": 6.768,
+            "min_frame": 2.707,
+            "cpg_o_e": 0.8671,
+            "nullomer_fraction_5mer": 0.126,
+            "homopolymer_fraction": 0.1251,
+            "longest_homopolymer": 7,
+            "coding_density": 0.8766,
+            "n_genes": 3,
+            "n_complete_genes": 1,
+            "longest_gene_bp": 3852
+          },
+          "b": {
+            "length": 5322,
+            "gc": 0.4602,
+            "complexity": 0.9716,
+            "frame0": 4.622,
+            "frame1": 3.215,
+            "frame2": 3.666,
+            "min_frame": 3.215,
+            "cpg_o_e": 1.1745,
+            "nullomer_fraction_5mer": 0.0703,
+            "homopolymer_fraction": 0.0928,
+            "longest_homopolymer": 7,
+            "coding_density": 0.9064,
+            "n_genes": 4,
+            "n_complete_genes": 3,
+            "longest_gene_bp": 2022
+          },
+          "kmer_js_divergence": 0.10289,
+          "codon_js_divergence": 0.10453,
+          "gc_diff": -0.1404,
+          "coding_density_diff": -0.0298,
+          "n_genes_diff": -1,
+          "longest_gene_bp_diff": 1830
+        },
+        "genome_native_baseline": {
+          "length": 5386,
+          "orf_closure": {
+            "genes": [
+              {
+                "name": "A",
+                "skipped": "wraps_origin_not_covered"
+              },
+              {
+                "name": "A*",
+                "skipped": "wraps_origin_not_covered"
+              },
+              {
+                "name": "B",
+                "skipped": "wraps_origin_not_covered"
+              },
+              {
+                "name": "C",
+                "skipped": "partially_in_prompt"
+              },
+              {
+                "name": "D",
+                "closed": false,
+                "length": 261,
+                "start_codon": "CAG",
+                "stop_codon": "CTG",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": false,
+                "internal_premature_stops": 1
+              },
+              {
+                "name": "F",
+                "closed": false,
+                "length": 459,
+                "start_codon": "TCT",
+                "stop_codon": "ATG",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": false,
+                "internal_premature_stops": 14
+              },
+              {
+                "name": "G",
+                "closed": false,
+                "length": 276,
+                "start_codon": "GAA",
+                "stop_codon": "GAA",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": false,
+                "internal_premature_stops": 0
+              },
+              {
+                "name": "H",
+                "closed": false,
+                "length": 117,
+                "start_codon": "GCC",
+                "stop_codon": "AGC",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": false,
+                "internal_premature_stops": 1
+              },
+              {
+                "name": "E",
+                "closed": false,
+                "length": 1284,
+                "start_codon": "CCG",
+                "stop_codon": "CAC",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": false,
+                "internal_premature_stops": 27
+              },
+              {
+                "name": "J",
+                "closed": false,
+                "length": 528,
+                "start_codon": "AAA",
+                "stop_codon": "ATG",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": false,
+                "internal_premature_stops": 11
+              },
+              {
+                "name": "K",
+                "closed": false,
+                "length": 987,
+                "start_codon": "GTG",
+                "stop_codon": "CCT",
+                "ok_len": true,
+                "ok_start": true,
+                "ok_stop": false,
+                "internal_premature_stops": 0
+              }
+            ],
+            "n_scored": 7,
+            "n_closed": 0,
+            "closure_fraction": 0.0
+          },
+          "gc_skew": {
+            "n_sign_changes": 0,
+            "sign_change_positions": [],
+            "final_cumulative_skew": 465
+          },
+          "terminators": {
+            "n_hits": 44,
+            "hits": [
+              {
+                "pos": 343,
+                "stem_len": 6,
+                "loop_len": 6
+              },
+              {
+                "pos": 344,
+                "stem_len": 5,
+                "loop_len": 6
+              },
+              {
+                "pos": 345,
+                "stem_len": 5,
+                "loop_len": 4
+              },
+              {
+                "pos": 346,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 348,
+                "stem_len": 5,
+                "loop_len": 3
+              },
+              {
+                "pos": 349,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 755,
+                "stem_len": 4,
+                "loop_len": 7
+              },
+              {
+                "pos": 758,
+                "stem_len": 4,
+                "loop_len": 6
+              },
+              {
+                "pos": 1035,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 1068,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 1069,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 1284,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 1336,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 1383,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 1568,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 1966,
+                "stem_len": 4,
+                "loop_len": 6
+              },
+              {
+                "pos": 1968,
+                "stem_len": 5,
+                "loop_len": 5
+              },
+              {
+                "pos": 1969,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 2411,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 2477,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 2491,
+                "stem_len": 4,
+                "loop_len": 7
+              },
+              {
+                "pos": 2857,
+                "stem_len": 4,
+                "loop_len": 8
+              },
+              {
+                "pos": 2858,
+                "stem_len": 4,
+                "loop_len": 7
+              },
+              {
+                "pos": 3271,
+                "stem_len": 4,
+                "loop_len": 6
+              },
+              {
+                "pos": 3534,
+                "stem_len": 5,
+                "loop_len": 5
+              },
+              {
+                "pos": 3535,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 3924,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 4248,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 4454,
+                "stem_len": 4,
+                "loop_len": 8
+              },
+              {
+                "pos": 4455,
+                "stem_len": 6,
+                "loop_len": 3
+              },
+              {
+                "pos": 4456,
+                "stem_len": 5,
+                "loop_len": 3
+              },
+              {
+                "pos": 4457,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 4458,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 4579,
+                "stem_len": 5,
+                "loop_len": 4
+              },
+              {
+                "pos": 4608,
+                "stem_len": 6,
+                "loop_len": 3
+              },
+              {
+                "pos": 4656,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 4767,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 4768,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 4790,
+                "stem_len": 6,
+                "loop_len": 6
+              },
+              {
+                "pos": 4791,
+                "stem_len": 5,
+                "loop_len": 6
+              },
+              {
+                "pos": 4792,
+                "stem_len": 4,
+                "loop_len": 6
+              },
+              {
+                "pos": 4900,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 4958,
+                "stem_len": 4,
+                "loop_len": 7
+              },
+              {
+                "pos": 5006,
+                "stem_len": 6,
+                "loop_len": 7
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "phix174_fulllength_kmer_s1",
+      "region": "viral_coding_fulllength",
+      "gpu_name": "NVIDIA L40S",
+      "gpu_requested": "L40S",
+      "price_per_hr": 1.95,
+      "model": "evo2_7b",
+      "ckpt": "L27_g12_150M_s1",
+      "load_s": 137.5,
+      "n_tokens": 5322,
+      "seed": 1,
+      "c": 3,
+      "chunk_len": 512,
+      "score_mode": "paper",
+      "kmer_s": 414.76,
+      "kmer_toks_per_s": 12.8,
+      "n_rounds": 11,
+      "est_usd_kmer": 0.22466,
+      "kmer_seq": "GCGGTCTTCATAAAATTTCCATATTTAACATTTTTACGAATTTATTGTTAGTGGTTGTCAGGAATCCATTCGTTGTCTGCGAGAATTTTTTTCAAACAAGTGTCGACGCGTGCATGTATCAATTTGATATCAGCAGCCTCGAATTCTTCTACGCGCTCATCCCTTAATTTTTTTCCGGAAAAAGTCCCAACATTTCTATATAAATTGACTTTAAAAATATCATTCTCATTATCCCGGTTGACATCTATTTTTGAGATGACCGCATCAAGATGGGATATTTTTCCTTCCAGGGCTTCATCAGACAAACATTCATAATAATATCGTCTTTTTATGGTGTTCAACCAAGAGATATAATCCGTTGCAATCCTGTTGATCTGTTCCATGATCGATTACATATTATTTATTCCATCAATCACAAGAGGTTATCAGATACGTCTGTCAAGACATCAACACTGGCGCTTTCCCTTGAAACGGTGATTCACTCCGGACTGTTGCTCTTCCTGGTCTTTATGGGATTGATCGCCTGTTTTCATCCTGTCCAGCTTTTTGCGGATTTCATCATTGGAGTCACTCGGCAGGTAATTTTTGCCTGTGATATAATCGATAACAATTTCGGGCATGAATTCACCGCTTGGCAGTATATACCAGATGACAGTTTCATAGATGAACGGATTGTAGAAGTCCCTCCGATCTAATGCTTCATATACTACTTCGGTTGTTTCATTGATTTCGTAGGAGACTGTCATCTCCCTTCGCAAATATTTAATGATAAACATGATTTGTTATATGATAAGTTAAAAGTTATATATTATTACTTACCCATTTTCGGGGTTATTATTTTATAACCTGTCCCGGGATTCTTTCATTATTCTCCATGATGATTTTTTCCATTTCGGAGAACAGTTTCAGGGATTCCTGAATCCTAAAATGGGTGAAGCGCATCCTGTTTTTATCAAAATGATAGTCCTGTTTTTCGTGTGTATCACATAACCCGTCGAAATGATATTTTACTACCGATCTTTTTTTATTTTCAGCCTGGATGCGGAATATAACATTCCCGATCTTGCTTTGGAAGTTCTTGAAATATTGATCCATAGTTTGCTATATGTTATATTTTCCAGTGATAAAAATAATCATTTAACCTGAATAAGCCAAGTTTTTCCGGGTATTTTTCATTCTTTTTTGTATAAAAAAAGCCCCGGGGAGTTGAACCTGGGGCTGTAATGAAGGAGTGAGTGTCTTACTCTTTTTCCTTGTTTTTCAGCTCAAGGGCAGTTAAATCCTGAATTATCTTTTCAGCGACAAGATCAACGGCTTTTTTCTTCTCCTGGTAACGTTCTGCGGTTTCGGCCGCATCGGGAATGCCAAGGCTTAAAAGGCTTTCGAGAAGGAAGTCGTACTTGATGCGGTTATCCATGATCCACAAGGAGTTTTTTTTCATTTCGTCTGTTGTTTTCATGATTCGTAATTTTAATTGTTAGACTTTGTGATAACTGACTTTGCCGCTGATGTCGAAATCGTGGAAGAGATTATTCGAAAGATCATCTTCGCTGATTGCAAAATTTTCGACACCTTCATCATGATAACTGGGGGGATCCTGATAGAAAATATTTTCCTCGTAGGAATAAGCCTTTATGGAACCATCTTCATGCATGTTTGCATGGTTAACGACAAGCTTGTCGCCAAGGCTGTTCGTGATTTCGTCACCGACATTCATCCATGGGAGTAAAGTTAATTTTGAATTTTCCATTTTTTTGAATTTTTATAATTTATAATATTGAGTGATATTCATGGAATTGGCGGCGAGAAGCCCTTCTATGGCTGAAAAATAATTCAGGCTGATGAGCTTTTGTTCGAAGTGGAGCGGATAAAACCATCCGGGGTGCTCGGCATCCTGGAAGGTTTTGATGCTTATGACCAAACCCTCATCGGATATGGCCATGAAATCGACGAAGCCGGAGGAGACAATGGCAGCATCCCAGTCCTTGTCATAAAATATTTTCGGAGGATAGAGGATTATTTCCATGTTATCTTGTTTTAATGACTTTATTGGCTATATATAGAATCCATGGAATAAAACATAGCGAAGCAAAAATATAAACAGATCCCCAATTTATTCTATATTTCTTCAAATTTCTCCGGTAATGAATAAATCGGCTTGTTATTCAATATTTTCATTATATTTGCACCAATGAAAATCATTATTCCAACATCCAGGGCTTAATATTTGTGAGCCGGTCAATCTCTTCTTGCGATAGCGGTAAAATAAATTTATTTTTTTCCACACCATCAAAATAGCATGTGGTGATAATATCGTATATGCCATCGATTTCCGGTTCAGTCCGCAAAAGTTTCTTTTTCTTCGGGTCGTAGGTATAGGAAAAATAATTACTAACTCTCTTCGGAATCCTGATGACATCGTATTTTTTATTATTCAAAGCGTCAATCATGGACAAAAGATTTCCATTTTTAAAAAAATTGTTTTTCTTTTTCATAACATTTATTTTTTAATGACCGTTTCTTTTTTGATTTTTTCAACAAGCGATGCAATCAGGTTATCAGCTTTGTTAATTTCCCATATTGCAACACTTCTTTCGGCATTGGATTTTACAATAGCCAAGGCTTCCACATACCTGGGATAAACGGTGTGGAATTCATTCCATGATTCGATCTTTTTTTCAAAAGCCTTTTTCTCTTTCTTGTAATCGTCGGGGATTCCATCAATGACATTCTCGATATTGACAATTGATTTTTTCATCCTGTTCAGGTTCATTTCCTTCAGGTAGATTTCATATTCCGAATTTTCTCCTTTGAGGTGAATGTATTCCGGATTGTATTCACCTTTTTTGTCGAGGTTAAAATCTTCATACATGGGTTCGTTCCTTAAACGGAAGAGGAAATATTCTCTTTCGTCCCGACTGTTTGGTTTGAGGTTGATGTAAAACGGGTTGCTCATTTTTGTTTGATTTTCGGGTACTGCCCAATGGGTTTCCGGACCCGACTTTGGGTCATGGAACCGCTTCCTTTTATTTTTTTCTTAACTTTTTACCGCAATATGGACAAACCAAAACTGTATAAACAGTTTTTCCTTCTTTTTGTTTTTTAAAAAATTCTTTGGAAAAGTTCAGCAGTGGTCTGAACGCTTCTGCAACTTCATCCAGGATTTTCTTATCTGTATTTCCGGCTACATCGGAAAGACATGTGCAACCACCTTTTGACGTTTTCATTTGAACGAAAACACTGGCAATTTCACTGATGATGTCGGGCAAATCGCCATATGTTTGGGCAATGTTATTGATAACATCGACAAGTTTAACAAGATAAGCTGTTTTGCTCATAATTTAAATTTTTAATGTTAATAAATAGTTTATATTGTTTTTTATTTATTAACAAAAAACGTGCCAACATAATAAATATAATTGCTATGGTGTTGATTTTCAGTTTATTATATTTTAAAATATAGTATATTGTTTTTTTAATCGTGCGTGCAACTGTGGAATTTTTACACAGTGGTGTGGAAATATTCCACACGTTGCAAAGAAAATTGTTGTTGGGATGTATATTGTTCCACACTGTTGCACACTATTCCACACCGTTCCACACTTTGCAATTATTGGCAATTGTTGGCAATTATTGCCGATATTTATTTGTAATTGATTGATTATCAGTGGAGTTGCACTTAATAGTAGGCAACAATTGCCAACAATTGCCAACAATTGCCAAGAATTGCAAAAAAAAATGTTGTTGGGATGTATATATTTGTCGGTTAAAAATTTAAATAAAAGGTATTTCGAAGGCACCAAAAAATGAGCAAAAGGAAGCGGTTCCTTAGCGAAAAAACGGGTTTCGGAAACCCTGGAAAAGTAACGGAATGTTGAAAACTAAATTATTGTATAAAAATAGGACAATAATTGGAAACAATTGTTTATTAATATGAAATAATATTTTATTATGGGACATAAAGGAACAGACCTTGCGGACAAAATAGCAAATTTTGAGTCTGATTGGGAGAAAAATTTTTGTTTATCAGAAATTTACCGTGATGATAATTGGTATCCCACATTTGATGCTAATTGTGATTCAGATCCGCCCATCGAAATAATTTACAATTACATGGGGAATAATCTTTTTTGTTATTCCTTTTTTGATATTCCCACCATGAACCAAACGCACCGGCGTATTGCAGACAGGTTATACGAAAAGGGGATTTATAAATTTACCAGGGATGACATAGAGAATGTGGTCCATGATCTTTTGAAATGGAAGAATACTCCACGACCTGCGCCTAAAAACAAAGAGTATCGTGTCCGATATAAAATGACACCGGAGAAATGGTCATCGATATCAGAGGCGGCAAGGAAGCGAGGTATTTCAATTAGTGCTATTATCGATCATGCATGTGAGGCGCTTGTTGATTATGAGGATGTTCACATGAAAAAAAATTGAATTCTTGTTAATAAAAAAGAGAGAAATATTTTGCAGTATGATTTTTTTTTGTATCTTTGTAGCGAAGTTCACATCAAGCTGCAAAGACTGCATTTATTCTTTATAGCAGGGAATTGCTTAATTATAGAAAAAGTAGAATCTCTCTGTGAGCTGGCTCCTCTAAGAGATTCTATTTTTTTTATCTTTTTATAGGAAGCGGTATTTATTATATTTTCTTTTGTTCACCATAGTTTCTTACTATCTGTGCACCAATGATAGAAACATACCAATATGATGTCATATTATACCAGTTTCTATCATTTTTTTCAGTTCAGGTTTTTTTGAGTCGCACAGATGGGCTCAAATTGATTTTGTAATACATTAAAAATCAATTTGTTATATTTTTGTTATAAAATCTTGATAAAAAATTATTAAAATGAATTTCGCAATAAATTTATTAACAAGGGTTGATATTTTTAGAATAATCAGTAATTTTATAAAGAATGATAAAATTAATATAATTACTATTATATGAATATCACATCTTTGCTACGAGCAGATATTAGACATTTTCGGCAATCTCAGGGTTTGACTTCGGAGACATTGGGGTTGAGTTCGGGGATGGGGGCCGGATACATAAAAAAGATAGAAGATCCGGATAATGAAAAATTTCATCTTAAAATGCATCATTTGAACAGAATTGCTACAGCACTTGATTGTGAAGTCAAAGATTTATTTTCTAATAAGCAATTTGACCTTGAGCCCGTGAATTATCGAAAAGATTTGGATTATAAGAAAAGATTTGAGAAAAAAAATAATATTTATGTTGATAATAAATCAAGTTTTATTAAGTTTGTAAATGATAAAGTAAATGATTTAAGGCAAAGAATTATTATG",
+      "rounds": [
+        {
+          "round": 0,
+          "picked": 0,
+          "scores": [
+            0.023326,
+            0.022602,
+            0.021162
+          ]
+        },
+        {
+          "round": 1,
+          "picked": 0,
+          "scores": [
+            0.022914,
+            0.021028,
+            0.020078
+          ]
+        },
+        {
+          "round": 2,
+          "picked": 1,
+          "scores": [
+            0.021921,
+            0.023551,
+            0.022237
+          ]
+        },
+        {
+          "round": 3,
+          "picked": 2,
+          "scores": [
+            0.020837,
+            0.022325,
+            0.022846
+          ]
+        },
+        {
+          "round": 4,
+          "picked": 1,
+          "scores": [
+            0.02269,
+            0.025058,
+            0.023341
+          ]
+        },
+        {
+          "round": 5,
+          "picked": 1,
+          "scores": [
+            0.023434,
+            0.02347,
+            0.022934
+          ]
+        },
+        {
+          "round": 6,
+          "picked": 1,
+          "scores": [
+            0.024519,
+            0.02473,
+            0.024193
+          ]
+        },
+        {
+          "round": 7,
+          "picked": 0,
+          "scores": [
+            0.024478,
+            0.021125,
+            0.024041
+          ]
+        },
+        {
+          "round": 8,
+          "picked": 0,
+          "scores": [
+            0.023485,
+            0.021883,
+            0.023227
+          ]
+        },
+        {
+          "round": 9,
+          "picked": 2,
+          "scores": [
+            0.023267,
+            0.023607,
+            0.025288
+          ]
+        },
+        {
+          "round": 10,
+          "picked": 1,
+          "scores": [
+            0.023293,
+            0.026335,
+            0.023865
+          ]
+        }
+      ],
+      "quality": {
+        "kmer": {
+          "length": 5322,
+          "gc": 0.3459,
+          "complexity": 0.9413,
+          "frame0": 4.284,
+          "frame1": 5.358,
+          "frame2": 6.655,
+          "min_frame": 4.284,
+          "cpg_o_e": 1.0389,
+          "nullomer_fraction_5mer": 0.083,
+          "homopolymer_fraction": 0.153,
+          "longest_homopolymer": 9,
+          "coding_density": 0.6618,
+          "n_genes": 11,
+          "n_complete_genes": 10,
+          "longest_gene_bp": 495
+        },
+        "genome_kmer": {
+          "length": 5386,
+          "orf_closure": {
+            "genes": [
+              {
+                "name": "A",
+                "skipped": "wraps_origin_not_covered"
+              },
+              {
+                "name": "A*",
+                "skipped": "wraps_origin_not_covered"
+              },
+              {
+                "name": "B",
+                "skipped": "wraps_origin_not_covered"
+              },
+              {
+                "name": "C",
+                "skipped": "partially_in_prompt"
+              },
+              {
+                "name": "D",
+                "closed": false,
+                "length": 261,
+                "start_codon": "TTC",
+                "stop_codon": "TTT",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": false,
+                "internal_premature_stops": 3
+              },
+              {
+                "name": "F",
+                "closed": false,
+                "length": 459,
+                "start_codon": "TTT",
+                "stop_codon": "GTT",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": false,
+                "internal_premature_stops": 13
+              },
+              {
+                "name": "G",
+                "closed": false,
+                "length": 276,
+                "start_codon": "GTC",
+                "stop_codon": "GAT",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": false,
+                "internal_premature_stops": 1
+              },
+              {
+                "name": "H",
+                "closed": false,
+                "length": 117,
+                "start_codon": "TAT",
+                "stop_codon": "GAA",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": false,
+                "internal_premature_stops": 1
+              },
+              {
+                "name": "E",
+                "closed": false,
+                "length": 1284,
+                "start_codon": "GCG",
+                "stop_codon": "GGC",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": false,
+                "internal_premature_stops": 22
+              },
+              {
+                "name": "J",
+                "closed": false,
+                "length": 528,
+                "start_codon": "TTC",
+                "stop_codon": "TTA",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": false,
+                "internal_premature_stops": 4
+              },
+              {
+                "name": "K",
+                "closed": false,
+                "length": 987,
+                "start_codon": "ATA",
+                "stop_codon": "AAA",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": false,
+                "internal_premature_stops": 13
+              }
+            ],
+            "n_scored": 7,
+            "n_closed": 0,
+            "closure_fraction": 0.0
+          },
+          "gc_skew": {
+            "n_sign_changes": 4,
+            "sign_change_positions": [
+              197,
+              1881,
+              2310,
+              3812
+            ],
+            "final_cumulative_skew": 89
+          },
+          "terminators": {
+            "n_hits": 57,
+            "hits": [
+              {
+                "pos": 132,
+                "stem_len": 4,
+                "loop_len": 7
+              },
+              {
+                "pos": 133,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 137,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 138,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 324,
+                "stem_len": 5,
+                "loop_len": 4
+              },
+              {
+                "pos": 326,
+                "stem_len": 4,
+                "loop_len": 7
+              },
+              {
+                "pos": 575,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 631,
+                "stem_len": 4,
+                "loop_len": 7
+              },
+              {
+                "pos": 879,
+                "stem_len": 6,
+                "loop_len": 7
+              },
+              {
+                "pos": 880,
+                "stem_len": 5,
+                "loop_len": 8
+              },
+              {
+                "pos": 993,
+                "stem_len": 5,
+                "loop_len": 5
+              },
+              {
+                "pos": 994,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 1204,
+                "stem_len": 5,
+                "loop_len": 7
+              },
+              {
+                "pos": 1205,
+                "stem_len": 4,
+                "loop_len": 7
+              },
+              {
+                "pos": 1293,
+                "stem_len": 7,
+                "loop_len": 3
+              },
+              {
+                "pos": 1294,
+                "stem_len": 6,
+                "loop_len": 3
+              },
+              {
+                "pos": 1295,
+                "stem_len": 5,
+                "loop_len": 3
+              },
+              {
+                "pos": 1296,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 1297,
+                "stem_len": 5,
+                "loop_len": 3
+              },
+              {
+                "pos": 1298,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 1299,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 1476,
+                "stem_len": 6,
+                "loop_len": 5
+              },
+              {
+                "pos": 1477,
+                "stem_len": 5,
+                "loop_len": 5
+              },
+              {
+                "pos": 1478,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 1482,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 1610,
+                "stem_len": 5,
+                "loop_len": 5
+              },
+              {
+                "pos": 1611,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 1808,
+                "stem_len": 4,
+                "loop_len": 7
+              },
+              {
+                "pos": 1809,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 1897,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 1954,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 2087,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 2221,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 2408,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 2512,
+                "stem_len": 6,
+                "loop_len": 7
+              },
+              {
+                "pos": 2513,
+                "stem_len": 6,
+                "loop_len": 5
+              },
+              {
+                "pos": 2514,
+                "stem_len": 5,
+                "loop_len": 5
+              },
+              {
+                "pos": 2515,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 2722,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 2797,
+                "stem_len": 4,
+                "loop_len": 7
+              },
+              {
+                "pos": 2892,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 3074,
+                "stem_len": 4,
+                "loop_len": 8
+              },
+              {
+                "pos": 3076,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 3133,
+                "stem_len": 4,
+                "loop_len": 6
+              },
+              {
+                "pos": 3134,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 3209,
+                "stem_len": 5,
+                "loop_len": 6
+              },
+              {
+                "pos": 3210,
+                "stem_len": 4,
+                "loop_len": 6
+              },
+              {
+                "pos": 3264,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 3267,
+                "stem_len": 4,
+                "loop_len": 7
+              },
+              {
+                "pos": 3268,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 3550,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 4037,
+                "stem_len": 5,
+                "loop_len": 8
+              },
+              {
+                "pos": 4038,
+                "stem_len": 4,
+                "loop_len": 8
+              },
+              {
+                "pos": 4062,
+                "stem_len": 4,
+                "loop_len": 7
+              },
+              {
+                "pos": 4305,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 4672,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 5211,
+                "stem_len": 4,
+                "loop_len": 3
+              }
+            ]
+          }
+        },
+        "real": {
+          "length": 5322,
+          "gc": 0.4485,
+          "complexity": 0.9729,
+          "frame0": 6.933,
+          "frame1": 2.594,
+          "frame2": 5.076,
+          "min_frame": 2.594,
+          "cpg_o_e": 0.9844,
+          "nullomer_fraction_5mer": 0.0586,
+          "homopolymer_fraction": 0.0644,
+          "longest_homopolymer": 7,
+          "coding_density": 0.9271,
+          "n_genes": 7,
+          "n_complete_genes": 5,
+          "longest_gene_bp": 1404
+        },
+        "kmer_vs_real": {
+          "a": {
+            "length": 5322,
+            "gc": 0.3459,
+            "complexity": 0.9413,
+            "frame0": 4.284,
+            "frame1": 5.358,
+            "frame2": 6.655,
+            "min_frame": 4.284,
+            "cpg_o_e": 1.0389,
+            "nullomer_fraction_5mer": 0.083,
+            "homopolymer_fraction": 0.153,
+            "longest_homopolymer": 9,
+            "coding_density": 0.6618,
+            "n_genes": 11,
+            "n_complete_genes": 10,
+            "longest_gene_bp": 495
+          },
+          "b": {
+            "length": 5322,
+            "gc": 0.4485,
+            "complexity": 0.9729,
+            "frame0": 6.933,
+            "frame1": 2.594,
+            "frame2": 5.076,
+            "min_frame": 2.594,
+            "cpg_o_e": 0.9844,
+            "nullomer_fraction_5mer": 0.0586,
+            "homopolymer_fraction": 0.0644,
+            "longest_homopolymer": 7,
+            "coding_density": 0.9271,
+            "n_genes": 7,
+            "n_complete_genes": 5,
+            "longest_gene_bp": 1404
+          },
+          "kmer_js_divergence": 0.09033,
+          "codon_js_divergence": 0.06401,
+          "gc_diff": -0.1026,
+          "coding_density_diff": -0.2653,
+          "n_genes_diff": 4,
+          "longest_gene_bp_diff": -909
+        },
+        "genome_real": {
+          "length": 5386,
+          "orf_closure": {
+            "genes": [
+              {
+                "name": "A",
+                "closed": true,
+                "length": 1542,
+                "start_codon": "ATG",
+                "stop_codon": "TGA",
+                "ok_len": true,
+                "ok_start": true,
+                "ok_stop": true,
+                "internal_premature_stops": 0
+              },
+              {
+                "name": "A*",
+                "closed": true,
+                "length": 1026,
+                "start_codon": "ATG",
+                "stop_codon": "TGA",
+                "ok_len": true,
+                "ok_start": true,
+                "ok_stop": true,
+                "internal_premature_stops": 0
+              },
+              {
+                "name": "B",
+                "closed": true,
+                "length": 363,
+                "start_codon": "ATG",
+                "stop_codon": "TGA",
+                "ok_len": true,
+                "ok_start": true,
+                "ok_stop": true,
+                "internal_premature_stops": 0
+              },
+              {
+                "name": "C",
+                "closed": true,
+                "length": 171,
+                "start_codon": "ATG",
+                "stop_codon": "TGA",
+                "ok_len": true,
+                "ok_start": true,
+                "ok_stop": true,
+                "internal_premature_stops": 0
+              },
+              {
+                "name": "D",
+                "closed": true,
+                "length": 261,
+                "start_codon": "ATG",
+                "stop_codon": "TGA",
+                "ok_len": true,
+                "ok_start": true,
+                "ok_stop": true,
+                "internal_premature_stops": 0
+              },
+              {
+                "name": "F",
+                "closed": true,
+                "length": 459,
+                "start_codon": "ATG",
+                "stop_codon": "TAA",
+                "ok_len": true,
+                "ok_start": true,
+                "ok_stop": true,
+                "internal_premature_stops": 0
+              },
+              {
+                "name": "G",
+                "closed": true,
+                "length": 276,
+                "start_codon": "ATG",
+                "stop_codon": "TGA",
+                "ok_len": true,
+                "ok_start": true,
+                "ok_stop": true,
+                "internal_premature_stops": 0
+              },
+              {
+                "name": "H",
+                "closed": true,
+                "length": 117,
+                "start_codon": "ATG",
+                "stop_codon": "TAA",
+                "ok_len": true,
+                "ok_start": true,
+                "ok_stop": true,
+                "internal_premature_stops": 0
+              },
+              {
+                "name": "E",
+                "closed": true,
+                "length": 1284,
+                "start_codon": "ATG",
+                "stop_codon": "TGA",
+                "ok_len": true,
+                "ok_start": true,
+                "ok_stop": true,
+                "internal_premature_stops": 0
+              },
+              {
+                "name": "J",
+                "closed": true,
+                "length": 528,
+                "start_codon": "ATG",
+                "stop_codon": "TGA",
+                "ok_len": true,
+                "ok_start": true,
+                "ok_stop": true,
+                "internal_premature_stops": 0
+              },
+              {
+                "name": "K",
+                "closed": true,
+                "length": 987,
+                "start_codon": "ATG",
+                "stop_codon": "TAA",
+                "ok_len": true,
+                "ok_start": true,
+                "ok_stop": true,
+                "internal_premature_stops": 0
+              }
+            ],
+            "n_scored": 11,
+            "n_closed": 11,
+            "closure_fraction": 1.0
+          },
+          "gc_skew": {
+            "n_sign_changes": 4,
+            "sign_change_positions": [
+              1523,
+              2332,
+              2418,
+              2883
+            ],
+            "final_cumulative_skew": 97
+          },
+          "terminators": {
+            "n_hits": 40,
+            "hits": [
+              {
+                "pos": 312,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 451,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 453,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 477,
+                "stem_len": 5,
+                "loop_len": 6
+              },
+              {
+                "pos": 478,
+                "stem_len": 5,
+                "loop_len": 4
+              },
+              {
+                "pos": 479,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 943,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 1183,
+                "stem_len": 4,
+                "loop_len": 7
+              },
+              {
+                "pos": 1185,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 1192,
+                "stem_len": 4,
+                "loop_len": 6
+              },
+              {
+                "pos": 1943,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 2356,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 2467,
+                "stem_len": 5,
+                "loop_len": 8
+              },
+              {
+                "pos": 2468,
+                "stem_len": 4,
+                "loop_len": 8
+              },
+              {
+                "pos": 2507,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 3125,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 3126,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 3641,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 3929,
+                "stem_len": 4,
+                "loop_len": 8
+              },
+              {
+                "pos": 3953,
+                "stem_len": 9,
+                "loop_len": 5
+              },
+              {
+                "pos": 3954,
+                "stem_len": 9,
+                "loop_len": 3
+              },
+              {
+                "pos": 3955,
+                "stem_len": 8,
+                "loop_len": 3
+              },
+              {
+                "pos": 3956,
+                "stem_len": 7,
+                "loop_len": 3
+              },
+              {
+                "pos": 3957,
+                "stem_len": 6,
+                "loop_len": 3
+              },
+              {
+                "pos": 3958,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 4008,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 4141,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 4144,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 4145,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 4341,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 4559,
+                "stem_len": 4,
+                "loop_len": 7
+              },
+              {
+                "pos": 4600,
+                "stem_len": 4,
+                "loop_len": 8
+              },
+              {
+                "pos": 4710,
+                "stem_len": 4,
+                "loop_len": 6
+              },
+              {
+                "pos": 4712,
+                "stem_len": 5,
+                "loop_len": 4
+              },
+              {
+                "pos": 4713,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 4715,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 4804,
+                "stem_len": 4,
+                "loop_len": 7
+              },
+              {
+                "pos": 4806,
+                "stem_len": 4,
+                "loop_len": 8
+              },
+              {
+                "pos": 4807,
+                "stem_len": 5,
+                "loop_len": 4
+              },
+              {
+                "pos": 4808,
+                "stem_len": 4,
+                "loop_len": 4
+              }
+            ]
+          }
+        },
+        "native_baseline": {
+          "length": 5322,
+          "gc": 0.4192,
+          "complexity": 0.9818,
+          "frame0": 4.791,
+          "frame1": 5.415,
+          "frame2": 5.866,
+          "min_frame": 4.791,
+          "coding_density": 0.2232,
+          "n_genes": 4,
+          "n_complete_genes": 4,
+          "longest_gene_bp": 486
+        },
+        "kmer_vs_native": {
+          "a": {
+            "length": 5322,
+            "gc": 0.3459,
+            "complexity": 0.9413,
+            "frame0": 4.284,
+            "frame1": 5.358,
+            "frame2": 6.655,
+            "min_frame": 4.284,
+            "cpg_o_e": 1.0389,
+            "nullomer_fraction_5mer": 0.083,
+            "homopolymer_fraction": 0.153,
+            "longest_homopolymer": 9,
+            "coding_density": 0.6618,
+            "n_genes": 11,
+            "n_complete_genes": 10,
+            "longest_gene_bp": 495
+          },
+          "b": {
+            "length": 5322,
+            "gc": 0.4192,
+            "complexity": 0.9818,
+            "frame0": 4.791,
+            "frame1": 5.415,
+            "frame2": 5.866,
+            "min_frame": 4.791,
+            "cpg_o_e": 1.2706,
+            "nullomer_fraction_5mer": 0.0293,
+            "homopolymer_fraction": 0.0731,
+            "longest_homopolymer": 6,
+            "coding_density": 0.2232,
+            "n_genes": 4,
+            "n_complete_genes": 4,
+            "longest_gene_bp": 486
+          },
+          "kmer_js_divergence": 0.0655,
+          "codon_js_divergence": 0.04225,
+          "gc_diff": -0.0733,
+          "coding_density_diff": 0.4386,
+          "n_genes_diff": 7,
+          "longest_gene_bp_diff": 9
+        },
+        "genome_native_baseline": {
+          "length": 5386,
+          "orf_closure": {
+            "genes": [
+              {
+                "name": "A",
+                "skipped": "wraps_origin_not_covered"
+              },
+              {
+                "name": "A*",
+                "skipped": "wraps_origin_not_covered"
+              },
+              {
+                "name": "B",
+                "skipped": "wraps_origin_not_covered"
+              },
+              {
+                "name": "C",
+                "skipped": "partially_in_prompt"
+              },
+              {
+                "name": "D",
+                "closed": false,
+                "length": 261,
+                "start_codon": "TTA",
+                "stop_codon": "GAA",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": false,
+                "internal_premature_stops": 1
+              },
+              {
+                "name": "F",
+                "closed": false,
+                "length": 459,
+                "start_codon": "AGA",
+                "stop_codon": "CAT",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": false,
+                "internal_premature_stops": 10
+              },
+              {
+                "name": "G",
+                "closed": false,
+                "length": 276,
+                "start_codon": "TAA",
+                "stop_codon": "TTC",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": false,
+                "internal_premature_stops": 6
+              },
+              {
+                "name": "H",
+                "closed": false,
+                "length": 117,
+                "start_codon": "TTG",
+                "stop_codon": "TCA",
+                "ok_len": true,
+                "ok_start": true,
+                "ok_stop": false,
+                "internal_premature_stops": 2
+              },
+              {
+                "name": "E",
+                "closed": false,
+                "length": 1284,
+                "start_codon": "GCT",
+                "stop_codon": "TAA",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": true,
+                "internal_premature_stops": 16
+              },
+              {
+                "name": "J",
+                "closed": false,
+                "length": 528,
+                "start_codon": "CGG",
+                "stop_codon": "ACC",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": false,
+                "internal_premature_stops": 9
+              },
+              {
+                "name": "K",
+                "closed": false,
+                "length": 987,
+                "start_codon": "GAA",
+                "stop_codon": "TGA",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": true,
+                "internal_premature_stops": 16
+              }
+            ],
+            "n_scored": 7,
+            "n_closed": 0,
+            "closure_fraction": 0.0
+          },
+          "gc_skew": {
+            "n_sign_changes": 10,
+            "sign_change_positions": [
+              43,
+              77,
+              166,
+              4237,
+              4450,
+              4623,
+              4789,
+              4862,
+              4918,
+              4988
+            ],
+            "final_cumulative_skew": 25
+          },
+          "terminators": {
+            "n_hits": 25,
+            "hits": [
+              {
+                "pos": 183,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 659,
+                "stem_len": 4,
+                "loop_len": 8
+              },
+              {
+                "pos": 795,
+                "stem_len": 4,
+                "loop_len": 7
+              },
+              {
+                "pos": 796,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 1157,
+                "stem_len": 4,
+                "loop_len": 6
+              },
+              {
+                "pos": 1159,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 1160,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 1286,
+                "stem_len": 6,
+                "loop_len": 5
+              },
+              {
+                "pos": 1287,
+                "stem_len": 5,
+                "loop_len": 5
+              },
+              {
+                "pos": 1364,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 1367,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 1867,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 2350,
+                "stem_len": 5,
+                "loop_len": 3
+              },
+              {
+                "pos": 2351,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 2433,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 3037,
+                "stem_len": 4,
+                "loop_len": 7
+              },
+              {
+                "pos": 3079,
+                "stem_len": 4,
+                "loop_len": 8
+              },
+              {
+                "pos": 4117,
+                "stem_len": 4,
+                "loop_len": 7
+              },
+              {
+                "pos": 4118,
+                "stem_len": 5,
+                "loop_len": 6
+              },
+              {
+                "pos": 4119,
+                "stem_len": 5,
+                "loop_len": 4
+              },
+              {
+                "pos": 4120,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 4193,
+                "stem_len": 4,
+                "loop_len": 6
+              },
+              {
+                "pos": 4194,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 5360,
+                "stem_len": 6,
+                "loop_len": 4
+              },
+              {
+                "pos": 5362,
+                "stem_len": 4,
+                "loop_len": 6
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "phix174_fulllength_kmer_s2",
+      "region": "viral_coding_fulllength",
+      "gpu_name": "NVIDIA L40S",
+      "gpu_requested": "L40S",
+      "price_per_hr": 1.95,
+      "model": "evo2_7b",
+      "ckpt": "L27_g12_150M_s1",
+      "load_s": 8.5,
+      "n_tokens": 5322,
+      "seed": 2,
+      "c": 3,
+      "chunk_len": 512,
+      "score_mode": "paper",
+      "kmer_s": 407.18,
+      "kmer_toks_per_s": 13.1,
+      "n_rounds": 11,
+      "est_usd_kmer": 0.22056,
+      "kmer_seq": "AATCGAAGACATGTTTTTTGGCTTTAATCTCTATCTGTGTCAGAAAAGGCACTTCTAAACTATTGTGTTGTAGGTATGTTATTTATGATTTAATGGTTTTTAAATCAGAGGCATGTCTCCCAACTCCTCACAAATATAATAGTTAGGTGTATTTCGAGGCAGGTTAAGCAAACTTTTAATGAAAGAGAGTTGGACTTTCTCCACTTCTTCAAGATGTCTGAGTCCCCAAACATGGCTGCAATAGCACATAATAGATCTAAGGACCGATTTGAACACTTTTTCCTTCGCTGCCCACAAGTCTGACTTACTTCTAATAAGAATATTCCACGTCGAGTTGATGCCAATCTTGGCCGCCTTTAGACGTTCTTTTACATGTCTTGAAAAATTCATGTTGTATGTCAGAATTATTCCAAGATATTTATACTAGTTAACTGTCTCGACTACTTCTTCTTTATACTTCCATATCTCTTTGCTGTTTTCCTGCCTCCTTTTGTGAATATCATAACCTTCGTTTTTTCTGTGTTAATTTAAAGGCCCCATGTGTCGCAGTATGCCTCTAACTTATTTTTCATCATTTGCAATGAATAAGCAGTATCAGCTAACATTACAATATCATCTGCATATAGCAATAATCGTATACTGATATCGTGTTACCTATGAGCCTCCTGTATTTTCTATTTTTAAGAAGTCTTCTAAATCGCTCAGGATCAATAGAGTCGAAAAATAATCGAAGACATGTTTTTTGCTTTAATCTCTATCTGTGTCAGAAAAGGCACTTCTAAACTATTGTGTTGTAGTATGTTATTTATGATTTATGGTTTTAAATCCGTTCTTGTGAGGTTTGAGATGGTTTTATTTTAACGTGAGATATCATAAGACATTTATCGTTGCTTTTTTCTTCATGAGAGCAATAAAGCCATAGAAACTAGCTTGCATGTTGTTTTGGAAAGTTCTCAATAAGAGTTAAAAAGGCACATAATGACAAAACAAAAATTCAGAGGTCTTAAAAATAAGTGGTCACAGCTAATCCCGAAACTCCGTTCAAACCTACCAACATATGAAAACCCCGTATCATAGTTCCAGTTGGTAAAACCTTACCTCATGTTTACAGTGAATATTTTTCAGTTGCTTTTGACATTTTAAGGGATAGAAAGTTCATTTGAGGTTGAAGATTTGCAGGTGGGGGAGAGGTGGAGGGGAAGCTTATTGTATCGTAGAAGGAAAAGTGAAGTATAATATTCTTTGGAGGTGGAAATAAATGTTCCATTGAAGCGCCGTGTCGTAGGTGGGGGAAGGTAGAGGAGATTAACTCTTCAATCGCACTAAACTTATATACTAAGGCTGTGTAAAAAACATGCTGAAAAGCTTTCGTTTGGTAACCTGTGCTTAGCTAACCCATAGCTAACCTATGTTTTTATACTTGCTGCGTCTCCTTTAATTTAAAGTACAGTATTATAATGGATGAAAGGTGCACTTTTTATTGTAACTGTGAATTAGAATAGTACAATGGGTGAAAGGTGAATGAAGTGCACGAAAGGGTTGTAAAGTGCGGGGTCGCATAATTCAGTTCCTTCTCGAGAGATCGGGTGGTACGGATAGCTCTTAATTAACATTGACAAGAAACTTTTTTCGAGTGTTTTTACATTGAAAAGCTTCATAGCTACGAGAAACACGAGTATTGACGCAAATGACAGTCGCACTGATTCGAATTCAATAATTTTGGTTTTACCCGAGCTGAAGTGCGTAAAAATGCCTTACTGTGCACAGTTTAAATGTGGCTATCGCTCAGAATGTTCTAAACTGAAAGACGGGTTTGTTTCATTTAGTTTTCCAAAACATAATGCAAAGTAAGTATCAATTGTCTAGTTATACAGGGTGATTTGAAATTCATTACCAAACTTTGAGATCATATGTATTATGGATATACAAGGCGGACTAAATTAAGATACAGTACCTAAACTAAACAAGCTATTAACTTAACAATCCATATAAAAAGGACTGAAATCTATACGTTTTGGAGAATTTAGAATTCAGTGCAACATATCTATTTATGTACCTAATGCAGCAAGTTTAAAAATTGAAGAGAATTGTTATTACCATAATGAATAGAATGATCTAGATAAATCATTTTATTTTATTCCTTTATCTGATTCCTGATATTATTTAGATTTAGAAATGAGAAAAAGGTTTCTAATAAATGTTACATTTGATGCAAACAACTATCACGAATTTTCTATACACTATTTTCAGTATTGAAAGTCCCTTTATATTTCATGATGATCCATCGATCTTCATAATTTCCTCTTGGTGAAACAGCTTAACGATTTGAAATCACTCGTTCAGGTAACTTTAAATAAATTCATCTCTCATCGAGATGAGGCGCATTGTCCAAATTCCCGTTATTAGCCTAAAACAAAAAGCGCTGCAAAAATTACTATATTCTGTACATTCATAAAATGCAAATCCAAAGGTTAAAAACTTACCCATAATATTGCCAAAATTTAAAATTGAATATCACTTTTTTAAAGTACTCCACATGTATATGGCCTACACGGAAGAAAATGGAAATGAACGCTTATCGCCAACTTGTAACTACGCTAAATTAACAAAGTATTGGCACACAACCTCTACCACAGAACCTGTAAAAAGTACTATAAAAGTAGACACAATTTAGTGATATGATTTGAAGTATATTTACAAATCTACTGTTATCTATTCTTATGTATTTACTTTTAATGATTGCATAGTAATAGTAGAATTAAATTACGTAGGTAGGTATGTGTTATTACTTTTTATGAAAACTTTACATAATATGACTTATACTTTTTCATGGAAATGATCACACTAATTTCGGAGGGTTGACATTTTAGTGAATTCCGGTAATCGGAAGGTTAGGGAACCGCCTGGTATTCCCCAACTTAAGAAGTCTTTTCTAAAATATATTTCATCGAATTCTACATTCTCCATACACAATACGATATTTCTACTCTTCATATAGATTTCAATCTGTTAGGTATTCGTCAAACTTATGTCGCATGGTAATGAATTTCAATATTCTAGTTTGCAACCAGACAATAGATATTTATGTTTCATTAAATTCTGCCGTACATAACTTAATGAAGCAGAATTTATATTCATTCCATCAAATTTGTACTCATAGGCATATAACAACCTAACAGATTGAAATTTTGTATGAAAAGTACAAATCTCATACTTCAGAAGCAAGAGTGTAAGATTGAAATTCACAGTAAAATTATGCAATGAAAATCTGATTGAAAACAAAAATTCGTATAAGTGACCAAAACGATTAAATTAATATCTCTTTAACGTATTCTTTATTCAATGCTCTCCCATACAAAACGTAAGTGAAGTATGGAGGCCGATAGGACACAAATGCTGTAGGTATATCTATACAAAATTTCCTTAAAACGTTCAGCAACATTGTTCATGTAATCATTTATAATATCTACATTGAACTAGTATATGTATAAACGTATTTATTGTATTCGATGGATTTTCGAATGGTAGTTCCTGCTCCAAAGTATTACAAATTTTCATCATGTTGAAGAACATTACGTGCGTGTGAAAATGGAAAATTAAGTATAATGTTAGATGATTTATGTCTGACTGCGGTTCTGTTAAATAGTCGTATAGTCTGAAGTGAAATTTATAATCTGTGATAATGCATTACATTTAAATCAGGTTAAATTATAATGTACAACTTTATTTGCTGTGGAAAACGTAATACCGAACTCGAACCAACATGCCTTTAAGTTAGACAATGTTATTTAGAACAAATTACTAACGAAATTAACGTTGTTGTCGATGATGTGGAAAATGTTGAAGATATCAGATTATTCTCATGCGTTTGCCGAAATTGTGCAAGTTATATGCCAAAATCAGCTTACATCGAGTTCAAAGGTAGGTTATCGTTCCATTTATATAATAATTTGAATTAATCCAATACCCAAGCTGTTAGAAATCTTTAAAAATGAACGTGATAATGATATCCATTGAGCTGAAAGGAAAGGTCACTATTATAACGTGGAAAATTATAAAGATTTTGGTGAAAAACAATCCAACGATCATGCGGATAATTGCAAGCCAAACAAGCCGCATTTGCAAATGATGATAAAGCTGCTCTTTTAAATATAGAAGGGCTTCAAATTTGAACAACAATGTTGCTTTTGACATGTAAAATAAACACTCACAGTACTCAGACCATCCACCACCAATGCGTTGTCGACTCTAAAGTATGCTAACTCTCAATTACTAGGAGCGATTAAACGCAATATTGCTGAAATTGTGGCAAGAAAATAGGTACTTGCTTAGAAAACCTACGTTAACGGACGAAAAAGAAGCAACTAATCGGATGTTCTTCATCTTCCGCAATGCCATGTAATAAGCAGGTATTAGTCATTCAGTGTGACTTTTAAATTTTGGGCAGTGGTTTTTGTGCCTGGAATAAGATACTCTAACCACTTTAGTTTAAACGTAATTTTCCAATACTTACTGTTTTCTTTAGAAAAAAAAACCATGATTATTACCTAGGCTTTCCAAATTGAGGTACGGCAACACTATAAATCTTATATTATTAAAATACATTTCCGATTTCCACAGAATTTTGATCAGAAAGTGCACAAACGGTAAACGTTGATGTTGTATCTTTTCGGTACAATCATACATAAAGAGGAAGTTGGTTATATAGAAGACAAAATGGTCGTACATACGTTATCTTAACCATTCTTTATGCGACTTGGTTCTAACTAAAATCGAAGCTGCTATGGAAAGTGACCGCTGTTTTCTAAAAAATGACAGCTCAATTACTGAAGGAAAAAGTGTGGATGGGAATTGGGATACTCGTATATTGCAATGCCATAGTTAGATTTGCAGGAAGGATAGAAAGAGTAAATAGCTCAATACATTGTGATGTTGATAAAAAGATGAATATCGACTTAGCATTTAGCACCCGTTCGACGACATCCTATTTAAAAAGAAGGTATGGTAACATTTCATAACAATGGGAAATATAGTTGTATCGATCGTAATTGGAGAACATTTTTTGGTTATATTTAAGTTGATATACAAGGTGGTGCTTTCGGACAAGTTTTAAAATCGTCGAGGTTGAAGAGGATGTGGCATAAATTGATGTGAATGTTATACCGGACATGATAGAAAAATATTCTTGAAGATGTCAAAAAGAAGAGAGGCCCGAAAATAACTACCTTCACAGAGAATAGTAGACTGTGTAAATAACAACAGATTTGTAAAACGTGATAACAGAGTTGTTTAATTGAAGTTTTTGACTGGATTTTCTTCTCT",
+      "rounds": [
+        {
+          "round": 0,
+          "picked": 2,
+          "scores": [
+            0.021443,
+            0.021263,
+            0.022921
+          ]
+        },
+        {
+          "round": 1,
+          "picked": 1,
+          "scores": [
+            0.021504,
+            0.024169,
+            0.02116
+          ]
+        },
+        {
+          "round": 2,
+          "picked": 0,
+          "scores": [
+            0.022461,
+            0.021227,
+            0.022098
+          ]
+        },
+        {
+          "round": 3,
+          "picked": 0,
+          "scores": [
+            0.023048,
+            0.022418,
+            0.02251
+          ]
+        },
+        {
+          "round": 4,
+          "picked": 1,
+          "scores": [
+            0.022882,
+            0.024759,
+            0.022466
+          ]
+        },
+        {
+          "round": 5,
+          "picked": 0,
+          "scores": [
+            0.02327,
+            0.021951,
+            0.022574
+          ]
+        },
+        {
+          "round": 6,
+          "picked": 1,
+          "scores": [
+            0.023023,
+            0.024191,
+            0.023076
+          ]
+        },
+        {
+          "round": 7,
+          "picked": 2,
+          "scores": [
+            0.022988,
+            0.022854,
+            0.024019
+          ]
+        },
+        {
+          "round": 8,
+          "picked": 0,
+          "scores": [
+            0.023676,
+            0.022903,
+            0.02294
+          ]
+        },
+        {
+          "round": 9,
+          "picked": 2,
+          "scores": [
+            0.022486,
+            0.022718,
+            0.023161
+          ]
+        },
+        {
+          "round": 10,
+          "picked": 1,
+          "scores": [
+            0.023299,
+            0.023702,
+            0.023572
+          ]
+        }
+      ],
+      "quality": {
+        "kmer": {
+          "length": 5322,
+          "gc": 0.3318,
+          "complexity": 0.9512,
+          "frame0": 6.144,
+          "frame1": 6.768,
+          "frame2": 7.614,
+          "min_frame": 6.144,
+          "cpg_o_e": 0.8899,
+          "nullomer_fraction_5mer": 0.0879,
+          "homopolymer_fraction": 0.108,
+          "longest_homopolymer": 9,
+          "coding_density": 0.1246,
+          "n_genes": 3,
+          "n_complete_genes": 3,
+          "longest_gene_bp": 321
+        },
+        "genome_kmer": {
+          "length": 5386,
+          "orf_closure": {
+            "genes": [
+              {
+                "name": "A",
+                "skipped": "wraps_origin_not_covered"
+              },
+              {
+                "name": "A*",
+                "skipped": "wraps_origin_not_covered"
+              },
+              {
+                "name": "B",
+                "skipped": "wraps_origin_not_covered"
+              },
+              {
+                "name": "C",
+                "skipped": "partially_in_prompt"
+              },
+              {
+                "name": "D",
+                "closed": false,
+                "length": 261,
+                "start_codon": "TGT",
+                "stop_codon": "ACG",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": false,
+                "internal_premature_stops": 11
+              },
+              {
+                "name": "F",
+                "closed": false,
+                "length": 459,
+                "start_codon": "CAC",
+                "stop_codon": "AAC",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": false,
+                "internal_premature_stops": 7
+              },
+              {
+                "name": "G",
+                "closed": false,
+                "length": 276,
+                "start_codon": "AAC",
+                "stop_codon": "TTC",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": false,
+                "internal_premature_stops": 5
+              },
+              {
+                "name": "H",
+                "closed": false,
+                "length": 117,
+                "start_codon": "CTA",
+                "stop_codon": "CTT",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": false,
+                "internal_premature_stops": 2
+              },
+              {
+                "name": "E",
+                "closed": false,
+                "length": 1284,
+                "start_codon": "GTT",
+                "stop_codon": "AAC",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": false,
+                "internal_premature_stops": 21
+              },
+              {
+                "name": "J",
+                "closed": false,
+                "length": 528,
+                "start_codon": "ATC",
+                "stop_codon": "GGG",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": false,
+                "internal_premature_stops": 17
+              },
+              {
+                "name": "K",
+                "closed": false,
+                "length": 987,
+                "start_codon": "TTA",
+                "stop_codon": "CAG",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": false,
+                "internal_premature_stops": 23
+              }
+            ],
+            "n_scored": 7,
+            "n_closed": 0,
+            "closure_fraction": 0.0
+          },
+          "gc_skew": {
+            "n_sign_changes": 2,
+            "sign_change_positions": [
+              344,
+              1241
+            ],
+            "final_cumulative_skew": 94
+          },
+          "terminators": {
+            "n_hits": 20,
+            "hits": [
+              {
+                "pos": 225,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 415,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 1185,
+                "stem_len": 4,
+                "loop_len": 6
+              },
+              {
+                "pos": 1459,
+                "stem_len": 6,
+                "loop_len": 5
+              },
+              {
+                "pos": 1460,
+                "stem_len": 6,
+                "loop_len": 3
+              },
+              {
+                "pos": 1462,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 1522,
+                "stem_len": 4,
+                "loop_len": 7
+              },
+              {
+                "pos": 1763,
+                "stem_len": 4,
+                "loop_len": 7
+              },
+              {
+                "pos": 2176,
+                "stem_len": 4,
+                "loop_len": 6
+              },
+              {
+                "pos": 2838,
+                "stem_len": 4,
+                "loop_len": 8
+              },
+              {
+                "pos": 2973,
+                "stem_len": 4,
+                "loop_len": 8
+              },
+              {
+                "pos": 3232,
+                "stem_len": 6,
+                "loop_len": 3
+              },
+              {
+                "pos": 4234,
+                "stem_len": 4,
+                "loop_len": 6
+              },
+              {
+                "pos": 4237,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 4479,
+                "stem_len": 4,
+                "loop_len": 7
+              },
+              {
+                "pos": 4669,
+                "stem_len": 5,
+                "loop_len": 7
+              },
+              {
+                "pos": 4670,
+                "stem_len": 4,
+                "loop_len": 7
+              },
+              {
+                "pos": 4719,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 5154,
+                "stem_len": 4,
+                "loop_len": 8
+              },
+              {
+                "pos": 5156,
+                "stem_len": 4,
+                "loop_len": 4
+              }
+            ]
+          }
+        },
+        "real": {
+          "length": 5322,
+          "gc": 0.4485,
+          "complexity": 0.9729,
+          "frame0": 6.933,
+          "frame1": 2.594,
+          "frame2": 5.076,
+          "min_frame": 2.594,
+          "cpg_o_e": 0.9844,
+          "nullomer_fraction_5mer": 0.0586,
+          "homopolymer_fraction": 0.0644,
+          "longest_homopolymer": 7,
+          "coding_density": 0.9271,
+          "n_genes": 7,
+          "n_complete_genes": 5,
+          "longest_gene_bp": 1404
+        },
+        "kmer_vs_real": {
+          "a": {
+            "length": 5322,
+            "gc": 0.3318,
+            "complexity": 0.9512,
+            "frame0": 6.144,
+            "frame1": 6.768,
+            "frame2": 7.614,
+            "min_frame": 6.144,
+            "cpg_o_e": 0.8899,
+            "nullomer_fraction_5mer": 0.0879,
+            "homopolymer_fraction": 0.108,
+            "longest_homopolymer": 9,
+            "coding_density": 0.1246,
+            "n_genes": 3,
+            "n_complete_genes": 3,
+            "longest_gene_bp": 321
+          },
+          "b": {
+            "length": 5322,
+            "gc": 0.4485,
+            "complexity": 0.9729,
+            "frame0": 6.933,
+            "frame1": 2.594,
+            "frame2": 5.076,
+            "min_frame": 2.594,
+            "cpg_o_e": 0.9844,
+            "nullomer_fraction_5mer": 0.0586,
+            "homopolymer_fraction": 0.0644,
+            "longest_homopolymer": 7,
+            "coding_density": 0.9271,
+            "n_genes": 7,
+            "n_complete_genes": 5,
+            "longest_gene_bp": 1404
+          },
+          "kmer_js_divergence": 0.08503,
+          "codon_js_divergence": 0.07001,
+          "gc_diff": -0.1167,
+          "coding_density_diff": -0.8025,
+          "n_genes_diff": -4,
+          "longest_gene_bp_diff": -1083
+        },
+        "genome_real": {
+          "length": 5386,
+          "orf_closure": {
+            "genes": [
+              {
+                "name": "A",
+                "closed": true,
+                "length": 1542,
+                "start_codon": "ATG",
+                "stop_codon": "TGA",
+                "ok_len": true,
+                "ok_start": true,
+                "ok_stop": true,
+                "internal_premature_stops": 0
+              },
+              {
+                "name": "A*",
+                "closed": true,
+                "length": 1026,
+                "start_codon": "ATG",
+                "stop_codon": "TGA",
+                "ok_len": true,
+                "ok_start": true,
+                "ok_stop": true,
+                "internal_premature_stops": 0
+              },
+              {
+                "name": "B",
+                "closed": true,
+                "length": 363,
+                "start_codon": "ATG",
+                "stop_codon": "TGA",
+                "ok_len": true,
+                "ok_start": true,
+                "ok_stop": true,
+                "internal_premature_stops": 0
+              },
+              {
+                "name": "C",
+                "closed": true,
+                "length": 171,
+                "start_codon": "ATG",
+                "stop_codon": "TGA",
+                "ok_len": true,
+                "ok_start": true,
+                "ok_stop": true,
+                "internal_premature_stops": 0
+              },
+              {
+                "name": "D",
+                "closed": true,
+                "length": 261,
+                "start_codon": "ATG",
+                "stop_codon": "TGA",
+                "ok_len": true,
+                "ok_start": true,
+                "ok_stop": true,
+                "internal_premature_stops": 0
+              },
+              {
+                "name": "F",
+                "closed": true,
+                "length": 459,
+                "start_codon": "ATG",
+                "stop_codon": "TAA",
+                "ok_len": true,
+                "ok_start": true,
+                "ok_stop": true,
+                "internal_premature_stops": 0
+              },
+              {
+                "name": "G",
+                "closed": true,
+                "length": 276,
+                "start_codon": "ATG",
+                "stop_codon": "TGA",
+                "ok_len": true,
+                "ok_start": true,
+                "ok_stop": true,
+                "internal_premature_stops": 0
+              },
+              {
+                "name": "H",
+                "closed": true,
+                "length": 117,
+                "start_codon": "ATG",
+                "stop_codon": "TAA",
+                "ok_len": true,
+                "ok_start": true,
+                "ok_stop": true,
+                "internal_premature_stops": 0
+              },
+              {
+                "name": "E",
+                "closed": true,
+                "length": 1284,
+                "start_codon": "ATG",
+                "stop_codon": "TGA",
+                "ok_len": true,
+                "ok_start": true,
+                "ok_stop": true,
+                "internal_premature_stops": 0
+              },
+              {
+                "name": "J",
+                "closed": true,
+                "length": 528,
+                "start_codon": "ATG",
+                "stop_codon": "TGA",
+                "ok_len": true,
+                "ok_start": true,
+                "ok_stop": true,
+                "internal_premature_stops": 0
+              },
+              {
+                "name": "K",
+                "closed": true,
+                "length": 987,
+                "start_codon": "ATG",
+                "stop_codon": "TAA",
+                "ok_len": true,
+                "ok_start": true,
+                "ok_stop": true,
+                "internal_premature_stops": 0
+              }
+            ],
+            "n_scored": 11,
+            "n_closed": 11,
+            "closure_fraction": 1.0
+          },
+          "gc_skew": {
+            "n_sign_changes": 4,
+            "sign_change_positions": [
+              1523,
+              2332,
+              2418,
+              2883
+            ],
+            "final_cumulative_skew": 97
+          },
+          "terminators": {
+            "n_hits": 40,
+            "hits": [
+              {
+                "pos": 312,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 451,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 453,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 477,
+                "stem_len": 5,
+                "loop_len": 6
+              },
+              {
+                "pos": 478,
+                "stem_len": 5,
+                "loop_len": 4
+              },
+              {
+                "pos": 479,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 943,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 1183,
+                "stem_len": 4,
+                "loop_len": 7
+              },
+              {
+                "pos": 1185,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 1192,
+                "stem_len": 4,
+                "loop_len": 6
+              },
+              {
+                "pos": 1943,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 2356,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 2467,
+                "stem_len": 5,
+                "loop_len": 8
+              },
+              {
+                "pos": 2468,
+                "stem_len": 4,
+                "loop_len": 8
+              },
+              {
+                "pos": 2507,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 3125,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 3126,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 3641,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 3929,
+                "stem_len": 4,
+                "loop_len": 8
+              },
+              {
+                "pos": 3953,
+                "stem_len": 9,
+                "loop_len": 5
+              },
+              {
+                "pos": 3954,
+                "stem_len": 9,
+                "loop_len": 3
+              },
+              {
+                "pos": 3955,
+                "stem_len": 8,
+                "loop_len": 3
+              },
+              {
+                "pos": 3956,
+                "stem_len": 7,
+                "loop_len": 3
+              },
+              {
+                "pos": 3957,
+                "stem_len": 6,
+                "loop_len": 3
+              },
+              {
+                "pos": 3958,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 4008,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 4141,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 4144,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 4145,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 4341,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 4559,
+                "stem_len": 4,
+                "loop_len": 7
+              },
+              {
+                "pos": 4600,
+                "stem_len": 4,
+                "loop_len": 8
+              },
+              {
+                "pos": 4710,
+                "stem_len": 4,
+                "loop_len": 6
+              },
+              {
+                "pos": 4712,
+                "stem_len": 5,
+                "loop_len": 4
+              },
+              {
+                "pos": 4713,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 4715,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 4804,
+                "stem_len": 4,
+                "loop_len": 7
+              },
+              {
+                "pos": 4806,
+                "stem_len": 4,
+                "loop_len": 8
+              },
+              {
+                "pos": 4807,
+                "stem_len": 5,
+                "loop_len": 4
+              },
+              {
+                "pos": 4808,
+                "stem_len": 4,
+                "loop_len": 4
+              }
+            ]
+          }
+        },
+        "native_baseline": {
+          "length": 5322,
+          "gc": 0.3762,
+          "complexity": 0.9522,
+          "frame0": 4.284,
+          "frame1": 5.866,
+          "frame2": 3.384,
+          "min_frame": 3.384,
+          "coding_density": 0.8587,
+          "n_genes": 12,
+          "n_complete_genes": 10,
+          "longest_gene_bp": 1596
+        },
+        "kmer_vs_native": {
+          "a": {
+            "length": 5322,
+            "gc": 0.3318,
+            "complexity": 0.9512,
+            "frame0": 6.144,
+            "frame1": 6.768,
+            "frame2": 7.614,
+            "min_frame": 6.144,
+            "cpg_o_e": 0.8899,
+            "nullomer_fraction_5mer": 0.0879,
+            "homopolymer_fraction": 0.108,
+            "longest_homopolymer": 9,
+            "coding_density": 0.1246,
+            "n_genes": 3,
+            "n_complete_genes": 3,
+            "longest_gene_bp": 321
+          },
+          "b": {
+            "length": 5322,
+            "gc": 0.3762,
+            "complexity": 0.9522,
+            "frame0": 4.284,
+            "frame1": 5.866,
+            "frame2": 3.384,
+            "min_frame": 3.384,
+            "cpg_o_e": 1.3365,
+            "nullomer_fraction_5mer": 0.0762,
+            "homopolymer_fraction": 0.1227,
+            "longest_homopolymer": 8,
+            "coding_density": 0.8587,
+            "n_genes": 12,
+            "n_complete_genes": 10,
+            "longest_gene_bp": 1596
+          },
+          "kmer_js_divergence": 0.05636,
+          "codon_js_divergence": 0.04065,
+          "gc_diff": -0.0444,
+          "coding_density_diff": -0.7341,
+          "n_genes_diff": -9,
+          "longest_gene_bp_diff": -1275
+        },
+        "genome_native_baseline": {
+          "length": 5386,
+          "orf_closure": {
+            "genes": [
+              {
+                "name": "A",
+                "skipped": "wraps_origin_not_covered"
+              },
+              {
+                "name": "A*",
+                "skipped": "wraps_origin_not_covered"
+              },
+              {
+                "name": "B",
+                "skipped": "wraps_origin_not_covered"
+              },
+              {
+                "name": "C",
+                "skipped": "partially_in_prompt"
+              },
+              {
+                "name": "D",
+                "closed": false,
+                "length": 261,
+                "start_codon": "CGC",
+                "stop_codon": "GTT",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": false,
+                "internal_premature_stops": 3
+              },
+              {
+                "name": "F",
+                "closed": false,
+                "length": 459,
+                "start_codon": "AGT",
+                "stop_codon": "AAT",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": false,
+                "internal_premature_stops": 13
+              },
+              {
+                "name": "G",
+                "closed": false,
+                "length": 276,
+                "start_codon": "AAC",
+                "stop_codon": "GGC",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": false,
+                "internal_premature_stops": 0
+              },
+              {
+                "name": "H",
+                "closed": false,
+                "length": 117,
+                "start_codon": "TTA",
+                "stop_codon": "CGG",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": false,
+                "internal_premature_stops": 2
+              },
+              {
+                "name": "E",
+                "closed": false,
+                "length": 1284,
+                "start_codon": "AAA",
+                "stop_codon": "TAT",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": false,
+                "internal_premature_stops": 20
+              },
+              {
+                "name": "J",
+                "closed": false,
+                "length": 528,
+                "start_codon": "AAC",
+                "stop_codon": "TCT",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": false,
+                "internal_premature_stops": 5
+              },
+              {
+                "name": "K",
+                "closed": false,
+                "length": 987,
+                "start_codon": "TTA",
+                "stop_codon": "TAA",
+                "ok_len": true,
+                "ok_start": false,
+                "ok_stop": true,
+                "internal_premature_stops": 13
+              }
+            ],
+            "n_scored": 7,
+            "n_closed": 0,
+            "closure_fraction": 0.0
+          },
+          "gc_skew": {
+            "n_sign_changes": 1,
+            "sign_change_positions": [
+              2870
+            ],
+            "final_cumulative_skew": -94
+          },
+          "terminators": {
+            "n_hits": 34,
+            "hits": [
+              {
+                "pos": 649,
+                "stem_len": 6,
+                "loop_len": 3
+              },
+              {
+                "pos": 650,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 651,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 963,
+                "stem_len": 4,
+                "loop_len": 6
+              },
+              {
+                "pos": 1146,
+                "stem_len": 5,
+                "loop_len": 7
+              },
+              {
+                "pos": 1147,
+                "stem_len": 4,
+                "loop_len": 7
+              },
+              {
+                "pos": 2140,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 2141,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 2142,
+                "stem_len": 5,
+                "loop_len": 3
+              },
+              {
+                "pos": 2143,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 2169,
+                "stem_len": 5,
+                "loop_len": 6
+              },
+              {
+                "pos": 2170,
+                "stem_len": 4,
+                "loop_len": 6
+              },
+              {
+                "pos": 2213,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 2840,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 2864,
+                "stem_len": 4,
+                "loop_len": 6
+              },
+              {
+                "pos": 3347,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 3501,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 3636,
+                "stem_len": 6,
+                "loop_len": 6
+              },
+              {
+                "pos": 3637,
+                "stem_len": 5,
+                "loop_len": 6
+              },
+              {
+                "pos": 3638,
+                "stem_len": 4,
+                "loop_len": 6
+              },
+              {
+                "pos": 3640,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 3712,
+                "stem_len": 5,
+                "loop_len": 5
+              },
+              {
+                "pos": 3713,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 3948,
+                "stem_len": 4,
+                "loop_len": 8
+              },
+              {
+                "pos": 4408,
+                "stem_len": 4,
+                "loop_len": 4
+              },
+              {
+                "pos": 4515,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 4550,
+                "stem_len": 4,
+                "loop_len": 6
+              },
+              {
+                "pos": 4705,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 4922,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 4923,
+                "stem_len": 4,
+                "loop_len": 3
+              },
+              {
+                "pos": 5291,
+                "stem_len": 4,
+                "loop_len": 8
+              },
+              {
+                "pos": 5293,
+                "stem_len": 4,
+                "loop_len": 7
+              },
+              {
+                "pos": 5295,
+                "stem_len": 4,
+                "loop_len": 5
+              },
+              {
+                "pos": 5296,
+                "stem_len": 4,
+                "loop_len": 3
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

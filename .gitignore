@@ -12,6 +12,9 @@ EvSpark/
 *.token
 .modal.toml
 
+# Teammate's calibration study, kept locally for reference, not ours to commit
+Metrics_REPORT.md
+
 # OS / editor
 .DS_Store
 Thumbs.db
@@ -23,6 +26,8 @@ Thumbs.db
 *.log.jsonl
 
 # Generated benchmark outputs -- regenerable from the scripts, but keep the
-# baseline native/speculative result this repo's kmer arm is compared against.
+# baseline native/speculative result this repo's kmer arm is compared against,
+# plus the kmer arm's own 3-seed result it's compared with.
 *_bench_*.json
 !fulllength_bench_L40S.json
+!kmer_fulllength_bench_L40S.json

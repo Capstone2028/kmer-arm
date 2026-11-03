@@ -202,6 +202,38 @@ def terminator_scan(seq: str, stem_range=(4, 9), loop_range=(3, 8), spacer_max: 
     return {"n_hits": len(hits), "hits": hits}
 
 
+# Reliability caveats per metric, from Metrics_REPORT.md's damage-ladder
+# calibration (a separate study on real Microviridae genomes, not run on this
+# module directly -- these are the closest-analogue findings, not a direct
+# calibration of orf_closure_check/terminator_scan themselves):
+#   - terminator_scan has no calibrated equivalent in that report, but shares
+#     its M3 (closed-genome check)'s failure mode in spirit: both are
+#     uncalibrated structural heuristics with no demonstrated sensitivity to
+#     damage. terminator_scan is separately self-documented (module docstring)
+#     as finding 40 hits on the real genome itself -- noisy in absolute terms.
+#   - orf_closure_check is an exact-coordinate recall test, not a general gene
+#     finder, so the report's M7 ("ORF integrity", dropped for scoring broken
+#     genes *better* than natural ones) doesn't directly apply -- but both
+#     share the risk that a pass/fail readout built from narrow structural
+#     conditions can be satisfied by chance or degenerate sequence without
+#     reflecting real gene coherence. Near-impossible to pass by chance once
+#     content drifts from the literal real sequence (see fulllength_benchmark.py
+#     notes), so a near-zero closure_fraction at long range is expected, not
+#     informative on its own.
+# Neither metric should be read as biological validity; see SESSION_NOTES.md
+# 2026-11-01 and Metrics_REPORT.md for the broader finding that only
+# protein-level checks (Pfam/PHROG/Phold -- not present in this pipeline) catch
+# damage that gene-shape metrics like these miss.
+RELIABILITY_CAVEATS = {
+    "orf_closure": "exact-coordinate recall test, not a calibrated gene finder; "
+                    "near-zero closure_fraction is expected at long range from the "
+                    "seed and is not by itself evidence of poor generation quality",
+    "terminators": "uncalibrated heuristic; 40 false-positive hits measured on the "
+                   "real phiX174 genome itself, so only relative (not absolute) "
+                   "hit counts should be compared across native/speculative/kmer arms",
+}
+
+
 def score_genome(seq: str, prompt_len: int = 0, genes: list[dict] | None = None) -> dict:
     """Whole-replicon metrics for one full-length (or near-full-length)
     phiX174 generation. Complements, not replaces, bio_scoring.score_sequence
@@ -211,4 +243,5 @@ def score_genome(seq: str, prompt_len: int = 0, genes: list[dict] | None = None)
         "orf_closure": orf_closure_check(seq, prompt_len, genes),
         "gc_skew": gc_skew_sign_changes(seq),
         "terminators": terminator_scan(seq),
+        "reliability_caveats": RELIABILITY_CAVEATS,
     }
