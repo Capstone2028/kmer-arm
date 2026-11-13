@@ -25,6 +25,10 @@ Thumbs.db
 *.log
 *.log.jsonl
 
+# Downloaded public NCBI GenBank records; regenerate from the accession list
+data/*records*.gb
+data/*records*.gb.part
+
 # Generated benchmark outputs -- regenerable from the scripts, but keep the
 # baseline native/speculative result this repo's kmer arm is compared against,
 # plus the kmer arm's own 3-seed result it's compared with.

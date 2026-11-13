@@ -1,0 +1,37 @@
+{
+  "created_on": "2026-11-12",
+  "label": "new split; not a reconstruction of the unavailable prior raw split",
+  "selection": {
+    "source_family_positive_genomes": 273,
+    "available_90pct_genome_clusters": 263,
+    "one_genome_per_cluster": true,
+    "selection_seed": 20261112,
+    "calibration_clusters": 30,
+    "test_clusters": 60,
+    "cluster_representative_rule": "Best annotated family-positive member; ties use lexicographically smallest accession.",
+    "genome_similarity_threshold": "90% nucleotide identity, 80% bidirectional coverage; connected components",
+    "protein_family_threshold": "30% amino-acid identity, 80% bidirectional coverage; connected components",
+    "five_family_rule": "Five most prevalent protein clusters from this fresh dataset, checked against common product labels."
+  },
+  "selected_genomes": 90,
+  "selected_proteins": 622,
+  "split_counts": {
+    "calibration": 30,
+    "test": 60
+  },
+  "family_cluster_ids": [
+    "MT310288.1|cds01",
+    "MW697641.1|cds06",
+    "MZ089757.1|cds01",
+    "MT310270.1|cds06",
+    "MK249233.1|cds03"
+  ],
+  "outputs": [
+    "sae-arm\\results\\microviridae_split_20261112.tsv",
+    "sae-arm\\results\\microviridae_split_genomes_20261112.fna",
+    "sae-arm\\results\\microviridae_split_proteins_20261112.faa",
+    "sae-arm\\results\\microviridae_split_proteins_20261112.tsv",
+    "sae-arm\\results\\microviridae_calibration_genomes_20261112.fna",
+    "sae-arm\\results\\microviridae_test_genomes_20261112.fna"
+  ]
+}

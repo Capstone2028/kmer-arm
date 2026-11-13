@@ -1,0 +1,36 @@
+{
+  "retrieved_on": "2026-11-11",
+  "clustering_run_on": "2026-11-12",
+  "tool": "MMseqs2",
+  "version": "15-6f452+ds-2+b3",
+  "genome_cluster_parameters": {
+    "sequence_type": "nucleotide",
+    "minimum_identity": 0.9,
+    "minimum_coverage": 0.8,
+    "coverage_mode": "both sequences",
+    "cluster_mode": "connected components",
+    "alignment_identity_mode": "exact residue identity"
+  },
+  "protein_family_parameters": {
+    "sequence_type": "amino acid",
+    "minimum_identity": 0.3,
+    "minimum_coverage": 0.8,
+    "coverage_mode": "both sequences",
+    "cluster_mode": "connected components",
+    "alignment_identity_mode": "exact residue identity"
+  },
+  "compute": {
+    "gpu": false,
+    "cpu_cores": 4,
+    "memory_mib": 8192,
+    "timeout_seconds": 600,
+    "estimated_resource_cost_ceiling_usd": 0.05,
+    "estimate_note": "Compute-only estimate; actual invoice and image-build treatment may vary."
+  },
+  "inputs": {
+    "genomes_fasta": "data\\microviridae_screened_genomes_20261111.fna",
+    "proteins_fasta": "data\\microviridae_screened_proteins_20261111.faa",
+    "candidate_genomes": 2549,
+    "protein_sequences": 19049
+  }
+}

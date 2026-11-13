@@ -1,0 +1,66 @@
+{
+  "status": "PASS",
+  "created_on": "2026-11-12",
+  "source": "microviridae_calibration_sae_gene_features_20261112.npz",
+  "split_used": "30 calibration genomes only",
+  "held_out_test_genomes_read": false,
+  "comparison": "For each genome and family, compare that gene's mean SAE activation with the mean across the other four family genes from the same genome.",
+  "selection_rule": "Rank each feature by median paired activation difference, then fraction of genomes with positive differences, then mean paired difference. Select the top feature per family for calibration follow-up only.",
+  "caveat": "Exploratory feature ranking across 32,768 candidates; these ranks are not significance tests and require validation on the held-out test genomes.",
+  "genome_count": 30,
+  "family_gene_count": 150,
+  "candidate_features_per_family": 100,
+  "selected_calibration_candidates": [
+    {
+      "family_id": "MK249233.1|cds03",
+      "family_name": "DNA pilot protein",
+      "feature_id": 3575,
+      "median_paired_delta": 0.7480477567733033,
+      "mean_paired_delta": 0.7296606561549803,
+      "positive_genome_fraction": 1.0,
+      "family_gene_active_fraction": 1.0,
+      "other_family_active_fraction": 0.9666666666666667
+    },
+    {
+      "family_id": "MT310270.1|cds06",
+      "family_name": "internal scaffolding protein",
+      "feature_id": 32710,
+      "median_paired_delta": 0.6295332610607147,
+      "mean_paired_delta": 0.7919931133588155,
+      "positive_genome_fraction": 0.9666666666666667,
+      "family_gene_active_fraction": 1.0,
+      "other_family_active_fraction": 1.0
+    },
+    {
+      "family_id": "MT310288.1|cds01",
+      "family_name": "major capsid protein",
+      "feature_id": 16115,
+      "median_paired_delta": 0.7208555121906102,
+      "mean_paired_delta": 0.5555804796439285,
+      "positive_genome_fraction": 0.8666666666666667,
+      "family_gene_active_fraction": 1.0,
+      "other_family_active_fraction": 1.0
+    },
+    {
+      "family_id": "MW697641.1|cds06",
+      "family_name": "replication initiator protein",
+      "feature_id": 29844,
+      "median_paired_delta": 0.78057461977005,
+      "mean_paired_delta": 0.7917808497945468,
+      "positive_genome_fraction": 1.0,
+      "family_gene_active_fraction": 1.0,
+      "other_family_active_fraction": 1.0
+    },
+    {
+      "family_id": "MZ089757.1|cds01",
+      "family_name": "nonstructural protein",
+      "feature_id": 32710,
+      "median_paired_delta": 0.3830784559249878,
+      "mean_paired_delta": 0.4384908397992452,
+      "positive_genome_fraction": 0.8666666666666667,
+      "family_gene_active_fraction": 1.0,
+      "other_family_active_fraction": 1.0
+    }
+  ],
+  "candidate_table": "microviridae_calibration_sae_feature_candidates_20261112.tsv"
+}

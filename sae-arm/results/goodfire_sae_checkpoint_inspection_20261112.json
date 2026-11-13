@@ -1,0 +1,41 @@
+{
+  "repository": "Goodfire/Evo-2-Layer-26-Mixed",
+  "filename": "sae-layer26-mixed-expansion_8-k_64.pt",
+  "size_bytes": 537020630,
+  "sha256": "598f131a2e71f1c49281335be1d11d2c91920881f91e2fd4e6aa0659e5b8b4b1",
+  "sha256_matches_published": true,
+  "torch_version": "2.7.1+cpu",
+  "root_wrapper_key": null,
+  "tensor_count": 3,
+  "tensor_keys_and_shapes": {
+    "_orig_mod.W": {
+      "shape": [
+        4096,
+        32768
+      ],
+      "dtype": "torch.float32",
+      "numel": 134217728
+    },
+    "_orig_mod.b_enc": {
+      "shape": [
+        32768
+      ],
+      "dtype": "torch.float32",
+      "numel": 32768
+    },
+    "_orig_mod.b_dec": {
+      "shape": [
+        4096
+      ],
+      "dtype": "torch.float32",
+      "numel": 4096
+    }
+  },
+  "non_tensor_keys": [],
+  "status": "PASS",
+  "inspected_on": "2026-11-12",
+  "gpu_used": false,
+  "compute_limit_seconds": 300,
+  "estimated_runtime_resource_cost_usd": 0.02,
+  "estimate_note": "Runtime-resource estimate only; image setup may add a small amount."
+}

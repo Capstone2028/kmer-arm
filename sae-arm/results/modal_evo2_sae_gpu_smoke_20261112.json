@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "model": "evo2_7b_262k",
+  "sae_repository": "Goodfire/Evo-2-Layer-26-Mixed",
+  "sae_sha256": "598f131a2e71f1c49281335be1d11d2c91920881f91e2fd4e6aa0659e5b8b4b1",
+  "layer_module_path": "blocks-26",
+  "sae": "tied BatchTopK, k=64, d_in=4096, d_sae=32768",
+  "synthetic_prompt": "AGCG",
+  "intervention_off_logits_exact": true,
+  "intervention_on_changed_logits": true,
+  "prefill_hook_shapes": [
+    [
+      1,
+      4,
+      4096
+    ],
+    [
+      1,
+      4,
+      4096
+    ]
+  ],
+  "cached_generation_hook_shapes": [
+    [
+      1,
+      4,
+      4096
+    ],
+    [
+      1,
+      1,
+      4096
+    ]
+  ],
+  "steered_feature_ids": [
+    16115,
+    16115,
+    16115
+  ],
+  "generated_sequence": "AG",
+  "gpu_used": true,
+  "gpu_name": "NVIDIA L40S",
+  "biological_data_used": false,
+  "torch_version": "2.7.0a0+79aa17489c.nv25.04",
+  "timeout_seconds": 180,
+  "run_date": "2026-11-12",
+  "estimated_runtime_resource_cost_ceiling_usd": 0.13,
+  "estimate_note": "Conservative resource ceiling from current published per-second rates; image setup may add a small amount."
+}

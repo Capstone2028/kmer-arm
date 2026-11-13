@@ -1,0 +1,62 @@
+{
+  "status": "PASS",
+  "checkpoint_sha256": "598f131a2e71f1c49281335be1d11d2c91920881f91e2fd4e6aa0659e5b8b4b1",
+  "sha256_matches_published": true,
+  "tensor_shapes": {
+    "W": [
+      4096,
+      32768
+    ],
+    "b_enc": [
+      32768
+    ],
+    "b_dec": [
+      4096
+    ]
+  },
+  "sae": "tied BatchTopK, k=64, d_in=4096, d_sae=32768",
+  "batch_topk": "global top k * number_of_positions across sequence positions",
+  "cases": [
+    {
+      "case": "prefill",
+      "activation_shape": [
+        1,
+        12,
+        4096
+      ],
+      "output_shape": [
+        1,
+        12,
+        4096
+      ],
+      "intervention_off_preserves_activations": true,
+      "cache_preserved": true,
+      "feature_intervention_changed_activations": true,
+      "finite_output": true
+    },
+    {
+      "case": "cached_one_token",
+      "activation_shape": [
+        1,
+        1,
+        4096
+      ],
+      "output_shape": [
+        1,
+        1,
+        4096
+      ],
+      "intervention_off_preserves_activations": true,
+      "cache_preserved": true,
+      "feature_intervention_changed_activations": true,
+      "finite_output": true
+    }
+  ],
+  "gpu_used": false,
+  "evo2_weights_loaded": false,
+  "biological_sequences_used": false,
+  "torch_version": "2.7.1+cpu",
+  "run_date": "2026-11-12",
+  "estimated_runtime_resource_cost_usd": 0.02,
+  "estimate_note": "CPU runtime estimate only; image setup may add a small amount."
+}

@@ -1,0 +1,22 @@
+accession,record_name,description,length_bp,topology,cds_count,cds_with_translation,translation_tables,overlapping_cds_pairs,overlap_bp_pairs,genbank_date
+NC_001422.1,NC_001422,"Escherichia phage phiX174, complete genome",5386,circular,11,11,11,12,2303,11-JAN-2023
+NC_001420.2,NC_001420,Genome of phage G4 (coliphage),5577,circular,11,11,11,10,2303,13-AUG-2018
+NC_001330.1,NC_001330,"Enterobacteria phage alpha3, complete genome",6087,circular,10,10,11,5,719,13-AUG-2018
+NC_007856.1,NC_007856,"Enterobacteria phage ID18, complete genome",5486,circular,11,11,11,12,2320,13-AUG-2018
+NC_007825.1,NC_007825,"Coliphage ID52, complete genome",5538,circular,11,11,11,12,2336,28-JUN-2019
+NC_007821.1,NC_007821,"Enterobacteria phage WA13, complete genome",6068,circular,10,10,11,5,722,13-AUG-2018
+NC_007819.1,NC_007819,"Coliphage ID32, complete genome",6071,circular,10,10,11,5,722,28-JUN-2019
+NC_007820.1,NC_007820,"Coliphage NC35, complete genome",6039,circular,10,10,11,5,722,28-JUN-2019
+NC_012868.1,NC_012868,"Enterobacteria phage St-1, complete genome",6094,circular,11,11,11,8,2176,13-AUG-2018
+NC_001730.1,NC_001730,Bacteriophage phiK complete genome,6089,linear,10,10,11,5,719,13-AUG-2018
+NC_002643.1,NC_002643,"Bdellovibrio phage phiMH2K, complete genome",4594,circular,11,11,11,7,1127,13-AUG-2018
+NC_001741.1,NC_001741,"Chlamydia phage Chp1, complete genome",4877,circular,12,12,11,13,3173,13-AUG-2018
+NC_002194.1,NC_002194,"Chlamydia phage Chp2, complete genome",4563,circular,8,8,11,2,245,13-AUG-2018
+NC_003438.1,NC_003438,"Spiroplasma phage 4, complete genome",4421,circular,1,1,4,0,0,11-JAN-2023
+NC_029012.1,NC_029012,"Parabacteroides phage YZ-2015a, complete genome",4623,circular,6,6,11,1,4,13-AUG-2018
+NC_022790.1,NC_022790,"Marine gokushovirus isolate GOM, complete genome",4129,circular,6,6,11,2,8,13-AUG-2018
+NC_027633.1,NC_027633,"Gokushovirinae Bog1183_53, complete genome",4609,circular,5,5,11,0,0,13-AUG-2018
+NC_027640.1,NC_027640,"Microviridae Fen418_41, complete genome",4949,circular,5,5,11,2,12,13-AUG-2018
+NC_015785.1,NC_015785,"Microvirus CA82, complete genome",5514,circular,10,10,11,3,93,13-AUG-2018
+NC_030472.1,NC_030472,"Chimpanzee faeces associated microphage 1 isolate CPNG_29298, complete genome",4851,circular,4,4,11,1,1,13-AUG-2018
+NC_040350.1,NC_040350,"Alces alces faeces associated microvirus MP10 5560, complete genome",5497,circular,6,6,1,1,14,12-SEP-2019

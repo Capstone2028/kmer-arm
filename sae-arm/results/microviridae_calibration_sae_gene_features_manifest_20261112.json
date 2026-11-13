@@ -1,0 +1,38 @@
+{
+  "status": "PASS",
+  "created_on": "2026-11-12",
+  "model": "evo2_7b_262k",
+  "sae_repository": "Goodfire/Evo-2-Layer-26-Mixed",
+  "sae_filename": "sae-layer26-mixed-expansion_8-k_64.pt",
+  "sae_sha256": "598f131a2e71f1c49281335be1d11d2c91920881f91e2fd4e6aa0659e5b8b4b1",
+  "activation_layer": "blocks.26 / official module path blocks-26",
+  "sae_architecture": "tied BatchTopK; k=64; global top 64 x sequence positions per forward call",
+  "split": "calibration only",
+  "genome_count": 30,
+  "family_gene_count": 150,
+  "families": [
+    "MK249233.1|cds03",
+    "MT310270.1|cds06",
+    "MT310288.1|cds01",
+    "MW697641.1|cds06",
+    "MZ089757.1|cds01"
+  ],
+  "feature_matrix_shape": [
+    150,
+    32768
+  ],
+  "feature_matrix_dtype": "float32",
+  "sequence_length_range_bp": [
+    4394,
+    5133
+  ],
+  "all_selected_family_genes_complete": true,
+  "gpu_used": true,
+  "gpu": "NVIDIA L40S",
+  "worker_timeout_seconds": 900,
+  "estimated_runtime_resource_cost_ceiling_usd": 0.6,
+  "estimate_note": "900 seconds x L40S, 4 CPU cores, and 32 GiB memory at current published rates; setup may add a small amount.",
+  "outputs": [
+    "microviridae_calibration_sae_gene_features_20261112.npz"
+  ]
+}

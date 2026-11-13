@@ -1,0 +1,6 @@
+retrieved_on=2026-11-11
+database=NCBI nuccore
+query=Microviridae[Organism] AND "complete genome"[Title] AND 4000:6500[SLEN]
+count=7649
+returned=7649
+idtype=accession.version

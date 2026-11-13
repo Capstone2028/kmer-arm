@@ -1,0 +1,86 @@
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=18 to device='cuda:0'                    
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 18: 202426112                            
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=19 to device='cuda:0'                    
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 19: 202461184                            
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=20 to device='cuda:0'                    
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 20: 202559488                            
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=21 to device='cuda:0'                    
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 21: 202426112                            
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=22 to device='cuda:0'                    
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 22: 202461184                            
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=23 to device='cuda:0'                    
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 23: 202559488                            
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=24 to device='cuda:0'                    
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 24: 202387456                            
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=25 to device='cuda:0'                    
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 25: 202426112                            
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=26 to device='cuda:0'                    
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 26: 202461184                            
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=27 to device='cuda:0'                    
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 27: 202559488                            
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=28 to device='cuda:0'                    
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 28: 202426112                            
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=29 to device='cuda:0'                    
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 29: 202461184                            
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=30 to device='cuda:0'                    
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 30: 202559488                            
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=31 to device='cuda:0'                    
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 31: 202387456                            
+
+100%|██████████| 32/32 [00:00<00:00, 147.18it/s]
+100%|██████████| 32/32 [00:00<00:00, 125.52it/s]
+                    INFO     StripedHyena - INFO - Initialized      model.py:723
+                             model                                              
+                    INFO     vortex.model.utils - INFO - Loading     utils.py:92
+                             /root/.cache/huggingface/hub/models--ar            
+                             cinstitute--evo2_7b_262k/snapshots/27c4            
+                             f055e8b729a27ab5c3e6c8b9c35367a76fba/ev            
+                             o2_7b_262k.pt                                      
+Extra keys in state_dict: {'blocks.17.mixer.dense._extra_state', 'blocks.10.mixer.dense._extra_state', 'blocks.6.mixer.mixer.filter.t', 'blocks.13.mixer.mixer.filter.t', 'unembed.weight', 'blocks.30.mixer.mixer.filter.t', 'blocks.20.mixer.mixer.filter.t', 'blocks.27.mixer.mixer.filter.t', 'blocks.31.mixer.dense._extra_state', 'blocks.9.mixer.mixer.filter.t', 'blocks.24.mixer.dense._extra_state', 'blocks.23.mixer.mixer.filter.t', 'blocks.16.mixer.mixer.filter.t', 'blocks.2.mixer.mixer.filter.t', 'blocks.3.mixer.dense._extra_state'}
+[11/12/26 06:47:51] INFO     StripedHyena - INFO - Adjusting Wqkv  model.py:1008
+                             for column split (permuting rows)                  
+[11/12/26 06:47:52] INFO     httpx - INFO - HTTP Request: HEAD   _client.py:1025
+                             https://huggingface.co/Goodfire/Evo                
+                             -2-Layer-26-Mixed/resolve/main/sae-                
+                             layer26-mixed-expansion_8-k_64.pt                  
+                             "HTTP/1.1 302 Found"                               
+                    INFO     httpx - INFO - HTTP Request: GET    _client.py:1025
+                             https://huggingface.co/api/models/G                
+                             oodfire/Evo-2-Layer-26-Mixed/xet-re                
+                             ad-token/a02b08a876b112d1c5da172e57                
+                             a59e2bc76b1d70 "HTTP/1.1 200 OK"                   
+Initializing inference params with max_seqlen=5386
+[11/12/26 06:47:58] INFO     vortex.model.utils - INFO - Fixup      utils.py:191
+                             applied: Allocating cublas workspace               
+                             for device=0                                       
+/usr/local/lib/python3.12/dist-packages/vortex/model/engine.py:616: UserWarning: Casting complex values to real discards the imaginary part (Triggered internally at /opt/pytorch/pytorch/aten/src/ATen/native/Copy.cpp:307.)
+  inference_params.state_dict[layer_idx] = state[..., L - 1].to(dtype=state_dtype)
+Initializing inference params with max_seqlen=5386

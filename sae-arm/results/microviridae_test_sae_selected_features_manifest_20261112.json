@@ -1,0 +1,82 @@
+{
+  "status": "PASS",
+  "created_on": "2026-11-12",
+  "model": "evo2_7b_262k",
+  "sae_repository": "Goodfire/Evo-2-Layer-26-Mixed",
+  "sae_sha256": "598f131a2e71f1c49281335be1d11d2c91920881f91e2fd4e6aa0659e5b8b4b1",
+  "split": "test only",
+  "candidate_selection_source": "microviridae_calibration_sae_feature_ranking_20261112.json",
+  "selected_calibration_candidates": [
+    {
+      "family_id": "MK249233.1|cds03",
+      "family_name": "DNA pilot protein",
+      "feature_id": 3575,
+      "median_paired_delta": 0.7480477567733033,
+      "mean_paired_delta": 0.7296606561549803,
+      "positive_genome_fraction": 1.0,
+      "family_gene_active_fraction": 1.0,
+      "other_family_active_fraction": 0.9666666666666667
+    },
+    {
+      "family_id": "MT310270.1|cds06",
+      "family_name": "internal scaffolding protein",
+      "feature_id": 32710,
+      "median_paired_delta": 0.6295332610607147,
+      "mean_paired_delta": 0.7919931133588155,
+      "positive_genome_fraction": 0.9666666666666667,
+      "family_gene_active_fraction": 1.0,
+      "other_family_active_fraction": 1.0
+    },
+    {
+      "family_id": "MT310288.1|cds01",
+      "family_name": "major capsid protein",
+      "feature_id": 16115,
+      "median_paired_delta": 0.7208555121906102,
+      "mean_paired_delta": 0.5555804796439285,
+      "positive_genome_fraction": 0.8666666666666667,
+      "family_gene_active_fraction": 1.0,
+      "other_family_active_fraction": 1.0
+    },
+    {
+      "family_id": "MW697641.1|cds06",
+      "family_name": "replication initiator protein",
+      "feature_id": 29844,
+      "median_paired_delta": 0.78057461977005,
+      "mean_paired_delta": 0.7917808497945468,
+      "positive_genome_fraction": 1.0,
+      "family_gene_active_fraction": 1.0,
+      "other_family_active_fraction": 1.0
+    },
+    {
+      "family_id": "MZ089757.1|cds01",
+      "family_name": "nonstructural protein",
+      "feature_id": 32710,
+      "median_paired_delta": 0.3830784559249878,
+      "mean_paired_delta": 0.4384908397992452,
+      "positive_genome_fraction": 0.8666666666666667,
+      "family_gene_active_fraction": 1.0,
+      "other_family_active_fraction": 1.0
+    }
+  ],
+  "unique_feature_ids_evaluated": [
+    3575,
+    16115,
+    29844,
+    32710
+  ],
+  "genome_count": 60,
+  "family_gene_count": 300,
+  "feature_value_matrix_shape": [
+    300,
+    4
+  ],
+  "partial_family_gene_count": 1,
+  "gpu_used": true,
+  "gpu": "NVIDIA L40S",
+  "worker_timeout_seconds": 900,
+  "estimated_runtime_resource_cost_ceiling_usd": 0.6,
+  "estimate_note": "900 seconds x L40S, 4 CPU cores, and 32 GiB memory at current published rates; setup may add a small amount.",
+  "outputs": [
+    "microviridae_test_sae_selected_features_20261112.npz"
+  ]
+}
