@@ -1,0 +1,328 @@
+{
+  "query_manifest": "data/microviridae_query_manifest.txt",
+  "accession_file": "data\\microviridae_accessions_20261111.txt",
+  "genbank_file": "data\\microviridae_records_20261111.gb",
+  "inventory_file": "data\\microviridae_candidate_inventory_20261111.csv",
+  "min_length_bp": 4000,
+  "max_length_bp": 6499,
+  "unique_exact_sequences": 7147,
+  "exact_duplicate_records": 502,
+  "largest_exact_duplicate_group": 24,
+  "screened_candidates_after_exact_dedup": 2549,
+  "most_common_cds_products": [
+    [
+      "hypothetical protein",
+      10864
+    ],
+    [
+      "major capsid protein",
+      5412
+    ],
+    [
+      "replication initiator protein",
+      4964
+    ],
+    [
+      "DNA pilot protein",
+      4955
+    ],
+    [
+      "nonstructural protein",
+      2713
+    ],
+    [
+      "internal scaffolding protein",
+      2553
+    ],
+    [
+      "protein A*",
+      451
+    ],
+    [
+      "protein K",
+      449
+    ],
+    [
+      "protein C",
+      441
+    ],
+    [
+      "protein A",
+      440
+    ],
+    [
+      "protein B",
+      440
+    ],
+    [
+      "protein D",
+      440
+    ],
+    [
+      "protein E",
+      440
+    ],
+    [
+      "protein J",
+      440
+    ],
+    [
+      "protein F",
+      440
+    ],
+    [
+      "protein G",
+      440
+    ],
+    [
+      "protein H",
+      440
+    ],
+    [
+      "DNA binding protein",
+      380
+    ],
+    [
+      "minor capsid protein",
+      286
+    ],
+    [
+      "replication initiation protein",
+      268
+    ],
+    [
+      "peptidase",
+      188
+    ],
+    [
+      "VP2",
+      119
+    ],
+    [
+      "VP1",
+      114
+    ],
+    [
+      "VP4",
+      112
+    ],
+    [
+      "VP3",
+      92
+    ]
+  ],
+  "most_common_products_by_genome": [
+    [
+      "major capsid protein",
+      5411
+    ],
+    [
+      "replication initiator protein",
+      4954
+    ],
+    [
+      "DNA pilot protein",
+      4952
+    ],
+    [
+      "hypothetical protein",
+      4619
+    ],
+    [
+      "nonstructural protein",
+      2693
+    ],
+    [
+      "internal scaffolding protein",
+      2548
+    ],
+    [
+      "protein A*",
+      451
+    ],
+    [
+      "protein K",
+      449
+    ],
+    [
+      "protein C",
+      441
+    ],
+    [
+      "protein E",
+      440
+    ],
+    [
+      "protein D",
+      440
+    ],
+    [
+      "protein G",
+      440
+    ],
+    [
+      "protein F",
+      440
+    ],
+    [
+      "protein J",
+      440
+    ],
+    [
+      "protein H",
+      440
+    ],
+    [
+      "protein B",
+      440
+    ],
+    [
+      "protein A",
+      440
+    ],
+    [
+      "DNA binding protein",
+      380
+    ],
+    [
+      "replication initiation protein",
+      266
+    ],
+    [
+      "minor capsid protein",
+      227
+    ],
+    [
+      "peptidase",
+      188
+    ],
+    [
+      "VP2",
+      119
+    ],
+    [
+      "VP1",
+      114
+    ],
+    [
+      "VP4",
+      112
+    ],
+    [
+      "VP3",
+      92
+    ]
+  ],
+  "most_common_products_in_screened_genomes": [
+    [
+      "hypothetical protein",
+      2418
+    ],
+    [
+      "major capsid protein",
+      2348
+    ],
+    [
+      "replication initiator protein",
+      2162
+    ],
+    [
+      "DNA pilot protein",
+      2136
+    ],
+    [
+      "nonstructural protein",
+      1199
+    ],
+    [
+      "internal scaffolding protein",
+      1117
+    ],
+    [
+      "protein A*",
+      450
+    ],
+    [
+      "protein K",
+      448
+    ],
+    [
+      "protein C",
+      441
+    ],
+    [
+      "protein E",
+      440
+    ],
+    [
+      "protein D",
+      440
+    ],
+    [
+      "protein G",
+      440
+    ],
+    [
+      "protein F",
+      440
+    ],
+    [
+      "protein J",
+      440
+    ],
+    [
+      "protein H",
+      440
+    ],
+    [
+      "protein B",
+      440
+    ],
+    [
+      "protein A",
+      440
+    ],
+    [
+      "DNA binding protein",
+      250
+    ],
+    [
+      "replication initiation protein",
+      124
+    ],
+    [
+      "peptidase",
+      98
+    ],
+    [
+      "minor capsid protein",
+      97
+    ],
+    [
+      "gpC",
+      57
+    ],
+    [
+      "gpF",
+      52
+    ],
+    [
+      "gpE",
+      52
+    ],
+    [
+      "gpA",
+      52
+    ]
+  ],
+  "counts": {
+    "records": 7649,
+    "valid_length_and_acgt": 7592,
+    "all_acgt": 7592,
+    "length_range": 7649,
+    "six_cds_ge_150nt": 2979,
+    "six_translated_cds_ge_150nt": 2979,
+    "circular": 7599,
+    "linear": 50
+  }
+}

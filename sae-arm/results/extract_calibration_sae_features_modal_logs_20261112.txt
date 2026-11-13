@@ -1,0 +1,330 @@
+=============
+
+NVIDIA Release 25.04 (build 159049541)
+PyTorch Version 2.7.0a0+79aa174
+Container image Copyright (c) 2025, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+Copyright (c) 2014-2024 Facebook Inc.
+Copyright (c) 2011-2014 Idiap Research Institute (Ronan Collobert)
+Copyright (c) 2012-2014 Deepmind Technologies    (Koray Kavukcuoglu)
+Copyright (c) 2011-2012 NEC Laboratories America (Koray Kavukcuoglu)
+Copyright (c) 2011-2013 NYU                      (Clement Farabet)
+Copyright (c) 2006-2010 NEC Laboratories America (Ronan Collobert, Leon Bottou, Iain Melvin, Jason Weston)
+Copyright (c) 2006      Idiap Research Institute (Samy Bengio)
+Copyright (c) 2001-2004 Idiap Research Institute (Ronan Collobert, Samy Bengio, Johnny Mariethoz)
+Copyright (c) 2015      Google Inc.
+Copyright (c) 2015      Yangqing Jia
+Copyright (c) 2013-2016 The Caffe contributors
+All rights reserved.
+
+Various files include modifications (c) NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+
+GOVERNING TERMS: The software and materials are governed by the NVIDIA Software License Agreement
+(found at https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-software-license-agreement/)
+and the Product-Specific Terms for NVIDIA AI Products
+(found at https://www.nvidia.com/en-us/agreements/enterprise-software/product-specific-terms-for-ai-products/).
+
+[11/12/26 06:27:11] INFO     httpx - INFO - HTTP Request: HEAD   _client.py:1025
+                             https://huggingface.co/Goodfire/Evo                
+                             -2-Layer-26-Mixed/resolve/main/sae-                
+                             layer26-mixed-expansion_8-k_64.pt                  
+                             "HTTP/1.1 302 Found"                               
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+                    WARNING  huggingface_hub.utils._http - WARNING  _http.py:904
+                             - Warning: You are sending                         
+                             unauthenticated requests to the HF                 
+                             Hub. Please set a HF_TOKEN to enable               
+                             higher rate limits and faster                      
+                             downloads.                                         
+                    INFO     httpx - INFO - HTTP Request: GET    _client.py:1025
+                             https://huggingface.co/api/models/G                
+                             oodfire/Evo-2-Layer-26-Mixed/xet-re                
+                             ad-token/a02b08a876b112d1c5da172e57                
+                             a59e2bc76b1d70 "HTTP/1.1 200 OK"                   
+[11/12/26 06:27:14] INFO     httpx - INFO - HTTP Request: GET    _client.py:1025
+                             https://huggingface.co/api/models/a                
+                             rcinstitute/evo2_7b_262k/revision/m                
+                             ain "HTTP/1.1 200 OK"                              
+
+                    INFO     httpx - INFO - HTTP Request: HEAD   _client.py:1025
+                             https://huggingface.co/arcinstitute                
+                             /evo2_7b_262k/resolve/27c4f055e8b72                
+                             9a27ab5c3e6c8b9c35367a76fba/.gitatt                
+                             ributes "HTTP/1.1 307 Temporary                    
+                             Redirect"                                          
+                    INFO     httpx - INFO - HTTP Request: HEAD   _client.py:1025
+                             https://huggingface.co/api/resolve-                
+                             cache/models/arcinstitute/evo2_7b_2                
+                             62k/27c4f055e8b729a27ab5c3e6c8b9c35                
+                             367a76fba/.gitattributes "HTTP/1.1                 
+                             200 OK"                                            
+                    INFO     httpx - INFO - HTTP Request: HEAD   _client.py:1025
+                             https://huggingface.co/arcinstitute                
+                             /evo2_7b_262k/resolve/27c4f055e8b72                
+                             9a27ab5c3e6c8b9c35367a76fba/README.                
+                             md "HTTP/1.1 307 Temporary                         
+                             Redirect"                                          
+                    INFO     httpx - INFO - HTTP Request: HEAD   _client.py:1025
+                             https://huggingface.co/arcinstitute                
+                             /evo2_7b_262k/resolve/27c4f055e8b72                
+                             9a27ab5c3e6c8b9c35367a76fba/config.                
+                             yml "HTTP/1.1 307 Temporary                        
+                             Redirect"                                          
+                    INFO     httpx - INFO - HTTP Request: HEAD   _client.py:1025
+                             https://huggingface.co/arcinstitute                
+                             /evo2_7b_262k/resolve/27c4f055e8b72                
+                             9a27ab5c3e6c8b9c35367a76fba/evo2_7b                
+                             _262k.pt "HTTP/1.1 302 Found"                      
+                    INFO     httpx - INFO - HTTP Request: HEAD   _client.py:1025
+                             https://huggingface.co/api/resolve-                
+                             cache/models/arcinstitute/evo2_7b_2                
+                             62k/27c4f055e8b729a27ab5c3e6c8b9c35                
+                             367a76fba/README.md "HTTP/1.1 200                  
+                             OK"                                                
+                    INFO     httpx - INFO - HTTP Request: HEAD   _client.py:1025
+                             https://huggingface.co/api/resolve-                
+                             cache/models/arcinstitute/evo2_7b_2                
+                             62k/27c4f055e8b729a27ab5c3e6c8b9c35                
+                             367a76fba/config.yml "HTTP/1.1 200                 
+                             OK"                                                
+                    INFO     httpx - INFO - HTTP Request: GET    _client.py:1025
+                             https://huggingface.co/api/resolve-                
+                             cache/models/arcinstitute/evo2_7b_2                
+                             62k/27c4f055e8b729a27ab5c3e6c8b9c35                
+                             367a76fba/.gitattributes "HTTP/1.1                 
+                             200 OK"                                            
+                    INFO     httpx - INFO - HTTP Request: GET    _client.py:1025
+                             https://huggingface.co/api/resolve-                
+                             cache/models/arcinstitute/evo2_7b_2                
+                             62k/27c4f055e8b729a27ab5c3e6c8b9c35                
+                             367a76fba/README.md "HTTP/1.1 200                  
+                             OK"                                                
+                    INFO     httpx - INFO - HTTP Request: GET    _client.py:1025
+                             https://huggingface.co/api/resolve-                
+                             cache/models/arcinstitute/evo2_7b_2                
+                             62k/27c4f055e8b729a27ab5c3e6c8b9c35                
+                             367a76fba/config.yml "HTTP/1.1 200                 
+                             OK"                                                
+                    INFO     httpx - INFO - HTTP Request: GET    _client.py:1025
+                             https://huggingface.co/api/models/a                
+                             rcinstitute/evo2_7b_262k/xet-read-t                
+                             oken/27c4f055e8b729a27ab5c3e6c8b9c3                
+                             5367a76fba "HTTP/1.1 200 OK"                       
+[1A
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]
+[1A
+Fetching 4 files: 100%|██████████| 4/4 [00:49<00:00, 12.32s/it]
+[1A
+Fetching 4 files: 100%|██████████| 4/4 [00:49<00:00, 12.32s/it]
+Found complete file in repo: evo2_7b_262k.pt
+[11/12/26 06:28:03] INFO     StripedHyena - INFO - Initializing     model.py:645
+                             StripedHyena with config:                          
+                             {'model_name': 'shc-evo2-7b-8k-2T-v2',             
+                             'vocab_size': 512, 'hidden_size':                  
+                             4096, 'num_filters': 4096,                         
+                             'hcl_layer_idxs': [2, 6, 9, 13, 16,                
+                             20, 23, 27, 30], 'hcm_layer_idxs': [1,             
+                             5, 8, 12, 15, 19, 22, 26, 29],                     
+                             'hcs_layer_idxs': [0, 4, 7, 11, 14,                
+                             18, 21, 25, 28], 'attn_layer_idxs':                
+                             [3, 10, 17, 24, 31],                               
+                             'hcm_filter_length': 128,                          
+                             'hcl_filter_groups': 4096,                         
+                             'hcm_filter_groups': 256,                          
+                             'hcs_filter_groups': 256,                          
+                             'hcs_filter_length': 7, 'num_layers':              
+                             32, 'short_filter_length': 3,                      
+                             'num_attention_heads': 32,                         
+                             'short_filter_bias': False,                        
+                             'mlp_init_method':                                 
+                             'torch.nn.init.zeros_',                            
+                             'mlp_output_init_method':                          
+                             'torch.nn.init.zeros_', 'eps': 1e-06,              
+                             'state_size': 16, 'rotary_emb_base':               
+                             10000, 'rotary_emb_scaling_factor':                
+                             32, 'use_interpolated_rotary_pos_emb':             
+                             True, 'make_vocab_size_divisible_by':              
+                             8, 'inner_size_multiple_of': 16,                   
+                             'inner_mlp_size': 11008,                           
+                             'log_intermediate_values': False,                  
+                             'proj_groups': 1,                                  
+                             'hyena_filter_groups': 1,                          
+                             'column_split_hyena': False,                       
+                             'column_split': True, 'interleave':                
+                             True, 'evo2_style_activations': True,              
+                             'model_parallel_size': 1,                          
+                             'pipe_parallel_size': 1,                           
+                             'tie_embeddings': True,                            
+                             'mha_out_proj_bias': True,                         
+                             'hyena_out_proj_bias': True,                       
+                             'hyena_flip_x1x2': False,                          
+                             'qkv_proj_bias': False,                            
+                             'use_fp8_input_projections': True,                 
+                             'max_seqlen': 262144,                              
+                             'max_batch_size': 1, 'final_norm':                 
+                             True, 'use_flash_attn': True,                      
+                             'use_flash_rmsnorm': False,                        
+                             'use_flash_depthwise': False,                      
+                             'use_flashfft': False,                             
+                             'use_laughing_hyena': False,                       
+                             'inference_mode': True,                            
+                             'tokenizer_type':                                  
+                             'CharLevelTokenizer', 'prefill_style':             
+                             'fft', 'mlp_activation': 'gelu',                   
+                             'print_activations': False, 'Loader':              
+                             <class 'yaml.loader.FullLoader'>}                  
+[11/12/26 06:28:04] INFO     StripedHyena - INFO - Initializing 32  model.py:678
+                             blocks...                                          
+                    INFO     StripedHyena - INFO - Distributing     model.py:685
+                             across 1 GPUs, approximately 32 layers             
+                             per GPU                                            
+
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=0 to device='cuda:0'                     
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 0: 202426112                             
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=1 to device='cuda:0'                     
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 1: 202461184                             
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=2 to device='cuda:0'                     
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 2: 202559488                             
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=3 to device='cuda:0'                     
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 3: 202387456                             
+[1A
+  0%|          | 0/32 [00:00<?, ?it/s]
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=4 to device='cuda:0'                     
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 4: 202426112                             
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=5 to device='cuda:0'                     
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 5: 202461184                             
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=6 to device='cuda:0'                     
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 6: 202559488                             
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=7 to device='cuda:0'                     
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 7: 202426112                             
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=8 to device='cuda:0'                     
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 8: 202461184                             
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=9 to device='cuda:0'                     
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 9: 202559488                             
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=10 to device='cuda:0'                    
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 10: 202387456                            
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=11 to device='cuda:0'                    
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 11: 202426112                            
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=12 to device='cuda:0'                    
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 12: 202461184                            
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=13 to device='cuda:0'                    
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 13: 202559488                            
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=14 to device='cuda:0'                    
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 14: 202426112                            
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=15 to device='cuda:0'                    
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 15: 202461184                            
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=16 to device='cuda:0'                    
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 16: 202559488                            
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=17 to device='cuda:0'                    
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 17: 202387456                            
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=18 to device='cuda:0'                    
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 18: 202426112                            
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=19 to device='cuda:0'                    
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 19: 202461184                            
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=20 to device='cuda:0'                    
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 20: 202559488                            
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=21 to device='cuda:0'                    
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 21: 202426112                            
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=22 to device='cuda:0'                    
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 22: 202461184                            
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=23 to device='cuda:0'                    
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 23: 202559488                            
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=24 to device='cuda:0'                    
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 24: 202387456                            
+[1A
+ 12%|█▎        | 4/32 [00:00<00:01, 20.69it/s]
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=25 to device='cuda:0'                    
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 25: 202426112                            
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=26 to device='cuda:0'                    
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 26: 202461184                            
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=27 to device='cuda:0'                    
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 27: 202559488                            
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=28 to device='cuda:0'                    
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 28: 202426112                            
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=29 to device='cuda:0'                    
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 29: 202461184                            
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=30 to device='cuda:0'                    
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 30: 202559488                            
+                    INFO     StripedHyena - INFO - Assigned         model.py:703
+                             layer_idx=31 to device='cuda:0'                    
+                    INFO     StripedHyena - INFO - Parameter count  model.py:704
+                             for block 31: 202387456                            
+[1A
+ 78%|███████▊  | 25/32 [00:00<00:00, 99.09it/s]
+[1A
+100%|██████████| 32/32 [00:00<00:00, 96.21it/s]
+                    INFO     StripedHyena - INFO - Initialized      model.py:723
+                             model                                              
+                    INFO     vortex.model.utils - INFO - Loading     utils.py:92
+                             /root/.cache/huggingface/hub/models--ar            
+                             cinstitute--evo2_7b_262k/snapshots/27c4            
+                             f055e8b729a27ab5c3e6c8b9c35367a76fba/ev            
+                             o2_7b_262k.pt                                      
+Extra keys in state_dict: {'blocks.30.mixer.mixer.filter.t', 'blocks.2.mixer.mixer.filter.t', 'blocks.20.mixer.mixer.filter.t', 'blocks.3.mixer.dense._extra_state', 'blocks.10.mixer.dense._extra_state', 'blocks.23.mixer.mixer.filter.t', 'blocks.31.mixer.dense._extra_state', 'blocks.24.mixer.dense._extra_state', 'blocks.13.mixer.mixer.filter.t', 'unembed.weight', 'blocks.17.mixer.dense._extra_state', 'blocks.16.mixer.mixer.filter.t', 'blocks.6.mixer.mixer.filter.t', 'blocks.9.mixer.mixer.filter.t', 'blocks.27.mixer.mixer.filter.t'}
+[11/12/26 06:28:06] INFO     StripedHyena - INFO - Adjusting Wqkv  model.py:1008
+                             for column split (permuting rows)                  
+[11/12/26 06:28:07] INFO     vortex.model.utils - INFO - Fixup      utils.py:191
+                             applied: Allocating cublas workspace               
+                             for device=0                                       
+Stopping app - local entrypoint completed.

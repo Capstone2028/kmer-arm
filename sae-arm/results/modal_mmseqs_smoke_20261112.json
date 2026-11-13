@@ -1,0 +1,11 @@
+{
+  "mmseqs_version": "15-6f452+ds-2+b3",
+  "dna_cluster_count": 2,
+  "protein_cluster_count": 2,
+  "status": "PASS",
+  "date": "2026-11-12",
+  "gpu_used": false,
+  "compute_limit_seconds": 180,
+  "estimated_runtime_resource_cost_usd": 0.004,
+  "note": "Tiny synthetic inputs; this validates cloud/tool setup, not the biological data or final thresholds."
+}

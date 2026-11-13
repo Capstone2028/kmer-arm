@@ -1,0 +1,261 @@
+{
+  "status": "PASS",
+  "created_on": "2026-11-12",
+  "model": "evo2_7b_262k",
+  "split": "held-out test only",
+  "calibration_selection_source": "microviridae_calibration_sae_feature_ranking_20261112.json",
+  "test_features_did_not_change_candidate_selection": true,
+  "genome_count": 60,
+  "family_gene_count": 300,
+  "partial_gene_regions_excluded_from_primary_comparisons": 1,
+  "comparison": "Within each test genome, the calibration-selected feature's mean activation on its target family gene is compared with its mean across the other complete family genes.",
+  "uncertainty": "Percentile bootstrap 95% intervals for the mean paired difference, 5000 resamples of test genomes; descriptive, not a multiple-testing-adjusted significance test.",
+  "candidate_results": [
+    {
+      "family_id": "MK249233.1|cds03",
+      "family_name": "DNA pilot protein",
+      "calibration_selected_feature_id": 3575,
+      "test_genomes_compared": 60,
+      "excluded_partial_target_genomes": 0,
+      "partial_control_regions_skipped": 1,
+      "mean_target_activation": 0.7496928667028745,
+      "mean_within_genome_control_activation": 0.010403512526520192,
+      "mean_paired_difference": 0.7392893541763542,
+      "mean_paired_difference_bootstrap_95pct_ci": [
+        0.7065687099102829,
+        0.7707662267074618
+      ],
+      "median_paired_difference": 0.742454103565251,
+      "fraction_test_genomes_target_higher": 1.0,
+      "fraction_ties": 0.0,
+      "candidate_active_fraction_in_target_genes": 1.0,
+      "candidate_active_fraction_in_control_genes": 0.9666666666666667
+    },
+    {
+      "family_id": "MT310270.1|cds06",
+      "family_name": "internal scaffolding protein",
+      "calibration_selected_feature_id": 32710,
+      "test_genomes_compared": 60,
+      "excluded_partial_target_genomes": 0,
+      "partial_control_regions_skipped": 1,
+      "mean_target_activation": 5.784109830856323,
+      "mean_within_genome_control_activation": 5.20766516857677,
+      "mean_paired_difference": 0.5764446622795529,
+      "mean_paired_difference_bootstrap_95pct_ci": [
+        0.48425990296734706,
+        0.6737785397966702
+      ],
+      "median_paired_difference": 0.6260105967521667,
+      "fraction_test_genomes_target_higher": 0.95,
+      "fraction_ties": 0.0,
+      "candidate_active_fraction_in_target_genes": 1.0,
+      "candidate_active_fraction_in_control_genes": 1.0
+    },
+    {
+      "family_id": "MT310288.1|cds01",
+      "family_name": "major capsid protein",
+      "calibration_selected_feature_id": 16115,
+      "test_genomes_compared": 60,
+      "excluded_partial_target_genomes": 0,
+      "partial_control_regions_skipped": 1,
+      "mean_target_activation": 0.7741030893598994,
+      "mean_within_genome_control_activation": 0.11500617016443154,
+      "mean_paired_difference": 0.6590969191954678,
+      "mean_paired_difference_bootstrap_95pct_ci": [
+        0.5878227476515006,
+        0.7177878633422855
+      ],
+      "median_paired_difference": 0.7282451041974127,
+      "fraction_test_genomes_target_higher": 0.95,
+      "fraction_ties": 0.0,
+      "candidate_active_fraction_in_target_genes": 1.0,
+      "candidate_active_fraction_in_control_genes": 1.0
+    },
+    {
+      "family_id": "MW697641.1|cds06",
+      "family_name": "replication initiator protein",
+      "calibration_selected_feature_id": 29844,
+      "test_genomes_compared": 59,
+      "excluded_partial_target_genomes": 1,
+      "partial_control_regions_skipped": 0,
+      "mean_target_activation": 2.6010858123585328,
+      "mean_within_genome_control_activation": 1.8901591033248577,
+      "mean_paired_difference": 0.7109267090336752,
+      "mean_paired_difference_bootstrap_95pct_ci": [
+        0.6356125614968902,
+        0.7862534452229738
+      ],
+      "median_paired_difference": 0.778571218252182,
+      "fraction_test_genomes_target_higher": 1.0,
+      "fraction_ties": 0.0,
+      "candidate_active_fraction_in_target_genes": 1.0,
+      "candidate_active_fraction_in_control_genes": 1.0
+    },
+    {
+      "family_id": "MZ089757.1|cds01",
+      "family_name": "nonstructural protein",
+      "calibration_selected_feature_id": 32710,
+      "test_genomes_compared": 60,
+      "excluded_partial_target_genomes": 0,
+      "partial_control_regions_skipped": 1,
+      "mean_target_activation": 5.763788334528605,
+      "mean_within_genome_control_activation": 5.213374798165428,
+      "mean_paired_difference": 0.5504135363631778,
+      "mean_paired_difference_bootstrap_95pct_ci": [
+        0.3792992321153481,
+        0.7727257475836408
+      ],
+      "median_paired_difference": 0.34711164236068726,
+      "fraction_test_genomes_target_higher": 0.95,
+      "fraction_ties": 0.0,
+      "candidate_active_fraction_in_target_genes": 1.0,
+      "candidate_active_fraction_in_control_genes": 1.0
+    }
+  ],
+  "candidate_feature_cross_family_means": [
+    {
+      "feature_id": 3575,
+      "by_gene_family": {
+        "MK249233.1|cds03": {
+          "family_name": "DNA pilot protein",
+          "n_complete_genes": 60,
+          "mean_activation": 0.7496928667028745,
+          "active_fraction": 1.0
+        },
+        "MT310270.1|cds06": {
+          "family_name": "internal scaffolding protein",
+          "n_complete_genes": 60,
+          "mean_activation": 0.006884544480514402,
+          "active_fraction": 0.6666666666666666
+        },
+        "MT310288.1|cds01": {
+          "family_name": "major capsid protein",
+          "n_complete_genes": 60,
+          "mean_activation": 0.0007436230089903499,
+          "active_fraction": 0.5833333333333334
+        },
+        "MW697641.1|cds06": {
+          "family_name": "replication initiator protein",
+          "n_complete_genes": 59,
+          "mean_activation": 0.022481810451501,
+          "active_fraction": 0.847457627118644
+        },
+        "MZ089757.1|cds01": {
+          "family_name": "nonstructural protein",
+          "n_complete_genes": 60,
+          "mean_activation": 0.01187077375749747,
+          "active_fraction": 0.1
+        }
+      }
+    },
+    {
+      "feature_id": 16115,
+      "by_gene_family": {
+        "MK249233.1|cds03": {
+          "family_name": "DNA pilot protein",
+          "n_complete_genes": 60,
+          "mean_activation": 0.05571062319601575,
+          "active_fraction": 1.0
+        },
+        "MT310270.1|cds06": {
+          "family_name": "internal scaffolding protein",
+          "n_complete_genes": 60,
+          "mean_activation": 0.09994276111635068,
+          "active_fraction": 1.0
+        },
+        "MT310288.1|cds01": {
+          "family_name": "major capsid protein",
+          "n_complete_genes": 60,
+          "mean_activation": 0.7741030893598994,
+          "active_fraction": 1.0
+        },
+        "MW697641.1|cds06": {
+          "family_name": "replication initiator protein",
+          "n_complete_genes": 59,
+          "mean_activation": 0.16898862315120838,
+          "active_fraction": 1.0
+        },
+        "MZ089757.1|cds01": {
+          "family_name": "nonstructural protein",
+          "n_complete_genes": 60,
+          "mean_activation": 0.13751207079427938,
+          "active_fraction": 1.0
+        }
+      }
+    },
+    {
+      "feature_id": 29844,
+      "by_gene_family": {
+        "MK249233.1|cds03": {
+          "family_name": "DNA pilot protein",
+          "n_complete_genes": 60,
+          "mean_activation": 2.34208478530248,
+          "active_fraction": 1.0
+        },
+        "MT310270.1|cds06": {
+          "family_name": "internal scaffolding protein",
+          "n_complete_genes": 60,
+          "mean_activation": 1.6066879014174142,
+          "active_fraction": 1.0
+        },
+        "MT310288.1|cds01": {
+          "family_name": "major capsid protein",
+          "n_complete_genes": 60,
+          "mean_activation": 1.8568706353505453,
+          "active_fraction": 1.0
+        },
+        "MW697641.1|cds06": {
+          "family_name": "replication initiator protein",
+          "n_complete_genes": 59,
+          "mean_activation": 2.6010858123585328,
+          "active_fraction": 1.0
+        },
+        "MZ089757.1|cds01": {
+          "family_name": "nonstructural protein",
+          "n_complete_genes": 60,
+          "mean_activation": 1.7638513803482057,
+          "active_fraction": 0.9833333333333333
+        }
+      }
+    },
+    {
+      "feature_id": 32710,
+      "by_gene_family": {
+        "MK249233.1|cds03": {
+          "family_name": "DNA pilot protein",
+          "n_complete_genes": 60,
+          "mean_activation": 4.7974940776824955,
+          "active_fraction": 1.0
+        },
+        "MT310270.1|cds06": {
+          "family_name": "internal scaffolding protein",
+          "n_complete_genes": 60,
+          "mean_activation": 5.784109830856323,
+          "active_fraction": 1.0
+        },
+        "MT310288.1|cds01": {
+          "family_name": "major capsid protein",
+          "n_complete_genes": 60,
+          "mean_activation": 5.6205968697865805,
+          "active_fraction": 1.0
+        },
+        "MW697641.1|cds06": {
+          "family_name": "replication initiator protein",
+          "n_complete_genes": 59,
+          "mean_activation": 4.638275776879262,
+          "active_fraction": 1.0
+        },
+        "MZ089757.1|cds01": {
+          "family_name": "nonstructural protein",
+          "n_complete_genes": 60,
+          "mean_activation": 5.763788334528605,
+          "active_fraction": 1.0
+        }
+      }
+    }
+  ],
+  "duplicate_calibration_candidate_ids": [
+    32710
+  ],
+  "table": "microviridae_test_sae_candidate_validation_20261112.tsv"
+}

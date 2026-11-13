@@ -1,0 +1,49 @@
+{
+  "candidate_genomes": 2549,
+  "genome_clusters_at_90pct_identity": 1975,
+  "singleton_clusters": 1810,
+  "multi_genome_clusters": 165,
+  "largest_cluster_size": 157,
+  "largest_clusters": [
+    {
+      "representative": "DQ079896.1",
+      "members": 157
+    },
+    {
+      "representative": "HM753716.1",
+      "members": 115
+    },
+    {
+      "representative": "MN988460.1",
+      "members": 21
+    },
+    {
+      "representative": "PP511857.1",
+      "members": 11
+    },
+    {
+      "representative": "PP511484.1",
+      "members": 9
+    },
+    {
+      "representative": "NC_007819.1",
+      "members": 8
+    },
+    {
+      "representative": "DQ079906.1",
+      "members": 7
+    },
+    {
+      "representative": "PP511863.1",
+      "members": 7
+    },
+    {
+      "representative": "PP511860.1",
+      "members": 7
+    },
+    {
+      "representative": "PP511858.1",
+      "members": 6
+    }
+  ]
+}

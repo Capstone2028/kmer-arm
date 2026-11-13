@@ -1,0 +1,32 @@
+{
+  "selection_note": "Five highest-prevalence protein clusters, cross-checked by common product labels. These are fresh-data candidates, not asserted to be exact family IDs from the unavailable prior split.",
+  "candidate_genomes_with_all_five": 273,
+  "90pct_genome_clusters_represented": 263,
+  "families": [
+    {
+      "family_id": "MT310288.1|cds01",
+      "genome_count": 1547,
+      "common_products": "major capsid protein (1527) | putative VP1 (6) | major capsid protein VP1 (5) | putative major capsid protein (3) | structural protein (2) | viral coat protein VP1 (1) | hypothetical protein (1) | putative major coat protein (1)"
+    },
+    {
+      "family_id": "MW697641.1|cds06",
+      "genome_count": 1442,
+      "common_products": "replication initiator protein (1314) | replication initiation protein (61) | replication associated protein (32) | putative replication initiation protein (14) | putative VP4 (6) | replication protein VP4 (5) | DNA replication protein (3) | replication initiator (3)"
+    },
+    {
+      "family_id": "MZ089757.1|cds01",
+      "genome_count": 825,
+      "common_products": "nonstructural protein (782) | DNA binding protein vP5 (17) | hypothetical protein (7) | DNA binding protein (7) | putative VP5 (6) | DNA binding protein VP5 (2) | packaging protein (2) | VP5 (1)"
+    },
+    {
+      "family_id": "MT310270.1|cds06",
+      "genome_count": 480,
+      "common_products": "internal scaffolding protein (440) | scaffold protein (22) | minor capsid protein (7) | portal protein (2) | internal scaffolding protein VP3 (2) | structural protein (2) | DNA pilot protein (2) | putative capsid protein (1)"
+    },
+    {
+      "family_id": "MK249233.1|cds03",
+      "genome_count": 447,
+      "common_products": "DNA pilot protein (414) | minor capsid protein (16) | pilot protein (3) | putative minor capsid protein (3) | internal scaffolding protein (3) | DNA pilot protein VP2 (3) | structural protein (2) | hypothetical protein (1)"
+    }
+  ]
+}
