@@ -53,18 +53,30 @@ GENOME_LEN = 5386  # NC_001422.1
 
 # name, 0-based segments in document order (join() order for origin-spanning
 # genes), strand. All +1 strand on this genome.
+# The 8 non-wrap genes' NAMES were wrong here (same bug, same one-position
+# rotation, found and fixed in block_pipeline.py 2026-11-13 -- see
+# BUILD_NOTES.md that date): spans were always correct, confirmed by
+# translating each one and checking its residue length against phiX174's
+# well-known protein lengths (F=427, D=152, J=38, G=175, H=328, C=86,
+# E=91, K=56). A, A*, and B were already correct (B translates to exactly
+# 120 aa; A to 513 aa matching the real replication-protein-A sequence; A*
+# is mechanically consistent with A -- same frame, same stop, starting 172
+# codons in). Currently a label-only bug: orf_closure_check's pass/fail
+# logic reads `segments`, never `name`, and both benchmark scripts only
+# ever consume the aggregate n_closed/n_scored, never this per-gene
+# breakdown -- so no completed GPU run's reported numbers are affected.
 PHIX174_GENES = [
     {"name": "A",  "segments": [(3980, 5386), (0, 136)],  "wraps_origin": True},
     {"name": "A*", "segments": [(4496, 5386), (0, 136)],  "wraps_origin": True},
     {"name": "B",  "segments": [(5074, 5386), (0, 51)],   "wraps_origin": True},
-    {"name": "C",  "segments": [(50, 221)],                "wraps_origin": False},
-    {"name": "D",  "segments": [(132, 393)],                "wraps_origin": False},
-    {"name": "F",  "segments": [(389, 848)],                "wraps_origin": False},
-    {"name": "G",  "segments": [(567, 843)],                "wraps_origin": False},
-    {"name": "H",  "segments": [(847, 964)],                "wraps_origin": False},
-    {"name": "E",  "segments": [(1000, 2284)],              "wraps_origin": False},
-    {"name": "J",  "segments": [(2394, 2922)],              "wraps_origin": False},
-    {"name": "K",  "segments": [(2930, 3917)],              "wraps_origin": False},
+    {"name": "K",  "segments": [(50, 221)],                "wraps_origin": False},
+    {"name": "C",  "segments": [(132, 393)],                "wraps_origin": False},
+    {"name": "D",  "segments": [(389, 848)],                "wraps_origin": False},
+    {"name": "E",  "segments": [(567, 843)],                "wraps_origin": False},
+    {"name": "J",  "segments": [(847, 964)],                "wraps_origin": False},
+    {"name": "F",  "segments": [(1000, 2284)],              "wraps_origin": False},
+    {"name": "G",  "segments": [(2394, 2922)],              "wraps_origin": False},
+    {"name": "H",  "segments": [(2930, 3917)],              "wraps_origin": False},
 ]
 
 

@@ -15,6 +15,10 @@ EvSpark/
 # Teammate's calibration study, kept locally for reference, not ours to commit
 Metrics_REPORT.md
 
+# Local BLAST+ binaries (downloaded, not committed -- see build_aa_kmer_table.py
+# / block_pipeline.py orthology clustering)
+dependencies/tools/
+
 # OS / editor
 .DS_Store
 Thumbs.db

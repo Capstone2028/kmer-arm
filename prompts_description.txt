@@ -1,0 +1,216 @@
+PROMPTS DESCRIPTION
+====================
+Files: prompts.fa (full set, 37 genomes, 74 records)
+       prompts_reliable28_300bp.fa (28 genomes, 300bp only -- coverage-filtered subset)
+       prompts_reliable25_300bp.fa (THIS RUN's actual input, 25 genomes, 300bp only --
+       prompts_reliable28_300bp.fa minus 3 more, see section 6 below)
+Written: 2026-11-13, updated same day (section 6 added)
+
+----------------------------------------------------------------------
+1. WHAT THESE FILES ARE
+----------------------------------------------------------------------
+prompts.fa originally held 40 Microviridae genomes, each as two
+generation-prompt variants: the first 1000bp of the real genome ("__G1")
+and the first 300bp ("__G2").
+
+       *** CORRECTED 2026-11-14: "__G2" IS NOT THE FIRST 300bp. ***
+       Every __G2 record is a 300bp window starting at an INTERNAL genome
+       offset (68..3904); 18 of 25 begin exactly on a CDS start, and 0 of
+       25 begin at position 0. Verified by exact substring search against
+       dependencies/prompts28_genomes.fasta. They are gene-anchored
+       prompts. Treating 300 as a genome coordinate -- which
+       block_kmer_benchmark.py did, on the strength of the sentence above
+       -- invalidated the entire block-kmer GPU run. See BUILD_NOTES.md,
+       2026-11-14. These files carry no coordinate of their own; recover a
+       prompt's real offset with block_kmer_benchmark._prompt_offset().
+
+These are NOT phiX174 -- they are a
+separate set used to test the block-pipeline method on target genomes
+other than the one it was developed on (the test plan's "Target B" idea:
+does this generalize, not just work on the one genome it was tuned
+against).
+
+This run uses only prompts_reliable28_300bp.fa: 28 of those genomes, 300bp
+prompt only. Both restrictions (which 28, and 300bp only) are explained
+below.
+
+----------------------------------------------------------------------
+2. WHY THE ORIGINAL 40-GENOME SET WAS MODIFIED
+----------------------------------------------------------------------
+
+(a) All 40 are metagenome-derived -- none are cultured, plaque-isolated
+    phages. Checked every accession's real GenBank record (isolation
+    source, host field, environmental-sample flag, reference title,
+    assembly method). 23 are explicit Metagenome-Assembled Genomes
+    ("MAG:"), 4 are flagged ENV/environmental_sample, 6 are UNVERIFIED by
+    GenBank staff, and the remainder are named "microvirus" discoveries
+    from faecal or whole-organism virome surveys. This is not unusual for
+    this family -- Microviridae outside the classical coliphage clade is
+    overwhelmingly known through metagenomics, not culturing -- but it
+    means every one of these genomes carries some real risk of assembly
+    error (misassembly, chimeric contigs, tandem-repeat artifacts from
+    de novo metagenome assembly), which a cultured isolate would not.
+
+(b) 3 genomes were removed outright: OX614293.1, OX614603.1, OX614619.1.
+    All three are rhesus-macaque stool virome contigs with genes called
+    by PHANOTATE (an automated phage gene-caller, not a human curator),
+    carrying generic function labels ("head and packaging", "unknown
+    function") rather than specific product names. When checked against
+    the existing 20-genome reference corpus this pipeline's k-mer tables
+    are built from, these three scored far worse than every other
+    genome in the set on BOTH measures tried (curated-annotation match
+    and real BLAST reciprocal-best-hit similarity) -- 29-43% of their
+    genes resolved to a trustworthy table, versus 50-100% for everything
+    else. That is a real gene-content mismatch (this lineage is more
+    divergent from the reference corpus than the rest of the set), not
+    just an annotation-quality complaint, so they were dropped rather
+    than kept and down-weighted.
+
+(c) 9 genomes have no usable CDS annotation at all and are left in
+    prompts.fa but excluded from this run: 7 are UNVERIFIED GenBank
+    records whose genes are only computer-predicted "similar to X" notes
+    with no real translated protein, and 2 (polar-lake MAGs) carry no
+    translatable CDS despite being labelled MAG. There is nothing to
+    measure for these against the reference corpus, so they are
+    untested rather than confirmed bad -- kept available for a future run
+    once/if that's resolved, not used here.
+
+(d) Of the remaining 28, each genome's own genes were checked against
+    the existing 20-genome reference corpus (the same corpus this
+    pipeline's amino-acid k-mer tables are built from): does the gene's
+    own annotation match the corpus's curated vocabulary, or does a real
+    BLAST search at least reciprocally confirm it belongs to an existing
+    gene cluster? 96 + 38 of 199 genes checked this way resolved
+    trustworthily (67.3% overall), unevenly distributed -- the 28 kept
+    here split into a HIGH tier (12 genomes, >=80% of genes resolve) and
+    a MEDIUM tier (16 genomes, 50-79%). Medium-tier genomes are real and
+    usable, just with weaker per-gene signal than high-tier ones -- worth
+    remembering when reading per-gene results, not a reason to exclude
+    them from this run.
+
+(e) Only the 300bp prompt variant is used for this run. The 1000bp
+    variant ("__G1") was determined not to be needed here -- 300bp is the
+    length this round of work actually settled on.
+
+----------------------------------------------------------------------
+3. THE 28 GENOMES IN THIS RUN
+----------------------------------------------------------------------
+
+HIGH CONFIDENCE (12 genomes, >=80% of genes resolve against the
+reference corpus):
+
+  MH029519.1  Gokushovirinae environmental sample, clone NHS-Seq241
+              Source: mud volcanic sediment, Xinjiang, China
+  MH029523.1  Gokushovirinae environmental sample, clone NHS-Seq372
+              Source: mud volcanic sediment, Xinjiang, China
+  MH552523.2  MAG, Microviridae sp., isolate ctch317
+              Source: mouse tissue, USA
+  MH616692.2  MAG, Microviridae sp., isolate ctde624
+              Source: minnow tissue, USA
+  MH617265.1  MAG, Microviridae sp., isolate ctba656
+              Source: minnow tissue, USA
+  MH617473.2  MAG, Microviridae sp., isolate ctca995
+              Source: minnow tissue, USA
+  MK249149.1  Blackfly microvirus SF02, isolate 045
+              Host: Austrosimulium ungulatum (blackfly), whole insect, New Zealand
+  MT135261.1  Gokushovirinae sp., isolate VIRES_GZ01_2265113 (UNVERIFIED record,
+              but real translated CDS present)
+              Host: porcine, China
+  MT135264.1  Gokushovirinae sp., isolate VIRES_GZ03_2265144 (UNVERIFIED record,
+              but real translated CDS present; only 1 gene total -- weak sample)
+              Host: porcine, China
+  MW202414.1  Microviridae sp., isolate ct5fN142
+              Source: Manatee Spring, USA
+  MZ364261.1  Robinz microvirus RP_102
+              Host: Petroica australis (NZ robin), feces, New Zealand
+  PQ491838.1  MAG, Ariapismic virus 36, isolate ASU_vp_13962
+              Host: Apis mellifera (honeybee), whole body, Tempe AZ, USA
+
+MEDIUM CONFIDENCE (16 genomes, 50-79% of genes resolve):
+
+  KT264759.1  Gokushovirus WZ-2015a, isolate 11Rcn07
+              Host: raccoon, feces, China
+  MK496793.1  Capybara microvirus Cap3_SP_444
+              Host: Hydrochoerus hydrochaeris (capybara), feces, Brazil
+  MK496799.1  Capybara microvirus Cap3_SP_465
+              Host: Hydrochoerus hydrochaeris (capybara), feces, Brazil
+  MT135277.1  Gokushovirinae sp., isolate VIRES_SX02_2310888 (UNVERIFIED record,
+              but real translated CDS present; only 4 genes total -- weak sample)
+              Host: porcine, China
+  MT310155.1  MAG, Microvirus sp., isolate 6424_50
+              Source: wastewater, USA
+  MT310159.1  MAG, Microvirus sp., isolate 6424_40
+              Source: wastewater, USA
+  MT310332.1  MAG, Microvirus sp., isolate 1712115_501
+              Source: sludge, USA
+  MT310334.1  MAG, Microvirus sp., isolate 1712115_279
+              Source: sludge, USA
+  MW697720.1  MAG, Arizlama microvirus, isolate AZLM_204
+              Source: lake water sample, USA
+  OM869701.1  Dipodfec virus RodF1_56
+              Host: Dipodomys merriami (kangaroo rat), feces, Arizona, USA
+  OP209174.1  Bacteriophage N88_L5317_C7.5 (only 2 genes total -- weak sample)
+              Host: generic "bacterium", Ireland
+  PQ006516.1  MAG, Bajarodmic virus 401, isolate BGG_04_94
+              Host: Peromyscus fraterculus (mouse), feces, Baja California, Mexico
+  PQ006826.1  MAG, Bajarodmic virus 618, isolate BGG_066_8
+              Host: Chaetodipus arenarius (kangaroo rat), feces, Baja California, Mexico
+  PQ007124.1  MAG, Bajarodmic virus 876, isolate BGG_083_70
+              Host: Neotoma bryanti (woodrat), feces, Baja California, Mexico
+  PQ007287.1  MAG, Bajarodmic virus 1018, isolate BGG_095_25
+              Host: Chaetodipus arenarius (kangaroo rat), feces, Baja California, Mexico
+  PQ007416.1  MAG, Bajarodmic virus 42, isolate BGG_12_62
+              Host: Chaetodipus spinatus (kangaroo rat), feces, Baja California, Mexico
+
+----------------------------------------------------------------------
+4. NOT IN THIS RUN
+----------------------------------------------------------------------
+
+Removed from prompts.fa entirely (worst gene-content coverage, see 2b):
+  OX614293.1, OX614603.1, OX614619.1 -- all rhesus macaque stool
+  virome contigs, PHANOTATE-called generic annotation.
+
+Left in prompts.fa but not used this run (no usable CDS annotation,
+untestable rather than confirmed bad, see 2c):
+  MG945467.1, MG945474.1, MG945589.1, MG945594.1, MG945700.1, MG945809.1,
+  MG945812.1 (UNVERIFIED, children/dog/pig/yak feces, China)
+  MT203029.1, MT204714.1 (MAG, polar freshwater, Svalbard)
+
+The 1000bp ("__G1") prompt variant for all 37 genomes in prompts.fa is
+also not used this run (see 2e) but remains in that file for later use.
+
+----------------------------------------------------------------------
+5. SEPARATE NOTE
+----------------------------------------------------------------------
+The native-only (no k-mer guidance) baseline for this prompt set is
+handled by another part of the team, separately from this file's scope
+(the k-mer arm itself).
+
+----------------------------------------------------------------------
+6. THREE MORE GENOMES EXCLUDED FROM THE ACTUAL RUN FILE (prompts_reliable25_300bp.fa)
+----------------------------------------------------------------------
+MH029519.1, MH029523.1, MT135261.1 -- all three HIGH-confidence tier,
+all three dropped for a reason unrelated to annotation/coverage quality:
+their entire CDS annotation is on the minus strand of the deposited
+sequence (a submitter's arbitrary choice of which strand to deposit, not
+a biological anomaly). The pipeline's per-target prep
+(block_pipeline.prepare_target_b) handles this internally by reverse-
+complementing the whole genome so scoring can reuse ordinary forward-
+strand translation code. That works fine for CPU-only validation, but
+breaks for the actual GPU run: the fixed 300bp prompt is anchored to the
+ORIGINAL (deposited) orientation and can't be flipped, while Evo2
+generation only ever grows forward in whatever orientation it's given.
+In the flipped (scoring) frame, the gene block that comes "first" maps to
+the LAST part of the original deposited sequence -- the part that only
+becomes available once nearly the entire genome has already been
+generated. So the normal incremental loop (generate one block, score c
+candidates, keep the best, continue to the next block) cannot work for
+a whole-genome-flipped target: block-by-block scoring order and forward-
+only generation order are fundamentally incompatible for these three.
+
+This is a real architectural gap, not a data-quality problem -- a
+"generate the whole remaining sequence in one best-of-c shot, then score
+it as a whole" fallback would fix it, but wasn't built this session.
+Decision: drop these 3 from this run (25 genomes, not 28) rather than
+build and ship that fallback un-validated. Revisit if/when incremental
+generation for reverse-strand targets is worth building properly.

@@ -55,7 +55,25 @@ context by round 11.
 Run:  BENCH_GPU=L40S GPU_PRICE_PER_HR=1.95 modal run kmer_fulllength_benchmark.py
 Options: --prompt-len 64 --n-tokens 0 --c 3 --chunk-len 512 --score-mode paper
          --table dependencies/microviridae_k346.npz
-Writes: kmer_fulllength_bench_<GPU>.json
+
+score_mode="aa_gated" (2026-11-04): amino-acid-guided arm, see aa_kmer_table.py
+and BUILD_NOTES.md. For each round, translates every candidate in the frame(s)
+of whichever real phiX174 gene(s) overlap that round's span (lookup against
+PHIX174_GENES_NOWRAP below -- exact, not a gene caller, since generation is a
+literal linear continuation of the real genome's own coordinates). A candidate
+that introduces a premature in-frame stop codon in ANY active gene is hard-
+gated out (composite score -1e6 - violations, so it can never outrank a clean
+candidate, but ties among all-broken rounds still break toward fewer
+violations rather than arbitrarily). Gate-survivors are ranked by mean amino-
+acid k-mer score (mode="relative", ks=[2,3], equal weight per k -- avoids the
+DNA arm's k=3-domination flaw) across all active frames. Needs --aa-table
+(default dependencies/microviridae_aa_k23.npz, built by build_aa_kmer_table.py
+from real CDS translations of the same 20 reference genomes, never phiX174
+itself). Rounds whose span has no overlapping gene (small intergenic gaps
+only, max 110bp vs. chunk_len=512 so effectively unreachable at default
+chunk_len) fall back to the DNA relative-mode scorer for that round.
+Writes: kmer_fulllength_bench_<GPU>.json (DNA modes) or
+        kmer_fulllength_bench_<GPU>_aa.json (score_mode="aa_gated")
 
 Mock-test the plumbing (no GPU, $0):
   python kmer_fulllength_benchmark.py --mock
@@ -78,8 +96,24 @@ PHIX174_FASTA = Path(__file__).parent / "phix174.fasta"
 if not PHIX174_FASTA.exists():
     PHIX174_FASTA = Path(__file__).parent / "dependencies" / "phix174.fasta"
 DEFAULT_TABLE = Path(__file__).parent / "dependencies" / "microviridae_k346.npz"
+DEFAULT_AA_TABLE = Path(__file__).parent / "dependencies" / "microviridae_aa_k23.npz"
 BASELINE_PATH = Path(__file__).parent / "fulllength_bench_L40S.json"
 SEEDS = [0, 1, 2]
+
+# phiX174 genes, 0-based half-open, single-segment (non-origin-wrapping) only --
+# A/A*/B wrap the origin and are skipped here the same way genome_scoring.
+# orf_closure_check skips them for prompt_len>0 (the wrap segment doesn't exist
+# in a linear one-shot continuation). Source: genome_scoring.PHIX174_GENES.
+PHIX174_GENES_NOWRAP = [
+    (50, 221),    # K
+    (132, 393),   # C
+    (389, 848),   # D
+    (567, 843),   # E
+    (847, 964),   # J
+    (1000, 2284), # F
+    (2394, 2922), # G
+    (2930, 3917), # H
+]
 
 
 def _load_baseline() -> dict:
@@ -102,7 +136,8 @@ def candidate_seeds(base_seed: int, round_index: int, c: int):
 @app.function(image=image, gpu=GPU, timeout=3 * 60 * 60)
 def run_kmer_prompt(model_name: str, ckpt: str, name: str, region: str, prompt: str,
                      n_tokens: int, seed: int, gpu: str, price: float,
-                     chunk_len: int, c: int, score_mode: str, table_bytes: bytes) -> dict:
+                     chunk_len: int, c: int, score_mode: str, table_bytes: bytes,
+                     aa_table_bytes: bytes | None = None) -> dict:
     import io
     import numpy as np
     import torch
@@ -141,10 +176,13 @@ def run_kmer_prompt(model_name: str, ckpt: str, name: str, region: str, prompt: 
             idx = idx * 4 + np.where(seg >= 0, seg, 0)
         return idx[valid]
 
-    def kmer_score(seq, context):
+    def kmer_score(seq, context, mode=None):
         L = len(seq)
         if L == 0:
             return 0.0
+        mode = mode or score_mode  # mode=None -> use the outer score_mode (DNA modes only;
+        # the aa_gated fallback below passes mode="relative" explicitly, since
+        # score_mode itself is "aa_gated" there, not a valid DNA mode)
         total = 0.0
         for k in ks:
             ctx = context[-(k - 1):] if (k > 1 and context) else ""
@@ -152,15 +190,133 @@ def run_kmer_prompt(model_name: str, ckpt: str, name: str, region: str, prompt: 
             if len(idx) == 0:
                 continue
             p = probs[k][idx]
-            if score_mode == "paper":
+            if mode == "paper":
                 total += p.sum()
-            elif score_mode == "relative":
+            elif mode == "relative":
                 total += (p * 4 ** k).sum()
-            elif score_mode == "loglik":
+            elif mode == "loglik":
                 total += np.log(p + 1e-12).sum()
             else:
-                raise ValueError(score_mode)
+                raise ValueError(mode)
         return total / L
+
+    # --- amino-acid gated scorer (mirrors aa_kmer_table.py; duplicated here for
+    # the same reason as the DNA scorer above: this Modal container doesn't have
+    # aa_kmer_table.py baked into its image). ---
+    CODON_TABLE = {
+        "TTT": "F", "TTC": "F", "TTA": "L", "TTG": "L",
+        "CTT": "L", "CTC": "L", "CTA": "L", "CTG": "L",
+        "ATT": "I", "ATC": "I", "ATA": "I", "ATG": "M",
+        "GTT": "V", "GTC": "V", "GTA": "V", "GTG": "V",
+        "TCT": "S", "TCC": "S", "TCA": "S", "TCG": "S",
+        "CCT": "P", "CCC": "P", "CCA": "P", "CCG": "P",
+        "ACT": "T", "ACC": "T", "ACA": "T", "ACG": "T",
+        "GCT": "A", "GCC": "A", "GCA": "A", "GCG": "A",
+        "TAT": "Y", "TAC": "Y", "TAA": "*", "TAG": "*",
+        "CAT": "H", "CAC": "H", "CAA": "Q", "CAG": "Q",
+        "AAT": "N", "AAC": "N", "AAA": "K", "AAG": "K",
+        "GAT": "D", "GAC": "D", "GAA": "E", "GAG": "E",
+        "TGT": "C", "TGC": "C", "TGA": "*", "TGG": "W",
+        "CGT": "R", "CGC": "R", "CGA": "R", "CGG": "R",
+        "AGT": "S", "AGC": "S", "AGA": "R", "AGG": "R",
+        "GGT": "G", "GGC": "G", "GGA": "G", "GGG": "G",
+    }
+
+    def translate(dna):
+        dna = dna.upper()
+        n = len(dna) - (len(dna) % 3)
+        return "".join(CODON_TABLE.get(dna[i:i + 3], "X") for i in range(0, n, 3))
+
+    if score_mode == "aa_gated":
+        AA = "ACDEFGHIKLMNPQRSTVWY"
+        aa_lut = np.full(256, -1, dtype=np.int64)
+        for i, ch in enumerate(AA):
+            aa_lut[ord(ch)] = i
+
+        def aa_encode(s):
+            return aa_lut[np.frombuffer(s.encode(), dtype=np.uint8)]
+
+        def aa_kmer_indices(arr, k):
+            n = len(arr) - k + 1
+            if n <= 0:
+                return np.empty(0, dtype=np.int64)
+            idx = np.zeros(n, dtype=np.int64)
+            valid = np.ones(n, dtype=bool)
+            for j in range(k):
+                seg = arr[j: j + n]
+                valid &= seg >= 0
+                idx = idx * 20 + np.where(seg >= 0, seg, 0)
+            return idx[valid]
+
+        az = np.load(io.BytesIO(aa_table_bytes))
+        aa_ks = [int(k) for k in az["ks"]]
+        aa_probs = {}
+        for k in aa_ks:
+            counts = az[f"c{k}"]
+            total = counts.sum()
+            aa_probs[k] = (counts / total) if total > 0 else counts
+
+        def aa_score(aa_seq):
+            L = len(aa_seq)
+            if L == 0:
+                return 0.0
+            total = 0.0
+            for k in aa_ks:
+                idx = aa_kmer_indices(aa_encode(aa_seq), k)
+                if len(idx) == 0:
+                    continue
+                total += (aa_probs[k][idx] * 20 ** k).sum()
+            return total / L
+
+        def aa_gated_score(dna_cand, lo, hi):
+            """Hard-gates on a premature stop codon in any gene frame active over
+            [lo, hi) (checked against the genome's own real gene coordinates --
+            this only works because the generation is a literal linear
+            continuation of phiX174's own coordinate frame, same assumption
+            genome_scoring.orf_closure_check relies on). Among gate-survivors,
+            ranks by mean amino-acid k-mer "relative" score across active frames.
+            Returns (composite_score, active: bool) -- active=False means no gene
+            overlaps this span (caller should fall back to the DNA scorer).
+
+            For each active gene, translation starts at the first codon boundary
+            of THAT GENE's own frame at or after max(lo, gene_start) -- never
+            before the gene's real start, even if that frame's phase happens to
+            align earlier in this chunk (that earlier region belongs to a
+            different gene/frame, not this one, and checking it there produced
+            false positives on the real genome during validation). This also
+            means no cross-chunk context is needed: codon_abs_start is always
+            >= lo, so translation only ever reads forward within dna_cand -- at
+            most 2bp of genuine straddling-codon coverage is lost at a chunk's
+            leading edge, the same order of boundary loss kmer_table.py already
+            accepts for DNA k-mer context."""
+            active = [(s, e) for (s, e) in PHIX174_GENES_NOWRAP if e > lo and s < hi]
+            if not active:
+                return None, False
+            violations = 0
+            continuous = []
+            used_any = False
+            for s, e in active:
+                base = max(lo, s)
+                rem = (base - s) % 3
+                codon_abs_start = base + ((3 - rem) % 3)
+                if codon_abs_start >= hi:
+                    continue
+                aa = translate(dna_cand[codon_abs_start - lo : hi - lo])
+                expected_idx = (e - codon_abs_start) // 3 - 1 if e <= hi else None
+                if expected_idx is not None and expected_idx < 0:
+                    continue
+                check_region = aa[: expected_idx + 1] if expected_idx is not None else aa
+                local_viol = sum(1 for i, ch in enumerate(check_region) if ch == "*" and i != expected_idx)
+                violations += local_viol
+                gene_region = check_region[:expected_idx] if expected_idx is not None else check_region
+                if gene_region:
+                    continuous.append(aa_score(gene_region.replace("*", "")))
+                used_any = True
+            if not used_any:
+                return None, False
+            if violations > 0:
+                return -1e6 - violations, True
+            return (sum(continuous) / len(continuous) if continuous else 0.0), True
 
     t0 = time.perf_counter()
     es = EvSpark.load(ckpt=ckpt, model_name=model_name, device="cuda:0")
@@ -180,10 +336,19 @@ def run_kmer_prompt(model_name: str, ckpt: str, name: str, region: str, prompt: 
     t0 = time.perf_counter()
     while len(seq) - len(prompt) < n_tokens:
         n = min(chunk_len, n_tokens - (len(seq) - len(prompt)))
+        lo = len(seq)
+        hi = lo + n
         seeds_j = candidate_seeds(seed, r, c)
         cands = [es.generate_native(seq, n_tokens=n, greedy=False, seed=s,
                                      temperature=1.0, top_k=4).text for s in seeds_j]
-        scores = [kmer_score(cand, seq) for cand in cands]
+        if score_mode == "aa_gated":
+            results = [aa_gated_score(cand, lo, hi) for cand in cands]
+            if results[0][1]:  # active gene(s) over this span -- use the gated score
+                scores = [res[0] for res in results]
+            else:  # no gene overlaps this span (rare, small intergenic gaps only) -- fall back to DNA relative score
+                scores = [kmer_score(cand, seq, mode="relative") for cand in cands]
+        else:
+            scores = [kmer_score(cand, seq) for cand in cands]
         pick = int(np.argmax(scores))
         seq += cands[pick]
         rounds.append({"round": r, "picked": pick, "scores": [round(float(x), 6) for x in scores]})
@@ -220,8 +385,8 @@ def run_kmer_prompt(model_name: str, ckpt: str, name: str, region: str, prompt: 
 def kmer_fulllength(model: str = "evo2_7b", ckpt: str = "L27_g12_150M_s1",
                      prompt_len: int = 64, n_tokens: int = 0,
                      chunk_len: int = 512, c: int = 3, score_mode: str = "paper",
-                     table: str = str(DEFAULT_TABLE), seeds: str = "0,1,2",
-                     mock: bool = False):
+                     table: str = str(DEFAULT_TABLE), aa_table: str = str(DEFAULT_AA_TABLE),
+                     seeds: str = "0,1,2", mock: bool = False):
     import bio_scoring
     import genome_scoring
 
@@ -231,10 +396,12 @@ def kmer_fulllength(model: str = "evo2_7b", ckpt: str = "L27_g12_150M_s1",
     tokens = n_tokens if n_tokens > 0 else genome_len - prompt_len
     prompt = genome[:prompt_len]
     table_bytes = Path(table).read_bytes()
+    aa_table_bytes = Path(aa_table).read_bytes() if score_mode == "aa_gated" else None
     baseline = _load_baseline()
     print(f"phiX174 k-mer-arm run: {ref_name}, genome_len={genome_len}, "
           f"prompt_len={prompt_len}, n_tokens={tokens}, c={c}, chunk_len={chunk_len}, "
-          f"table={table}, baseline={'loaded (' + str(len(baseline)) + ' entries)' if baseline else 'NOT FOUND'}")
+          f"score_mode={score_mode}, table={table}, "
+          f"baseline={'loaded (' + str(len(baseline)) + ' entries)' if baseline else 'NOT FOUND'}")
 
     if mock:
         _mock_test(prompt, tokens, chunk_len, c, table_bytes, score_mode)
@@ -245,7 +412,8 @@ def kmer_fulllength(model: str = "evo2_7b", ckpt: str = "L27_g12_150M_s1",
         name = f"phix174_fulllength_kmer_s{seed}"
         print(f"\n{name}: generating...")
         res = run_kmer_prompt.remote(model, ckpt, name, "viral_coding_fulllength", prompt,
-                                      tokens, seed, GPU, PRICE, chunk_len, c, score_mode, table_bytes)
+                                      tokens, seed, GPU, PRICE, chunk_len, c, score_mode, table_bytes,
+                                      aa_table_bytes)
 
         kmer_seq = res["kmer_seq"]
         real_seq = genome[prompt_len: prompt_len + tokens]
@@ -296,12 +464,14 @@ def kmer_fulllength(model: str = "evo2_7b", ckpt: str = "L27_g12_150M_s1",
             print(f"  kmer_vs_native: kmer_js_divergence={quality['kmer_vs_native']['kmer_js_divergence']} "
                   f"codon_js_divergence={quality['kmer_vs_native']['codon_js_divergence']}")
 
-    out_path = f"kmer_fulllength_bench_{GPU}.json"
+    suffix = "_aa" if score_mode == "aa_gated" else ""
+    out_path = f"kmer_fulllength_bench_{GPU}{suffix}.json"
     with open(out_path, "w") as f:
         json.dump({
             "model": model, "ckpt": ckpt, "prompt_len": prompt_len, "n_tokens": tokens,
             "seeds": seed_list, "genome_len": genome_len, "gpu": GPU, "price_per_hr": PRICE,
             "c": c, "chunk_len": chunk_len, "score_mode": score_mode, "table": str(table),
+            "aa_table": str(aa_table) if score_mode == "aa_gated" else None,
             "results": results,
         }, f, indent=2)
     print(f"\nWrote {out_path}")
