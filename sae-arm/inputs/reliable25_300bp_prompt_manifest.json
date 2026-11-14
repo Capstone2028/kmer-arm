@@ -1,0 +1,391 @@
+{
+  "status": "PASS",
+  "prompt_file": "prompts_reliable25_300bp.fa",
+  "prompt_count": 25,
+  "prompt_length_bp": 300,
+  "reference_source": "data/microviridae_records_20261111.gb",
+  "orientation_rule": "Rotate each accession's forward GenBank sequence so the exact prompt begins at position zero.",
+  "reference_matches_verified": 25,
+  "genome_length_range_bp": [
+    4367,
+    5770
+  ],
+  "generation_length_range_bp": [
+    4067,
+    5470
+  ],
+  "oriented_reference_fasta": "reliable25_300bp_oriented_references.fna",
+  "prompts": [
+    {
+      "prompt_index": 0,
+      "prompt_header": "KT264759.1__G2",
+      "accession": "KT264759.1",
+      "prompt_length_bp": 300,
+      "prompt_sha256": "ac3d870c621a11940ee4eeb004a8d0ef16cdc714bc33e01dd5006fa253a6ff68",
+      "genome_length_bp": 5293,
+      "generation_length_bp": 4993,
+      "prompt_start_in_source_genome_0based": 3050,
+      "prompt_matches_source_exactly": true,
+      "oriented_reference_sha256": "c9843baa6c9d28efc8c1ce6514900540d03a178ba7902870cd9398899abd327d",
+      "source_cds_products_overlapping_prompt_start": [
+        "VP4"
+      ]
+    },
+    {
+      "prompt_index": 1,
+      "prompt_header": "MH552523.2__G2",
+      "accession": "MH552523.2",
+      "prompt_length_bp": 300,
+      "prompt_sha256": "0cabe9dc22f7e549d920acae9de945a07b7158446cc6e5926da22092da2251d5",
+      "genome_length_bp": 5296,
+      "generation_length_bp": 4996,
+      "prompt_start_in_source_genome_0based": 3097,
+      "prompt_matches_source_exactly": true,
+      "oriented_reference_sha256": "96fcc8a7002ca7f5f6d9b75cc7f8873b072599ae1e64ac571c077a7dd5b3eb14",
+      "source_cds_products_overlapping_prompt_start": [
+        "replication initiator protein"
+      ]
+    },
+    {
+      "prompt_index": 2,
+      "prompt_header": "MH616692.2__G2",
+      "accession": "MH616692.2",
+      "prompt_length_bp": 300,
+      "prompt_sha256": "a7b512ea5d102cae9b3e0e2b41605292c8e1608fbc6895575c62efa5390d3479",
+      "genome_length_bp": 4919,
+      "generation_length_bp": 4619,
+      "prompt_start_in_source_genome_0based": 3119,
+      "prompt_matches_source_exactly": true,
+      "oriented_reference_sha256": "9c1d384d96b58d9f915c5ecc9c29e2d577a706339cd2ed886aec32eeae6c92f5",
+      "source_cds_products_overlapping_prompt_start": [
+        "replication initiator protein"
+      ]
+    },
+    {
+      "prompt_index": 3,
+      "prompt_header": "MH617265.1__G2",
+      "accession": "MH617265.1",
+      "prompt_length_bp": 300,
+      "prompt_sha256": "379dad0ef578304fb9ff87ded2caae57cb73612ea4f316cd9c2422be83ba5227",
+      "genome_length_bp": 4804,
+      "generation_length_bp": 4504,
+      "prompt_start_in_source_genome_0based": 3778,
+      "prompt_matches_source_exactly": true,
+      "oriented_reference_sha256": "273a483c723f974b67113f1ba0106ed7baba8cf2c104c1eac7a81f92a854aaed",
+      "source_cds_products_overlapping_prompt_start": [
+        "replication initiator protein"
+      ]
+    },
+    {
+      "prompt_index": 4,
+      "prompt_header": "MH617473.2__G2",
+      "accession": "MH617473.2",
+      "prompt_length_bp": 300,
+      "prompt_sha256": "4c5948f1cdd92ee4bb6364c8a2a6c133aa197943b7c85189770b9c4ced01db04",
+      "genome_length_bp": 4857,
+      "generation_length_bp": 4557,
+      "prompt_start_in_source_genome_0based": 3622,
+      "prompt_matches_source_exactly": true,
+      "oriented_reference_sha256": "94cc825cca072f92c6f9ba20116b7176fa4364b82ae5b9ff8d0d809101b77975",
+      "source_cds_products_overlapping_prompt_start": []
+    },
+    {
+      "prompt_index": 5,
+      "prompt_header": "MK249149.1__G2",
+      "accession": "MK249149.1",
+      "prompt_length_bp": 300,
+      "prompt_sha256": "2f4f3a544dd9d47c5412fe628cab3eeabcb2e9b63bfc688746d26516f66372e0",
+      "genome_length_bp": 4565,
+      "generation_length_bp": 4265,
+      "prompt_start_in_source_genome_0based": 3477,
+      "prompt_matches_source_exactly": true,
+      "oriented_reference_sha256": "940fb55435314826c21599b83e4e206d452017717fb85eaebc8400ead7832a3f",
+      "source_cds_products_overlapping_prompt_start": [
+        "replication initiator protein"
+      ]
+    },
+    {
+      "prompt_index": 6,
+      "prompt_header": "MK496793.1__G2",
+      "accession": "MK496793.1",
+      "prompt_length_bp": 300,
+      "prompt_sha256": "6e359f843095242c2ddcad447f157dc68d37e843799a7711501e77b94e64ca50",
+      "genome_length_bp": 5235,
+      "generation_length_bp": 4935,
+      "prompt_start_in_source_genome_0based": 2146,
+      "prompt_matches_source_exactly": true,
+      "oriented_reference_sha256": "57420d2314b2027134bea1eca78b3ca26aa0fb9318fc76d15123a8f2ac168ec3",
+      "source_cds_products_overlapping_prompt_start": [
+        "hypothetical protein",
+        "replication initiator protein"
+      ]
+    },
+    {
+      "prompt_index": 7,
+      "prompt_header": "MK496799.1__G2",
+      "accession": "MK496799.1",
+      "prompt_length_bp": 300,
+      "prompt_sha256": "758d6ba6d8698b908660c170c00ddf21cff6acc59314872385991ef6b8a689cd",
+      "genome_length_bp": 5129,
+      "generation_length_bp": 4829,
+      "prompt_start_in_source_genome_0based": 2827,
+      "prompt_matches_source_exactly": true,
+      "oriented_reference_sha256": "ecb0bf7deee4b61481176d533813a0ef6b23d4bcbdcf75f7796330bb9b7ea932",
+      "source_cds_products_overlapping_prompt_start": [
+        "major capsid protein"
+      ]
+    },
+    {
+      "prompt_index": 8,
+      "prompt_header": "MT135264.1__G2",
+      "accession": "MT135264.1",
+      "prompt_length_bp": 300,
+      "prompt_sha256": "7d384493ea7546c2f25bd072852f85d719557256a2c7f20b9f0e77ed2cdfa858",
+      "genome_length_bp": 5025,
+      "generation_length_bp": 4725,
+      "prompt_start_in_source_genome_0based": 68,
+      "prompt_matches_source_exactly": true,
+      "oriented_reference_sha256": "077a630c4ad5fdcb832bb2a495c51fbb8b5c6f32e9e3ce39b78d3deefbccaccd",
+      "source_cds_products_overlapping_prompt_start": []
+    },
+    {
+      "prompt_index": 9,
+      "prompt_header": "MT135277.1__G2",
+      "accession": "MT135277.1",
+      "prompt_length_bp": 300,
+      "prompt_sha256": "0a454651c628fae9810993a35a6db33e59b1d6cbb2c769d30043c747e5440e6c",
+      "genome_length_bp": 5565,
+      "generation_length_bp": 5265,
+      "prompt_start_in_source_genome_0based": 3838,
+      "prompt_matches_source_exactly": true,
+      "oriented_reference_sha256": "59188f09529aad22fb41090e0419d840dfe771035d5b43ea5ee9c03f3d056cfc",
+      "source_cds_products_overlapping_prompt_start": [
+        "putative VP4"
+      ]
+    },
+    {
+      "prompt_index": 10,
+      "prompt_header": "MT310155.1__G2",
+      "accession": "MT310155.1",
+      "prompt_length_bp": 300,
+      "prompt_sha256": "07f36c29d8d8dc1e4575e8bbd0776ee7674d216cd24a504eb28555b451e6dfc2",
+      "genome_length_bp": 4949,
+      "generation_length_bp": 4649,
+      "prompt_start_in_source_genome_0based": 2744,
+      "prompt_matches_source_exactly": true,
+      "oriented_reference_sha256": "7ca71570a38c59bd1fc746154c8602f4d3f6dd5e9611eb0223e50fbe728b50c4",
+      "source_cds_products_overlapping_prompt_start": [
+        "replication initiator protein"
+      ]
+    },
+    {
+      "prompt_index": 11,
+      "prompt_header": "MT310159.1__G2",
+      "accession": "MT310159.1",
+      "prompt_length_bp": 300,
+      "prompt_sha256": "abc28be3bfc832e69652cd860f874642b0f9501bd74a825dad8e82de5f7eded9",
+      "genome_length_bp": 5120,
+      "generation_length_bp": 4820,
+      "prompt_start_in_source_genome_0based": 3904,
+      "prompt_matches_source_exactly": true,
+      "oriented_reference_sha256": "c8f34830310dc5508c63471751efa328749facbccdedd080635e907934d64add",
+      "source_cds_products_overlapping_prompt_start": [
+        "hypothetical protein",
+        "replication initiator protein"
+      ]
+    },
+    {
+      "prompt_index": 12,
+      "prompt_header": "MT310332.1__G2",
+      "accession": "MT310332.1",
+      "prompt_length_bp": 300,
+      "prompt_sha256": "810b2db4476b09cc6932ce129480ba80ee1e4ea4b6bb1f11a71f75d81641804f",
+      "genome_length_bp": 5001,
+      "generation_length_bp": 4701,
+      "prompt_start_in_source_genome_0based": 3460,
+      "prompt_matches_source_exactly": true,
+      "oriented_reference_sha256": "91dd623c91a738748599dc8da47c2c39b57d12109a522455be89248f23bb2be9",
+      "source_cds_products_overlapping_prompt_start": [
+        "replication initiator protein"
+      ]
+    },
+    {
+      "prompt_index": 13,
+      "prompt_header": "MT310334.1__G2",
+      "accession": "MT310334.1",
+      "prompt_length_bp": 300,
+      "prompt_sha256": "2965bb05e53ca0de9b1af75cff373ef019ff1ed3bd8fdf1bdaec772a98fa05b5",
+      "genome_length_bp": 5014,
+      "generation_length_bp": 4714,
+      "prompt_start_in_source_genome_0based": 2808,
+      "prompt_matches_source_exactly": true,
+      "oriented_reference_sha256": "e45ae606b68248a6802de7aee876a5f0a51a557848df2299405eb129fb90225b",
+      "source_cds_products_overlapping_prompt_start": [
+        "replication initiator protein"
+      ]
+    },
+    {
+      "prompt_index": 14,
+      "prompt_header": "MW202414.1__G2",
+      "accession": "MW202414.1",
+      "prompt_length_bp": 300,
+      "prompt_sha256": "1315bb501f0d7c22c498d63268652e248784279c7e4bc5fd439e94793a4066bb",
+      "genome_length_bp": 4367,
+      "generation_length_bp": 4067,
+      "prompt_start_in_source_genome_0based": 1174,
+      "prompt_matches_source_exactly": true,
+      "oriented_reference_sha256": "84fc15176cbd268cdd7873590515454a651f04d06e1bace73f8a0f807ffa1550",
+      "source_cds_products_overlapping_prompt_start": [
+        "replication associated protein"
+      ]
+    },
+    {
+      "prompt_index": 15,
+      "prompt_header": "MW697720.1__G2",
+      "accession": "MW697720.1",
+      "prompt_length_bp": 300,
+      "prompt_sha256": "02a4feca44dc9dff5236204237f014c0d03b8852b997e2349dd5a22d4925fcb7",
+      "genome_length_bp": 4611,
+      "generation_length_bp": 4311,
+      "prompt_start_in_source_genome_0based": 2798,
+      "prompt_matches_source_exactly": true,
+      "oriented_reference_sha256": "9e0d1cc36eed038ace1da4315a9fb017083c28b6fa3fd9ba73979d0b60555c01",
+      "source_cds_products_overlapping_prompt_start": [
+        "replication initiator protein"
+      ]
+    },
+    {
+      "prompt_index": 16,
+      "prompt_header": "MZ364261.1__G2",
+      "accession": "MZ364261.1",
+      "prompt_length_bp": 300,
+      "prompt_sha256": "39a1a96f9931f278bcaed705dba7ebcbf5dc39a1cf336cd6a16438fed54dc5fc",
+      "genome_length_bp": 4670,
+      "generation_length_bp": 4370,
+      "prompt_start_in_source_genome_0based": 3355,
+      "prompt_matches_source_exactly": true,
+      "oriented_reference_sha256": "0acdb5691eba03a7c61860e1e159e0e683ff73dc78a852d5512ae976608caeaf",
+      "source_cds_products_overlapping_prompt_start": [
+        "replication initiator protein"
+      ]
+    },
+    {
+      "prompt_index": 17,
+      "prompt_header": "OM869701.1__G2",
+      "accession": "OM869701.1",
+      "prompt_length_bp": 300,
+      "prompt_sha256": "d7c1b94e73cb36b6478cd35b1eb2a1560b2f9cedc8f459988af26360fd94cded",
+      "genome_length_bp": 5257,
+      "generation_length_bp": 4957,
+      "prompt_start_in_source_genome_0based": 3062,
+      "prompt_matches_source_exactly": true,
+      "oriented_reference_sha256": "1c6b87763e4c494940084b4f8ffada47c00f93865fbbeeb88c280253045c1122",
+      "source_cds_products_overlapping_prompt_start": [
+        "replication initiator protein"
+      ]
+    },
+    {
+      "prompt_index": 18,
+      "prompt_header": "OP209174.1__G2",
+      "accession": "OP209174.1",
+      "prompt_length_bp": 300,
+      "prompt_sha256": "a02010d1c6d5dcf882becd572bf369622c5f844c1e62313c32314bcf4e7ee144",
+      "genome_length_bp": 5227,
+      "generation_length_bp": 4927,
+      "prompt_start_in_source_genome_0based": 1035,
+      "prompt_matches_source_exactly": true,
+      "oriented_reference_sha256": "b8714a5bc6b0bcd28d82c5b231f3ffb9a9357c467472b554e7fe269107d3dffd",
+      "source_cds_products_overlapping_prompt_start": []
+    },
+    {
+      "prompt_index": 19,
+      "prompt_header": "PQ006516.1__G2",
+      "accession": "PQ006516.1",
+      "prompt_length_bp": 300,
+      "prompt_sha256": "34331af31654035de750e89a66e6cba626c5715d027036ea7f0700eb3baf866d",
+      "genome_length_bp": 5182,
+      "generation_length_bp": 4882,
+      "prompt_start_in_source_genome_0based": 2951,
+      "prompt_matches_source_exactly": true,
+      "oriented_reference_sha256": "28c38541b9201e132e0a50020b3908a0f7761c407f5f284eb33e34b9281fdc80",
+      "source_cds_products_overlapping_prompt_start": [
+        "replication initiator protein"
+      ]
+    },
+    {
+      "prompt_index": 20,
+      "prompt_header": "PQ006826.1__G2",
+      "accession": "PQ006826.1",
+      "prompt_length_bp": 300,
+      "prompt_sha256": "6d999f2e2ed1c656c3978bbf12237dcabd58c4340abaa81a3f74e948e86e7037",
+      "genome_length_bp": 5770,
+      "generation_length_bp": 5470,
+      "prompt_start_in_source_genome_0based": 2968,
+      "prompt_matches_source_exactly": true,
+      "oriented_reference_sha256": "6fed7ebbd192dbc19fb226aded801fff68aab54ddb2b241c1fe219c056b6459a",
+      "source_cds_products_overlapping_prompt_start": [
+        "replication initiator protein"
+      ]
+    },
+    {
+      "prompt_index": 21,
+      "prompt_header": "PQ007124.1__G2",
+      "accession": "PQ007124.1",
+      "prompt_length_bp": 300,
+      "prompt_sha256": "e33d403ea2a94173c6a4c996eaedc181dc72073de36567607d48c43951ed8d32",
+      "genome_length_bp": 5366,
+      "generation_length_bp": 5066,
+      "prompt_start_in_source_genome_0based": 3377,
+      "prompt_matches_source_exactly": true,
+      "oriented_reference_sha256": "c016e7f5f09b2519d54c19bad80336f5d1aeead3bec4e69e0bdf63028fd2f622",
+      "source_cds_products_overlapping_prompt_start": [
+        "replication initiator protein"
+      ]
+    },
+    {
+      "prompt_index": 22,
+      "prompt_header": "PQ007287.1__G2",
+      "accession": "PQ007287.1",
+      "prompt_length_bp": 300,
+      "prompt_sha256": "92dd4bfb45f875f051517403b016468c6435ca2264c1da3038e9e1af64e6ef4b",
+      "genome_length_bp": 5291,
+      "generation_length_bp": 4991,
+      "prompt_start_in_source_genome_0based": 2969,
+      "prompt_matches_source_exactly": true,
+      "oriented_reference_sha256": "16d6e9377f8a2281ec5c8ed90a08dd92a8858b08d8509a1f3c0d9dd62892681b",
+      "source_cds_products_overlapping_prompt_start": [
+        "replication initiator protein"
+      ]
+    },
+    {
+      "prompt_index": 23,
+      "prompt_header": "PQ007416.1__G2",
+      "accession": "PQ007416.1",
+      "prompt_length_bp": 300,
+      "prompt_sha256": "7dd93bd66d12728ce4ef61a9cd0912e06d9c4aaadc0004441a6137a5f3ea9d39",
+      "genome_length_bp": 5208,
+      "generation_length_bp": 4908,
+      "prompt_start_in_source_genome_0based": 3062,
+      "prompt_matches_source_exactly": true,
+      "oriented_reference_sha256": "2e42437af2c89dfd13a9fc96cec88eaae5e109c7863e83be1f456bac798daa1f",
+      "source_cds_products_overlapping_prompt_start": [
+        "replication initiator protein"
+      ]
+    },
+    {
+      "prompt_index": 24,
+      "prompt_header": "PQ491838.1__G2",
+      "accession": "PQ491838.1",
+      "prompt_length_bp": 300,
+      "prompt_sha256": "a37a6993e4a32e4378c3cd63fa5368e0726dddafb7f7f31384c5f8e601c7f68c",
+      "genome_length_bp": 4723,
+      "generation_length_bp": 4423,
+      "prompt_start_in_source_genome_0based": 3291,
+      "prompt_matches_source_exactly": true,
+      "oriented_reference_sha256": "34626d355ed77afc476ce931fce2e48054fb725a807c2f4b05d39eb7eb14b88e",
+      "source_cds_products_overlapping_prompt_start": [
+        "replication initiator protein"
+      ]
+    }
+  ]
+}

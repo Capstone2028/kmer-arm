@@ -55,3 +55,11 @@ and these metrics do not show protein function or phage viability.
 For the staged experiment design, decisions, feature validation, per-seed
 tables, metric explanations, compute estimates, and limitations, see the
 fuller report `SAE_arm_pilot_results_20261112.md`.
+
+The later 25-prompt Reliable25 experiment completed on `evo2_7b` with 300 bp
+prompts and four arms (native, lower-temperature, k-mer selection, and SAE
+steering). The complete sequences and per-prompt metrics are in
+`reliable25_300bp_sae_four_arm_experiment_20261113.json`; the experiment
+review, compiled tables, data-quality notes, and limitations are in
+`reliable25_300bp_sae_four_arm_results_20261114.md`. Native generation was
+closest on average to the real continuation's 4-mer and codon distributions.
