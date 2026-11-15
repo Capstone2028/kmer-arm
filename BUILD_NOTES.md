@@ -817,3 +817,89 @@ reads `segments`, never `name`.
 
 **Still open:** the GPU rerun has not been done -- every number from the
 block-kmer arm is currently unreportable.
+
+## 2026-11-15 -- pilot run: the gate was measuring an accident, and long blocks slip frame
+
+First real GPU run after the 2026-11-14 fixes. 4 genomes requested
+(`--only MT310332.1,MW697720.1,MK496793.1,MZ364261.1 --tag pilot`, c=3,
+seed 0, A100-80GB), 3 succeeded, 17 rounds. `block_kmer_bench_A100-80GB_pilot.jsonl`.
+
+    rounds with a clean candidate                   0 / 17
+    rounds missing the terminal stop               16 / 17
+    rounds whose ONLY defect was the terminal stop  9 / 17
+    rounds PMI decided                              2 / 17  (12%)
+
+Throughput 20-22 tok/s (vs 13.1 before), peak GPU mem 36.6-48.2 GB. L40S
+(44.4 GB) would still have OOM'd on MT310332.1 -- A100-80GB is required,
+confirming the earlier L40S failures were a real headroom limit.
+
+**Finding 1: the terminal-stop requirement was the binding constraint, and
+it is not a quality signal.** Nine rounds produced a completely stop-free
+ORF across the whole block in the gene's real frame and still scored broken,
+purely because the stop codon did not land on the exact base. An
+unconstrained sampler has no reason to put it there. The hard gate was never
+measuring generation quality.
+
+**Finding 2: long blocks slip frame.** Premature stops by block size:
+
+    blocks <= 600bp   n=8   median 0 premature stops   max 9
+    blocks >  600bp   n=9   median 10                  max 31
+
+And the failing blocks ran at 3.8-4.5 premature stops per 100 codons against
+a CHANCE rate of 4.7, with two blocks ABOVE chance (6.9, 11.3). That is the
+signature of the model generating coding-like sequence in a frame offset from
+the one BlockScorer assumes -- one indel early in a long block misreads every
+codon after it -- not of a model that cannot code. Evo 2 held frame perfectly
+over 1262bp in one block, so length is a risk factor, not a hard limit.
+
+### Decisions
+
+1. **Cap blocks at 600bp** (`block_pipeline.split_long_blocks`). Cuts
+   single-gene blocks on that gene's own codon boundaries. Multi-gene blocks
+   are left whole -- genes in one block can be in different frames, so no
+   single cut is codon-aligned for all of them (16 of the pilot's 17 blocks
+   held exactly one gene). `BlockScorer` now checks only premature stops when
+   a gene runs past the sub-block and keeps the terminal check for the
+   sub-block holding its real end.
+2. **Force the terminal stop codon** (`constrained_decode.py`, new). Exact
+   local mask, no lookahead: base 0 -> {T}, base 1 -> {A,G}, base 2 -> {A,G}
+   after TA or {A} after TG. The model still chooses among TAA/TAG/TGA by its
+   own probabilities. Written against EvSpark's internals from our own module
+   so the gitignored clone stays untouched.
+3. **REJECTED: suppressing premature in-frame stops.** Trivial to add (mask
+   the third base whenever the first two are TA/TG) and it would make every
+   candidate pass the gate, which is exactly why it is wrong -- see Finding 2.
+   The model has slipped into a different frame; masking stops in a frame it
+   is not using forces sequence it did not want, improving the metric while
+   degrading realism. Decision 1 addresses the cause. Documented in the module
+   so this does not get added later as an "improvement".
+4. **Control arm** (`--select random`). Constrained sampling alone makes
+   candidates valid, so constrained+PMI against UNCONSTRAINED plain Evo 2
+   confounds constraint with guidance. Three arms are needed: plain
+   unconstrained; constrained + random pick; constrained + PMI pick. The last
+   two are the only pair that isolates the k-mer tables.
+5. **Retry transient prompt corruption.** `prompt contains non-ACGTN
+   characters: ['NUL']` hit MW697720.1 this run but MZ364261.1/PQ006516.1 on
+   2026-11-14, and MZ364261.1 then succeeded here -- it MOVES between runs, so
+   it is transport, not data (the prompt files contain zero NUL bytes and
+   validate locally). ~1 call in 12. Retries up to 3x on that error only.
+
+**Validation.** `--mock` passes 25/25 with the cap applied to every genome
+(e.g. 7 blocks -> 11). `constrained_decode._self_test` checks that every
+forced path spells a real stop codon and nothing else. `split_long_blocks` is
+asserted for contiguity, codon alignment and multi-gene safety. The first
+mock run could NOT have caught a bug in the summary numbers -- `_mock_run`
+returned a dict missing every aggregate field, so the per-genome line printed
+`pmi=0 violations=0 tie=0` whatever happened; both paths now compute them
+through one shared `_decided_by()` helper.
+
+**UNVALIDATED:** `constrained_decode`'s GPU path. It calls `prefill` /
+`step_forward_reference` directly rather than going through
+`es.generate_native`, so inference-param handling is untested against a real
+model. That surfaces on the next GPU call, not in the mock.
+
+**Next:** a second pilot on the SAME 4 genomes (~$1), so before/after is
+directly comparable. Pass criteria: the constrained sampler does not crash,
+`n_rounds_clean_available` > 0, and PMI decides materially more than 2/17. If
+clean candidates still never appear, the 600bp cap is insufficient and the
+next lever is per-gene gating, not more GPU time.

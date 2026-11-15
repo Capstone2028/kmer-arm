@@ -128,11 +128,14 @@ def run_block_kmer_prompt(
     model_name: str, ckpt: str, name: str, accession: str, prompt: str,
     gene_to_cluster: dict, gene_coords: dict, blocks: list, tables: dict,
     c: int, seed: int, gpu: str, price: float,
+    constrain: bool = True, select: str = "pmi",
 ) -> dict:
+    import numpy as np
     import torch
     from evspark import EvSpark
-    from evspark.api import clean_prompt
+    from evspark.api import clean_prompt, ids_to_text
     from block_pipeline import BlockScorer, generate_block
+    from constrained_decode import generate_block_constrained, terminal_stop_positions
 
     scorer = BlockScorer(tables, gene_to_cluster, gene_coords)
     torch.cuda.reset_peak_memory_stats()
@@ -183,16 +186,69 @@ def run_block_kmer_prompt(
         # prefix=seq[:block.start] slice is therefore a no-op here, but we
         # still pass the real `seq` rather than assume that, in case a future
         # caller doesn't pre-clip.
-        cands = generate_block(seq, block, c, generate_fn, base_seed=seed)
-        detailed = [scorer.score_candidate_detailed(cand, block) for cand in cands]
-        scores = [s for s, _v in detailed]
-        violations = [v for _s, v in detailed]
-        pick = max(range(len(scores)), key=lambda i: scores[i])
+        if constrain:
+            # Force this block's terminal stop codon(s) where the real
+            # coordinates put them, instead of generating freely and hoping.
+            # 16 of 17 pilot rounds failed on exactly that one codon, 9 of
+            # them with no other defect at all -- see constrained_decode.
+            stop_pos = terminal_stop_positions(
+                block.start, len(block), block.genes, gene_coords
+            )
+
+            def block_generate_fn(prefix: str, n: int, s: int) -> str:
+                _s, ids = es._tokenize(prefix)
+                out = generate_block_constrained(
+                    es.model, ids, n, np.random.default_rng(s), stop_pos,
+                    temperature=1.0, top_k=4,
+                )
+                torch.cuda.empty_cache()  # same rationale as generate_fn above
+                return ids_to_text(out)
+
+            cands = generate_block(seq, block, c, block_generate_fn, base_seed=seed)
+        else:
+            cands = generate_block(seq, block, c, generate_fn, base_seed=seed)
+
+        detailed = [scorer.score_candidate_breakdown(cand, block) for cand in cands]
+        scores = [s for s, _p, _t in detailed]
+        premature = [p for _s, p, _t in detailed]
+        terminal = [t for _s, _p, t in detailed]
+        violations = [p + t for _s, p, t in detailed]
+        if select == "random":
+            # Control arm. Constrained sampling alone makes candidates valid,
+            # so a constrained-but-unguided arm is what isolates the k-mer
+            # tables' contribution; comparing constrained+PMI against
+            # UNCONSTRAINED plain Evo 2 confounds the two and makes any
+            # improvement unattributable.
+            pick = int(np.random.default_rng(seed * 7919 + block.start).integers(len(cands)))
+        else:
+            pick = max(range(len(scores)), key=lambda i: scores[i])
         seq += cands[pick]
+
+        # WHAT actually decided this round. The point of the graded penalty
+        # is that violation count and PMI are different signals, and only
+        # the second is "k-mer guidance" in any meaningful sense. On long
+        # blocks a zero-violation candidate is unlikely, so selection can
+        # end up being almost entirely a fewest-broken-stop-codons contest
+        # with PMI never breaking anything. That is a weaker claim than the
+        # method advertises, so measure it rather than assume it:
+        #   "tie"        -- every candidate scored identically; index 0 won
+        #                   by position and NOTHING was decided (the 2026-11-14
+        #                   failure mode, which was invisible at the time)
+        #   "violations" -- one candidate had strictly the fewest violations
+        #   "pmi"        -- several tied on violations and PMI chose among them
+        vmin = min(violations)
+        decided_by = _decided_by(scores, violations)
         rounds.append({
             "genes": list(block.genes), "start": block.start, "end": block.end,
             "picked": pick, "scores": [round(s, 6) for s in scores],
             "violations": violations,
+            "premature": premature,
+            "terminal": terminal,
+            "decided_by": decided_by,
+            # Did ANY candidate pass cleanly? If this is never true across a
+            # whole run, the hard gate the graded penalty replaced would have
+            # rejected everything again, and block size is the real problem.
+            "clean_available": vmin == 0,
             # No candidate was clean. Still a real ranking now (fewest
             # violations, PMI as tiebreak) -- but if this is true for EVERY
             # round, the arm is not selecting on k-mer evidence and the run
@@ -234,11 +290,34 @@ def run_block_kmer_prompt(
         "block_kmer_toks_per_s": round(n_tokens / block_kmer_s, 1) if block_kmer_s > 0 else None,
         "n_rounds_all_violating": sum(1 for r in rounds if r["all_violating"]),
         "n_rounds_degenerate_tie": sum(1 for r in rounds if r["degenerate_tie"]),
+        "n_rounds_clean_available": sum(1 for r in rounds if r["clean_available"]),
+        "constrain": constrain,
+        "select": select,
+        "n_premature_total": sum(min(r["premature"]) for r in rounds),
+        "n_terminal_total": sum(min(r["terminal"]) for r in rounds),
+        "decided_by_counts": {
+            k: sum(1 for r in rounds if r["decided_by"] == k)
+            for k in ("pmi", "violations", "tie")
+        },
+        "min_violations_per_round": [min(r["violations"]) for r in rounds],
         "peak_gpu_mem_gb": round(peak_gb, 2),
         "est_usd": round(block_kmer_s / 3600 * price, 5),
         "block_kmer_seq": block_kmer_seq,
         "rounds": rounds,
     }
+
+
+def _decided_by(scores: list, violations: list) -> str:
+    """Which signal actually chose this round's winner -- see the GPU path's
+    inline note. Shared by both paths so --mock validates the same
+    classification the real run records."""
+    vmin = min(violations)
+    tied_at_min = [i for i, v in enumerate(violations) if v == vmin]
+    if len(scores) > 1 and len(set(scores)) == 1:
+        return "tie"
+    if len(tied_at_min) == 1:
+        return "violations"
+    return "pmi"
 
 
 def _mock_run(prompt: str, blocks: list, gene_to_cluster: dict, gene_coords: dict,
@@ -263,19 +342,37 @@ def _mock_run(prompt: str, blocks: list, gene_to_cluster: dict, gene_coords: dic
     rounds = []
     for block in blocks:
         cands = generate_block(seq, block, c, fake_generate_fn, base_seed=seed)
-        detailed = [scorer.score_candidate_detailed(cand, block) for cand in cands]
-        scores = [s for s, _v in detailed]
+        detailed = [scorer.score_candidate_breakdown(cand, block) for cand in cands]
+        scores = [s for s, _p, _t in detailed]
         pick = max(range(len(scores)), key=lambda i: scores[i])
         seq += cands[pick]
         rounds.append({"genes": list(block.genes), "picked": pick,
                         "scores": [round(s, 6) for s in scores],
-                        "violations": [v for _s, v in detailed],
-                        "all_violating": all(v > 0 for _s, v in detailed),
-                        "degenerate_tie": len(set(scores)) == 1 and len(scores) > 1})
+                        "violations": [p + t for _s, p, t in detailed],
+                        "premature": [p for _s, p, _t in detailed],
+                        "terminal": [t for _s, _p, t in detailed],
+                        "all_violating": all(p + t > 0 for _s, p, t in detailed),
+                        "degenerate_tie": len(set(scores)) == 1 and len(scores) > 1,
+                        "clean_available": min(p + t for _s, p, t in detailed) == 0,
+                        "decided_by": _decided_by(
+                            scores, [p + t for _s, p, t in detailed]),
+                        })
 
     return {
         "n_tokens": len(seq) - len(prompt), "c": c, "n_blocks": len(blocks),
         "block_kmer_toks_per_s": None, "n_rounds": len(rounds),
+        # Same summary fields the GPU path builds, so --mock actually
+        # exercises the aggregation instead of printing zeros over it.
+        "n_rounds_all_violating": sum(1 for r in rounds if r["all_violating"]),
+        "n_rounds_degenerate_tie": sum(1 for r in rounds if r["degenerate_tie"]),
+        "n_rounds_clean_available": sum(1 for r in rounds if r["clean_available"]),
+        "decided_by_counts": {
+            k: sum(1 for r in rounds if r["decided_by"] == k)
+            for k in ("pmi", "violations", "tie")
+        },
+        "min_violations_per_round": [min(r["violations"]) for r in rounds],
+        "n_premature_total": sum(min(r["premature"]) for r in rounds),
+        "n_terminal_total": sum(min(r["terminal"]) for r in rounds),
         "block_kmer_seq": seq[len(prompt):], "rounds": rounds,
     }
 
@@ -313,7 +410,8 @@ def _append_jsonl(path: Path, record: dict) -> None:
         f.write(json.dumps(record) + "\n")
 
 
-def _run(model: str, ckpt: str, c: int, seeds: str, only: str, mock: bool, tag: str = "") -> None:
+def _run(model: str, ckpt: str, c: int, seeds: str, only: str, mock: bool, tag: str = "",
+         max_block_bp: int = 600, constrain: bool = True, select: str = "pmi") -> None:
     """Shared body for both entrypoints below: `main` (modal run, real GPU
     calls allowed) and the plain `__main__` block (python ... --mock, no
     Modal connection at all -- same split kmer_fulllength_benchmark.py uses,
@@ -321,7 +419,7 @@ def _run(model: str, ckpt: str, c: int, seeds: str, only: str, mock: bool, tag: 
     import bio_scoring
 
     from block_pipeline import (build_tables, prepare_target_b, clip_blocks_to_prompt,
-                                make_blocks, linearize_gene_coords)
+                                make_blocks, linearize_gene_coords, split_long_blocks)
 
     seed_list = [int(s) for s in seeds.split(",") if s.strip()]
 
@@ -393,9 +491,15 @@ def _run(model: str, ckpt: str, c: int, seeds: str, only: str, mock: bool, tag: 
         prompt_end = offset + len(prompt)
         lin_coords = linearize_gene_coords(gene_coords, len(genome), prompt_end)
         run_blocks = clip_blocks_to_prompt(make_blocks(lin_coords), lin_coords, 0)
+        n_before = len(run_blocks)
+        run_blocks = split_long_blocks(run_blocks, lin_coords, max_block_bp)
         if not run_blocks:
             print(f"skip {acc}: no blocks remain ahead of prompt_end={prompt_end}")
             continue
+        if len(run_blocks) != n_before:
+            print(f"{acc}: split {n_before} block(s) into {len(run_blocks)} at "
+                  f"max_block_bp={max_block_bp} -- pilot measured median 0 premature "
+                  f"stops at <=600bp vs 10 above it (frame slippage)")
         print(f"{acc}: prompt at genome offset {offset} (prompt_end={prompt_end}), "
               f"{len(run_blocks)} block(s) spanning {run_blocks[-1].end} bp of circular "
               f"continuation (genome_len={len(genome)})")
@@ -410,11 +514,33 @@ def _run(model: str, ckpt: str, c: int, seeds: str, only: str, mock: bool, tag: 
                 # letting it kill the whole run -- the real bug from
                 # 2026-11-13 wasn't the OOM itself, it was that one crash
                 # used to cost every OTHER genome's results too.
+                # Transient prompt corruption: a NUL byte sometimes reaches
+                # the container ("prompt contains non-ACGTN characters:
+                # [backslash-x00]") even though the prompt files hold zero NUL
+                # bytes and the same prompt validates locally. It MOVES
+                # between runs -- MZ364261.1/PQ006516.1 failed on 2026-11-14
+                # and MZ364261.1 then succeeded on 2026-11-15 while
+                # MW697720.1 failed instead -- so it is transport, not data,
+                # and a retry is the right response. Roughly 1 call in 12
+                # across the two runs.
+                attempts, res, last_err = 0, None, None
                 try:
-                    res = run_block_kmer_prompt.remote(
-                        model, ckpt, name, acc, prompt, gene_to_cluster, lin_coords,
-                        run_blocks, tables, c, seed, GPU, PRICE,
-                    )
+                    while attempts < 3:
+                        attempts += 1
+                        try:
+                            res = run_block_kmer_prompt.remote(
+                                model, ckpt, name, acc, prompt, gene_to_cluster, lin_coords,
+                                run_blocks, tables, c, seed, GPU, PRICE, constrain, select,
+                            )
+                            break
+                        except Exception as inner:
+                            last_err = inner
+                            if "non-ACGTN" not in str(inner) or attempts >= 3:
+                                raise
+                            print(f"  transient prompt corruption on attempt {attempts} "
+                                  f"({str(inner)[:60]}) -- retrying")
+                    if res is not None and attempts > 1:
+                        res["n_prompt_corruption_retries"] = attempts - 1
                 except Exception as e:
                     n_failed += 1
                     print(f"  FAILED: {type(e).__name__}: {str(e)[:300]}")
@@ -454,8 +580,12 @@ def _run(model: str, ckpt: str, c: int, seeds: str, only: str, mock: bool, tag: 
             n_tie = res.get("n_rounds_degenerate_tie", 0)
             n_viol = res.get("n_rounds_all_violating", 0)
             picks = [r["picked"] for r in res.get("rounds", [])]
+            dbc = res.get("decided_by_counts") or {}
             print(f"  selection: {n_viol}/{nb} rounds with no clean candidate, "
                   f"{n_tie}/{nb} degenerate ties, picked={picks}")
+            print(f"  decided by: pmi={dbc.get('pmi', 0)} "
+                  f"violations={dbc.get('violations', 0)} tie={dbc.get('tie', 0)}"
+                  f"  min_violations/round={res.get('min_violations_per_round')}")
             if nb and n_tie == nb:
                 print(f"  WARNING {acc}: every round was a tie -- candidate 0 won "
                       f"by index, not by score. No k-mer selection from this genome.")
@@ -489,6 +619,23 @@ def _run(model: str, ckpt: str, c: int, seeds: str, only: str, mock: bool, tag: 
     if tot_rounds:
         print(f"selection summary: {tot_viol}/{tot_rounds} rounds had no clean "
               f"candidate, {tot_ties}/{tot_rounds} were degenerate ties")
+        agg = {k: sum((r.get("decided_by_counts") or {}).get(k, 0) for r in results)
+               for k in ("pmi", "violations", "tie")}
+        n_clean = sum(r.get("n_rounds_clean_available", 0) for r in results)
+        print(f"decided by: pmi={agg['pmi']} violations={agg['violations']} "
+              f"tie={agg['tie']}; rounds with a clean candidate available: "
+              f"{n_clean}/{tot_rounds}")
+        # The question this pilot exists to answer. If PMI decides (almost)
+        # nothing, the arm is a fewest-broken-stops selector, not k-mer
+        # guidance, and block size is the thing to change -- not worth
+        # scaling to a full batch first.
+        if agg["pmi"] == 0:
+            print("NOTE: PMI never decided a round. Every pick came from violation")
+            print("count alone, so this is not k-mer guidance in any meaningful")
+            print("sense. Reconsider block size or per-gene gating before a full run.")
+        elif agg["pmi"] < 0.2 * tot_rounds:
+            print(f"NOTE: PMI decided only {agg['pmi']}/{tot_rounds} rounds "
+                  f"({agg['pmi'] / tot_rounds:.0%}) -- weak k-mer contribution.")
         if tot_ties == tot_rounds:
             print("=" * 72)
             print("ERROR: NO SELECTION OCCURRED IN THIS ENTIRE RUN.")
@@ -505,7 +652,8 @@ def _run(model: str, ckpt: str, c: int, seeds: str, only: str, mock: bool, tag: 
 
 @app.local_entrypoint()
 def block_kmer(model: str = "evo2_7b", ckpt: str = "L27_g12_150M_s1",
-                c: int = 3, seeds: str = "0", only: str = "", mock: bool = False, tag: str = ""):
+                c: int = 3, seeds: str = "0", only: str = "", mock: bool = False, tag: str = "",
+                max_block_bp: int = 600, constrain: bool = True, select: str = "pmi"):
     # Named block_kmer, not main -- `app` is the SAME modal.App shared with
     # speculative_benchmark.py (and transitively kmer_fulllength_benchmark.py),
     # which already registers its own local_entrypoint named "main" on it;
@@ -518,7 +666,7 @@ def block_kmer(model: str = "evo2_7b", ckpt: str = "L27_g12_150M_s1",
     # batch runs genomes sequentially from its OWN local entrypoint, two
     # DIFFERENT batches' processes could still interleave writes to one
     # shared file; separate per-tag files avoid that entirely.
-    _run(model, ckpt, c, seeds, only, mock, tag)
+    _run(model, ckpt, c, seeds, only, mock, tag, max_block_bp, constrain, select)
 
 
 if __name__ == "__main__":

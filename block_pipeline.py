@@ -303,6 +303,60 @@ def linearize_gene_coords(
     return lin
 
 
+DEFAULT_MAX_BLOCK_BP = 600
+
+
+def split_long_blocks(
+    blocks: Sequence[Block],
+    gene_coords: Dict[str, Tuple[int, int]],
+    max_bp: int = DEFAULT_MAX_BLOCK_BP,
+) -> List[Block]:
+    """Split any block longer than `max_bp` into consecutive sub-blocks cut on
+    that gene's own codon boundaries.
+
+    Measured on the 2026-11-15 pilot (17 rounds, 3 genomes, evo2_7b): blocks
+    of <=600bp came back with a MEDIAN OF 0 premature stop codons, blocks
+    above it with a median of 10. And the failing blocks were not merely
+    degraded -- their premature-stop rate was 3.8-4.5 per 100 codons against
+    a chance rate of 4.7, with two blocks ABOVE chance (6.9, 11.3). That is
+    the signature of frame slippage, not of a model that cannot code: Evo 2
+    generates coding-like sequence but in a frame offset from the one
+    BlockScorer assumes, because a single indel early in a long block
+    misreads every codon after it. Shorter blocks bound how far that can
+    propagate before the next real-coordinate re-anchor.
+
+    Only single-gene blocks are split. Genes in one block can sit in
+    different frames (make_blocks groups overlapping genes), so no single cut
+    point is codon-aligned for all of them; a multi-gene block is returned
+    whole rather than cut in a frame that is wrong for one of its members.
+    16 of the pilot's 17 blocks held exactly one gene, so this covers
+    essentially all of the real cases.
+
+    Sub-blocks before the one containing a gene's true end carry that gene in
+    `genes` but do NOT carry its terminal-stop expectation -- BlockScorer
+    checks only for premature stops when `gene_end` lies past `block.end`.
+    """
+    out: List[Block] = []
+    for b in blocks:
+        if len(b) <= max_bp or len(b.genes) != 1:
+            out.append(b)
+            continue
+        gs, _ge = gene_coords[b.genes[0]]
+        base = max(b.start, gs)
+        codon_start = base + ((3 - (base - gs) % 3) % 3)
+        step = (max_bp // 3) * 3  # keep every cut on a codon boundary of this gene
+        cuts = [b.start]
+        pos = codon_start
+        while pos + step < b.end:
+            pos += step
+            if pos > cuts[-1]:
+                cuts.append(pos)
+        cuts.append(b.end)
+        for i in range(len(cuts) - 1):
+            out.append(Block(b.genes, cuts[i], cuts[i + 1]))
+    return out
+
+
 def translate_genes(genome: str, gene_coords: Dict[str, Tuple[int, int]]) -> Dict[str, str]:
     """Translate a target genome's own named genes in their own frame, from
     its own real coordinates. Target-agnostic -- works for phiX174 or any
@@ -1171,21 +1225,53 @@ class BlockScorer:
         silently" -- and it keeps a fully-broken round informative instead of
         collapsing it into a silent tie."""
         frame_scores: List[float] = []
-        violations = 0
+        n_premature = 0
+        n_terminal = 0
         for g in block.genes:
             gs, ge = self.gene_coords[g]
-            aa, stop_idx = _gene_frame_aa(dna, block.start, gs, ge)
-            region = aa[:stop_idx]
-            violations += region.count("*")          # premature stops
-            if aa[stop_idx] != "*":                  # missing terminal stop
-                violations += 1
+            base = max(block.start, gs)
+            codon_start = base + ((3 - (base - gs) % 3) % 3)
+            rel_start = codon_start - block.start
+            if rel_start >= len(dna):
+                continue  # none of this gene falls in this sub-block (leading spacer)
+            aa = translate(dna[rel_start:])
+            if ge <= block.end:
+                # This block covers the gene's real end, so its terminal stop
+                # codon belongs inside it at a known index.
+                stop_idx = (ge - codon_start) // 3 - 1
+                if stop_idx < 0 or stop_idx >= len(aa):
+                    raise ValueError(
+                        "gene's real stop codon falls outside this block's dna -- block/gene mismatch"
+                    )
+                region = aa[:stop_idx]
+                if aa[stop_idx] != "*":
+                    n_terminal += 1
+            else:
+                # Sub-block from split_long_blocks: the gene runs on past this
+                # block, so there is no terminal stop to expect here and the
+                # whole translated stretch should be stop-free.
+                region = aa
+            n_premature += region.count("*")
             if not region:
                 continue
             pmi = self._pmi(region, self.tables[self.gene_to_cluster[g]])
             if pmi is not None:
                 frame_scores.append(pmi)
         pmi_mean = float(np.mean(frame_scores)) if frame_scores else 0.0
+        violations = n_premature + n_terminal
+        self.last_breakdown = (n_premature, n_terminal)
         return pmi_mean - VIOLATION_PENALTY * violations, violations
+
+    def score_candidate_breakdown(self, dna: str, block: Block) -> Tuple[float, int, int]:
+        """(score, n_premature, n_terminal). The split matters: on the
+        2026-11-15 pilot, 9 of 17 rounds had ZERO premature stops and failed
+        ONLY on terminal-stop placement, while 16 of 17 missed the terminal
+        stop. A single `n_violations` count hid that, and the two numbers call
+        for completely different fixes -- forcing the boundary stop codon
+        versus bounding frame slippage with smaller blocks."""
+        score, _violations = self.score_candidate_detailed(dna, block)
+        n_prem, n_term = self.last_breakdown
+        return score, n_prem, n_term
 
     def score_candidate(self, dna: str, block: Block) -> float:
         """The test plan's exact score_candidate(dna, block) -> float
